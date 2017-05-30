@@ -26,22 +26,26 @@ set expandtab
 set title
 set noerrorbells
 
+command Sync :!~/up.sh
 
 "fix term colors to be more pretty
 set term=xterm-256color
 
 "==>all fancy plugin/magic stuff<==
 "load plugins
-execute pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin on
-
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+let g:NERDTreeDirArrows=0
+execute pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin on
+
+
+:set encoding=utf-8
 
 colorscheme molokai
 
@@ -51,11 +55,7 @@ map <C-n> :NERDTreeFocus<CR>
 "fix airline in more than split
 :set laststatus=2
 
-"some systems need the : for the size
-"set guifont=Fantasque\ Sans\ Mono:h10
-
 set guifont=Fantasque\ Sans\ Mono\ 10
-
 
 "if filereadable("/etc/vim/vimrc.local")
 "  source /etc/vim/vimrc.local
