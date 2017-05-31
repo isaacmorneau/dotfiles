@@ -45,7 +45,7 @@ call pathogen#helptags()
 filetype plugin on
 
 
-:set encoding=utf-8
+set encoding=utf-8
 
 colorscheme molokai
 
@@ -53,7 +53,8 @@ colorscheme molokai
 map <C-n> :NERDTreeFocus<CR>
 
 "fix airline in more than split
-:set laststatus=2
+set laststatus=2
+hi Normal guibg=NONE ctermbg=NONE
 
 set guifont=Fantasque\ Sans\ Mono\ 10
 

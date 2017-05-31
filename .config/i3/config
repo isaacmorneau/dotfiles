@@ -160,5 +160,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
-exec compton
-exec feh --bg-scale ~/Downloads/vishera_wall.jpg
+exec compton -b
+exec feh --bg-scale ~/Downloads/skywall.jpg
+exec xrandr --output VGA1 --left-of HDMI2
+
