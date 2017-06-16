@@ -29,4 +29,3 @@ URxvt.color7:       #e6e1dc
 URxvt.color15:      #f9f7f3
 
 URxvt.font:         xft:FantasqueSansMono-10
-URxvt.letterSpace: -1

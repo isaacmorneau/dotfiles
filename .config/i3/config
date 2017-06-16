@@ -94,6 +94,7 @@ mode "mon1" {
         bindsym Escape mode "default"
         #or space again to leave it
         bindsym $mod+q mode "default"
+        bindsym $mod+2 mode "mon2"
 }
 
 bindsym $mod+2 mode "mon2"
@@ -127,6 +128,7 @@ mode "mon2" {
         bindsym Escape mode "default"
         #or space again to leave it
         bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "mon1"
 }
 
 bindsym $mod+Control Right workspace next

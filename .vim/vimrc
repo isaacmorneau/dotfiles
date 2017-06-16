@@ -1,4 +1,6 @@
 syntax on
+colorscheme molokai
+
 set background=dark
 " Jump to last open
 if has("autocmd")
@@ -26,10 +28,14 @@ set expandtab
 set title
 set noerrorbells
 
-command Sync :!~/up.sh
+command! Sync :!~/up.sh
 
 "fix term colors to be more pretty
-set term=xterm-256color
+if has("gui_running")
+    set guifont=Fantasque\ Sans\ Mono\ 10
+else
+    set term=xterm-256color
+endif
 
 "==>all fancy plugin/magic stuff<==
 "load plugins
@@ -47,18 +53,11 @@ filetype plugin on
 
 set encoding=utf-8
 
-colorscheme molokai
 
 "open nerdtree
 map <C-n> :NERDTreeFocus<CR>
 
 "fix airline in more than split
 set laststatus=2
-hi Normal guibg=NONE ctermbg=NONE
-
-set guifont=Fantasque\ Sans\ Mono\ 10
-
-"if filereadable("/etc/vim/vimrc.local")
-"  source /etc/vim/vimrc.local
-"endif
+hi Normal ctermbg=NONE
 
