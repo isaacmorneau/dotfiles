@@ -1,15 +1,13 @@
 syntax on
-colorscheme molokai
 
-set background=dark
-" Jump to last open
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " Jump to last open
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    "Indentation rules for language
+    filetype plugin indent on
 endif
-
-"Indentation rules for language
-if has("autocmd")
-  filetype plugin indent on
+if has("gui_running")
+    set guifont=Fantasque\ Sans\ Mono\ 10
 endif
 
 "Base vim setup
@@ -28,16 +26,24 @@ set expandtab
 set title
 set noerrorbells
 
+
+"work specific
 command! Sync :!~/up.sh
 
-"fix term colors to be more pretty
-if has("gui_running")
-    set guifont=Fantasque\ Sans\ Mono\ 10
-else
-    set term=xterm-256color
-endif
 
 "==>all fancy plugin/magic stuff<==
+if has('nvim')
+    call plug#begin('~/.local/share/nvim/plugged')
+else
+    call plug#begin('~/.vim/plugged')
+endif
+"github pluugins
+Plug 'junegunn/vim-easy-align'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+call plug#end()
 "load plugins
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -45,19 +51,32 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDTreeDirArrows=0
-execute pathogen#infect()
-call pathogen#helptags()
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"STOP TELLING MY I HAVE BAD STYLE I KNOW
+let g:syntastic_quiet_messages = { "type": "style" }
+
 
 filetype plugin on
 
-
 set encoding=utf-8
-
 
 "open nerdtree
 map <C-n> :NERDTreeFocus<CR>
 
 "fix airline in more than split
 set laststatus=2
+"just in case the transparent background doesnt set at the bottom
+set background=dark
+"mmmh so nice
+colorscheme molokai
+"nice transparent background
 hi Normal ctermbg=NONE
 
