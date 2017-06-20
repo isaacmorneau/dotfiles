@@ -25,6 +25,7 @@ set number
 set expandtab
 set title
 set noerrorbells
+filetype plugin on
 
 
 "work specific
@@ -33,6 +34,9 @@ command! Sync :!~/up.sh
 
 "==>all fancy plugin/magic stuff<==
 if has('nvim')
+    "work around for mouse selection to clipboard
+    vnoremap <LeftRelease> "*ygv
+
     call plug#begin('~/.local/share/nvim/plugged')
 else
     call plug#begin('~/.vim/plugged')
@@ -44,14 +48,19 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 call plug#end()
-"load plugins
+
+"[NerdTree]
+set encoding=utf-8
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDTreeDirArrows=0
+map <C-n> :NERDTreeFocus<CR>
 
+
+"[Syntastic]
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -63,16 +72,16 @@ let g:syntastic_check_on_wq = 0
 "STOP TELLING MY I HAVE BAD STYLE I KNOW
 let g:syntastic_quiet_messages = { "type": "style" }
 
+"[Easy Align]
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
-filetype plugin on
 
-set encoding=utf-8
-
-"open nerdtree
-map <C-n> :NERDTreeFocus<CR>
-
-"fix airline in more than split
+"[Airline]
 set laststatus=2
+
 "just in case the transparent background doesnt set at the bottom
 set background=dark
 "mmmh so nice
