@@ -20,3 +20,7 @@
 
 code/
 Downloads/
+Pictures/
+
+.local/share/nvim/swap/
+.local/share/nvim/plugged/

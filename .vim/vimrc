@@ -43,7 +43,7 @@ else
 endif
 "github pluugins
 Plug 'junegunn/vim-easy-align'
-Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
@@ -60,18 +60,6 @@ let g:NERDTreeDirArrows=0
 map <C-n> :NERDTreeFocus<CR>
 
 
-"[Syntastic]
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"STOP TELLING MY I HAVE BAD STYLE I KNOW
-let g:syntastic_quiet_messages = { "type": "style" }
-
 "[Easy Align]
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -82,10 +70,20 @@ nmap ga <Plug>(EasyAlign)
 "[Airline]
 set laststatus=2
 
+"[NeoMake]
+autocmd! BufWritePost * Neomake
+
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jshint']
+
 "just in case the transparent background doesnt set at the bottom
 set background=dark
 "mmmh so nice
 colorscheme molokai
 "nice transparent background
 hi Normal ctermbg=NONE
+hi Search ctermfg=black ctermbg=white
 
