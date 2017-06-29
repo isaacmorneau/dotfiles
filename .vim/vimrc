@@ -45,9 +45,18 @@ endif
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
+
+Plug 'joshdick/onedark.vim'
 call plug#end()
+
+"[one]
+colorscheme onedark
+set background=dark
+"nice transparent background
+"hi Normal ctermbg=NONE
 
 "[NerdTree]
 set encoding=utf-8
@@ -69,6 +78,10 @@ nmap ga <Plug>(EasyAlign)
 
 "[Airline]
 set laststatus=2
+let g:airline_theme='onedark'
+let g:airline#extensions#tabline#left_sep = '▶'
+let g:airline#extensions#tabline#right_sep = '◀'
+
 
 "[NeoMake]
 autocmd! BufWritePost * Neomake
@@ -78,12 +91,3 @@ let g:neomake_javascript_jshint_maker = {
     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
     \ }
 let g:neomake_javascript_enabled_makers = ['jshint']
-
-"just in case the transparent background doesnt set at the bottom
-set background=dark
-"mmmh so nice
-colorscheme molokai
-"nice transparent background
-hi Normal ctermbg=NONE
-hi Search ctermfg=black ctermbg=white
-

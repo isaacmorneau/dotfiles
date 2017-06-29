@@ -28,4 +28,7 @@ URxvt.color14:      #519f50
 URxvt.color7:       #e6e1dc
 URxvt.color15:      #f9f7f3
 
-URxvt.font:         xft:FantasqueSansMono-10
+URxvt.font:         xft:Hack-9
+
+
+urxvt.saveLines:         20000

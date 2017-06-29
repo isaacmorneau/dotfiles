@@ -2,7 +2,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FantasqueSansMono 10
+font pango:Hack 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -14,7 +14,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Fantastque Sans Mono-10'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Hack-9'"
 
 # change focus
 bindsym $mod+h focus left
@@ -174,6 +174,6 @@ bar {
     status_command i3blocks
 }
 exec compton -b
-exec feh --bg-scale ~/Pictures/wallpaper.jpg
+exec feh --bg-fill ~/Pictures/wallpaper.jpg
 exec .screenlayout/main.sh
 
