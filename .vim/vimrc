@@ -48,7 +48,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
-
 Plug 'joshdick/onedark.vim'
 call plug#end()
 
