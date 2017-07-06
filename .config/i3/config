@@ -175,5 +175,6 @@ bar {
 }
 exec compton -b
 exec feh --bg-fill ~/Pictures/wallpaper.jpg
+exec xmodmap ~/.Xmodmap
 exec .screenlayout/main.sh
 
