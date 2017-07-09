@@ -173,8 +173,8 @@ bar {
     position top
     status_command i3blocks
 }
-exec compton -b
-exec feh --bg-fill ~/Pictures/wallpaper.jpg
-exec xmodmap ~/.Xmodmap
 exec .screenlayout/main.sh
+exec compton -b
+exec xmodmap ~/.Xmodmap
+exec feh --bg-tile ~/Pictures/wallpaper.jpg
 
