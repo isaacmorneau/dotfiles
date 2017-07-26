@@ -7,7 +7,7 @@ if has("autocmd")
     filetype plugin indent on
 endif
 if has("gui_running")
-    set guifont=Fantasque\ Sans\ Mono\ 10
+    set guifont=Hack\ 10
 endif
 
 "Base vim setup
@@ -26,17 +26,54 @@ set expandtab
 set title
 set noerrorbells
 set undofile
-set undodir=~/.vim/undo/
 set undolevels=1000
 set undoreload=10000
 filetype plugin on
 
+
+"make sure i can actually save my stuff somewhere
+function! InitializeDirectories()
+    let parent = $HOME
+    let prefix = 'vim'
+    let dir_list = {
+                \ 'backup': 'backupdir',
+                \ 'views':  'viewdir',
+                \ 'swap':   'directory',
+                \ 'undo':   'undodir' }
+
+    let common_dir = parent . '/.' . prefix
+
+    for [dirname, settingname] in items(dir_list)
+        let directory = common_dir . dirname . '/'
+        if exists("*mkdir")
+            if !isdirectory(directory)
+                call mkdir(directory)
+            endif
+        endif
+        if !isdirectory(directory)
+            echo "Warning: Unable to create backup directory: " . directory
+            echo "Try: mkdir -p " . directory
+        else
+            let directory = substitute(directory, " ", "\\\\ ", "g")
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
+endfunction
+call InitializeDirectories()
 
 "work specific
 command! Sync :!~/up.sh
 
 
 "==>all fancy plugin/magic stuff<==
+
+"ensure we actually have vim plug
+let s:vim_plug = '~/.local/share/nvim/site/autoload/plug.vim'
+if empty(glob(s:vim_plug, 1))
+  execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+"some compat for the calling between vim and nvim
 if has('nvim')
     "work around for mouse selection to clipboard
     vnoremap <LeftRelease> "*ygv
@@ -45,6 +82,7 @@ if has('nvim')
 else
     call plug#begin('~/.vim/plugged')
 endif
+
 "github pluugins
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
@@ -54,6 +92,29 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'joshdick/onedark.vim'
 call plug#end()
+
+"check if we need an upgrade or an update
+command! PU PlugUpgrade | PlugUpdate
+let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
+let s:need_install = join(s:need_install, ' ')
+if has('vim_starting')
+  if s:need_clean
+    autocmd VimEnter * PlugClean!
+  endif
+  if len(s:need_install)
+    execute 'autocmd VimEnter * PlugInstall --sync' s:need_install '| source $MYVIMRC'
+    finish
+  endif
+else
+  if s:need_clean
+    PlugClean!
+  endif
+  if len(s:need_install)
+    execute 'PlugInstall --sync' s:need_install | source $MYVIMRC
+    finish
+  endif
+endif
 
 "[one]
 colorscheme onedark
