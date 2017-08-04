@@ -63,6 +63,7 @@ call InitializeDirectories()
 
 "work specific
 command! Sync :!~/up.sh
+command! AltSync :!~/up2.sh
 
 
 "==>all fancy plugin/magic stuff<==
@@ -79,6 +80,7 @@ if has('nvim')
     vnoremap <LeftRelease> "*ygv
 
     call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
     call plug#begin('~/.vim/plugged')
 endif
