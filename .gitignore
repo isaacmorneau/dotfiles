@@ -24,3 +24,9 @@ Pictures/
 
 .local/share/nvim/swap/
 .local/share/nvim/plugged/
+
+.vim/plugged/
+.vimswap
+.vimundo
+.vimbackup
+.vimviews
