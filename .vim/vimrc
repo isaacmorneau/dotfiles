@@ -1,33 +1,57 @@
-syntax on
-
+"Base vim setup
 if has("autocmd")
     " Jump to last open
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     "Indentation rules for language
     filetype plugin indent on
 endif
+"lets be real, i only use the terminal.
 if has("gui_running")
     set guifont=Hack\ 10
 endif
 
-"Base vim setup
+"why not use ed otherwise?
+syntax on
+"what am i typing
 set showcmd
+"what did i pick
 set showmatch
+"follow case like a normal person
 set ignorecase
 set smartcase
+"i only have so much screen space
 set wrap
+"4 spaces is only spaces
 set tabstop=4
+"go back like a normal person
 set backspace=indent,eol,start
+"duh
 set autoindent
 set copyindent
+"see line 23
 set shiftwidth=4
+"which you would only see with this on
 set number
+"tabs are bad
 set expandtab
+"whats open?
 set title
+"dont care if its not valid,dont tell me
 set noerrorbells
+"PLEASE SAVE ALL MY MISTAKES
+"(when i didnt have this before i wiped my hosts file)
 set undofile
 set undolevels=1000
 set undoreload=10000
+"reload when i change it with say git
+set autoread
+"manage buffers nicely
+set hidden
+"give it a little bigger of a bump when i go off the edge
+set scrolloff=3
+"i dont want to press enter when a command is done
+set shortmess=atI
+"the extension likely isnt lying
 filetype plugin on
 
 
@@ -73,7 +97,8 @@ let s:vim_plug = '~/.local/share/nvim/site/autoload/plug.vim'
 if empty(glob(s:vim_plug, 1))
   execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
-
+"been around for ages yet isnt default for % to match if else etc
+runtime macros/matchit.vim
 "some compat for the calling between vim and nvim
 if has('nvim')
     "work around for mouse selection to clipboard
@@ -122,6 +147,8 @@ endif
 colorscheme onedark
 set background=dark
 "nice transparent background
+"(actually looks really bad with one, i just leave it here so i dont make the
+"same mistake again)
 "hi Normal ctermbg=NONE
 
 "[NerdTree]
