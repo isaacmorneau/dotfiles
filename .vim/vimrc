@@ -99,17 +99,7 @@ if empty(glob(s:vim_plug, 1))
 endif
 "been around for ages yet isnt default for % to match if else etc
 runtime macros/matchit.vim
-"some compat for the calling between vim and nvim
-if has('nvim')
-    "work around for mouse selection to clipboard
-    vnoremap <LeftRelease> "*ygv
-
-    call plug#begin('~/.local/share/nvim/plugged')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    call plug#begin('~/.vim/plugged')
-endif
-
+call plug#begin('~/.vim/plugged')
 "github pluugins
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
@@ -177,16 +167,16 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 " airline symbols
