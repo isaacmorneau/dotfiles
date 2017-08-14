@@ -8,10 +8,10 @@
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 alias grep='grep --color=auto'
-alias ls='ls --color=always'
-PS1="\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[m\]\$ "
+alias ls='exa'
 
-#PS1='[\u@\h \W]\$ '
+# restriction being needs git 1.6.3 or newer
+PS1="\[\033[35m\]{\$(git rev-parse --abbrev-ref HEAD)}\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[m\]\$ "
 
 case ${TERM} in
   xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
