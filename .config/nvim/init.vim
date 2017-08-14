@@ -101,7 +101,11 @@ endif
 runtime macros/matchit.vim
 
 "work around for mouse selection to clipboard
+"if term supports mouse then the selection will be visual anyway
 vnoremap <LeftRelease> "*ygv
+vmap C "*y
+vmap V "*p
+set mouse=a
 
 call plug#begin('~/.local/share/nvim/plugged')
 "github pluugins
