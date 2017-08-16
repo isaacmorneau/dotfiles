@@ -9,6 +9,8 @@
 
 alias grep='grep --color=auto'
 alias ls='exa'
+alias sume='sudo -E'
+alias fucking='sudo'
 
 # restriction being needs git 1.6.3 or newer
 PS1="\[\033[35m\]\$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-')\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\$ "
@@ -28,5 +30,6 @@ esac
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
 #fuck that stupid Ctl-s bullshit
 stty -ixon
