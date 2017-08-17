@@ -226,3 +226,13 @@ nmap <silent> gs <plug>(scratch-insert-reuse)
 xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
 
+
+"[Custom After ran]
+function! StartedVim()
+    "this is a stupid hack to open and close the scratch view so its faster
+    "later on
+    normal gs
+    bdelete %
+endfunction
+
+autocmd VimEnter * call StartedVim()
