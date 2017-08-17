@@ -96,10 +96,8 @@ endfunction
 call InitializeDirectories()
 
 "work specific
-if filereadable("~/up.sh") && filereadable("~/up2.sh")
-    command! Sync :!~/up.sh
-    command! AltSync :!~/up2.sh
-endif
+command! Sync :!~/up.sh
+command! AltSync :!~/up2.sh
 
 
 "==>all fancy plugin/magic stuff<==
@@ -219,3 +217,8 @@ let g:neomake_javascript_enabled_makers = ['jshint']
 
 "[Scratch]
 let g:scratch_persistence_file = g:scratch_dir . strftime("scratch_%Y-%m-%d")
+let g:scratch_no_mappings = 1
+nmap <silent> gs <plug>(scratch-insert-reuse)
+xmap <silent> gs <plug>(scratch-selection-reuse)
+nnoremap gZzZz gs
+
