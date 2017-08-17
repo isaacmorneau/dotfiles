@@ -82,12 +82,24 @@ function! InitializeDirectories()
             exec "set " . settingname . "=" . directory
         endif
     endfor
+    let g:scratch_dir = common_dir . 'scratch'. '/'
+    if exists("*mkdir")
+        if !isdirectory(g:scratch_dir)
+            call mkdir(g:scratch_dir)
+        endif
+    endif
+    if !isdirectory(g:scratch_dir)
+        echo "Warning: Unable to create backup directory: " . directory
+        echo "Try: mkdir -p " . directory
+    endif
 endfunction
 call InitializeDirectories()
 
 "work specific
-command! Sync :!~/up.sh
-command! AltSync :!~/up2.sh
+if filereadable("~/up.sh") && filereadable("~/up2.sh")
+    command! Sync :!~/up.sh
+    command! AltSync :!~/up2.sh
+endif
 
 
 "==>all fancy plugin/magic stuff<==
@@ -120,6 +132,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'joshdick/onedark.vim'
 "probably dont need this but meh /shrug
 Plug 'itchyny/vim-gitbranch'
+Plug 'mtth/scratch.vim'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
@@ -203,3 +216,6 @@ let g:neomake_javascript_jshint_maker = {
     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
     \ }
 let g:neomake_javascript_enabled_makers = ['jshint']
+
+"[Scratch]
+let g:scratch_persistence_file = g:scratch_dir . strftime("scratch_%Y-%m-%d")
