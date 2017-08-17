@@ -177,7 +177,11 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDTreeDirArrows=0
+let g:NERDTreeShowHidden=1
+let g:NERDTreeSortHiddenFirst=1
 map <C-n> :NERDTreeFocus<CR>
+"close if its the last thing open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 "[Easy Align]
