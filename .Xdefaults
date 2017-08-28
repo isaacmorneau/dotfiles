@@ -2,7 +2,7 @@ urxvt.foreground: #e6e1dc
 urxvt*depth:      32
 urxvt*background: rgba:0200/0200/0200/c800
 
-#i generated this with an online util. i have no idea what these codes match to
+!i generated this with an online util. i have no idea what these codes match to
 urxvt.cursorColor: #e6e1dc
 urxvt.color0:      #2b2b2b
 urxvt.color8:      #5a647e
@@ -20,7 +20,7 @@ urxvt.color14:     #519f50
 urxvt.color7:      #e6e1dc
 urxvt.color15:     #f9f7f3
 
-#first is primary and the rest are for glyph fallthrough
+!first is primary and the rest are for glyph fallthrough
 urxvt.font: xft:Hack-9, \
             xft: Hack-11, \
             xft: Monospace-11
@@ -34,3 +34,7 @@ urxvt*scrollBar_right: 1
 urxvt*scrollColor:     #000000
 
 urxvt*fading:          5
+
+!select
+URxvt.keysym.M-s: perl:keyboard-select:activate
+URxvt.keysym.M-r: perl:keyboard-select:search
