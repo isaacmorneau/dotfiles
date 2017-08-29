@@ -7,9 +7,11 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Monospace 9
 scrollback_lines = 10000
 search_wrap = true
+font = Hack 9
+font = Hack 11
+font = Monospace 11
 #icon_name = terminal
 #geometry = 640x480
 
@@ -77,7 +79,7 @@ highlight =
 
 [hints]
 font = Hack 9
-font = hack 11
+font = Hack 11
 font = Monospace 11
 #foreground = #dcdccc
 #background = #3f3f3f
