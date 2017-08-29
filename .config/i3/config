@@ -8,7 +8,7 @@ font pango:Hack 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -183,3 +183,4 @@ exec .screenlayout/main.sh
 exec compton -b
 exec xmodmap ~/.Xmodmap
 exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+

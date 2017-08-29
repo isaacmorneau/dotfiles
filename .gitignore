@@ -11,6 +11,7 @@
 .config/*
 !.config/i3
 !.config/nvim
+!.config/termite
 
 .local/share/*
 !.local/share/nvim/
@@ -30,3 +31,4 @@ Pictures/
 .vimundo
 .vimbackup
 .vimviews
+.vimscratch
