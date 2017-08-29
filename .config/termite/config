@@ -73,7 +73,7 @@ color7  = #abb2bf
 color15 = #828997
 
 # if unset, will reverse foreground and background
-highlight = #2f2f2f
+highlight = 
 
 [hints]
 font = Hack 9
