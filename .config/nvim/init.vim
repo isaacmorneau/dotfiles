@@ -131,6 +131,7 @@ Plug 'joshdick/onedark.vim'
 "probably dont need this but meh /shrug
 Plug 'itchyny/vim-gitbranch'
 Plug 'mtth/scratch.vim'
+Plug 'keith/swift.vim'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
