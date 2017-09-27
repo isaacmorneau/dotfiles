@@ -12,7 +12,7 @@ scrollback_lines = 10000
 search_wrap = true
 font = Hack 9
 cursor_blink = off
-cursor_shape = block
+cursor_shape = ibeam
 browser = google-chrome-stable
 filter_unmatched_urls = true
 
