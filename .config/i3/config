@@ -4,6 +4,44 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Hack 9
 
+# Hybrid colors
+set $black    #002B36
+set $white    #839496
+set $gray     #CCCCCC
+set $darkgray #666666
+set $green    #799F26
+set $blue     #4D73AA
+set $purple   #8473A7
+set $red      #B58900
+set $orange   #E59847
+set $cyan     #2AA198
+set $dark     #00252E
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    status_command i3blocks
+    tray_output primary
+    colors {
+        statusline	#999999
+        background	$black
+
+        # Colors            border      backgr.     text
+        focused_workspace	$white	 	$white		$black
+        active_workspace	#073642 	#073642 	#696f89
+        inactive_workspace	#073642 	#073642     $white
+        urgent_workspace  	$orange		$orange		$dark
+    }
+}
+
+#class                  border  backgr. text    indicator
+client.focused			$white  $white  $dark    $dark
+client.unfocused		$dark   $dark   $white   $white
+client.focused_inactive	$dark   $dark   $white   $dark
+client.urgent			$orange $orange $dark    $white
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -173,12 +211,6 @@ bindsym $mod+r mode "resize"
 #when i get tired of the backgroundb
 bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3blocks
-}
 exec .screenlayout/main.sh
 exec compton -b
 exec xmodmap ~/.Xmodmap
