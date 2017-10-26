@@ -13,7 +13,7 @@ alias sume='sudo -E'
 alias fucking='sudo'
 
 # restriction being needs git 1.6.3 or newer
-PS1="\[\033[35m\]\$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-')\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\$ "
+PS1="\[\033[34m\]\D{%T}\[\033[m\]«\[\033[35m\]\$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '☼')\[\033[m\]»\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\$ "
 
 case ${TERM} in
   xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
