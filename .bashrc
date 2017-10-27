@@ -12,18 +12,18 @@ alias ls='exa'
 alias sume='sudo -E'
 alias fucking='sudo'
 
+
+ps1_proc_result () {
+    [[ $1 -ne 0 ]] && printf "|\033[31m$1"
+}
+
+ps1_branch_result () {
+    git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-'
+}
+
+PROMPT_COMMAND='ps1_ret=$?'
 # restriction being needs git 1.6.3 or newer
-PS1="\[\033[34m\]\D{%T}\[\033[m\]«\[\033[35m\]\$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '☼')\[\033[m\]»\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\$ "
-
-case ${TERM} in
-  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-
-    ;;
-  screen)
-    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-    ;;
-esac
+PS1="\[\033[34m\]\D{%T}\[\033[m\]{\[\033[35m\]\`ps1_branch_result\`\[\033[m\]}\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\`ps1_proc_result \$ps1_ret\`\[\033[m\] "
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
