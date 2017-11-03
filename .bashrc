@@ -11,6 +11,7 @@ alias grep='grep --color=auto'
 alias ls='exa'
 alias sume='sudo -E'
 alias fucking='sudo'
+alias bk='cd -'
 
 
 ps1_proc_result () {
