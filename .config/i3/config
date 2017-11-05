@@ -24,8 +24,11 @@ client.unfocused		$dark   $dark   $white   $white
 client.focused_inactive	$dark   $dark   $white   $dark
 client.urgent			$orange $orange $dark    $white
 
-#get rid of those pesky boarders
-hide_edge_borders both
+#get rid of the borders on the sides of the screen
+hide_edge_borders vertical
+
+#slim down the borders
+for_window [class="^.*"] border pixel 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -89,8 +92,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-bindsym $mod+1 mode "mon1"
-mode "mon1" {
+bindsym $mod+1 mode "Set One"
+mode "Set One" {
         set $mod Mod4
         bindsym 1 workspace 1
         bindsym 2 workspace 2
@@ -120,11 +123,11 @@ mode "mon1" {
         bindsym Escape mode "default"
         #or space again to leave it
         bindsym $mod+q mode "default"
-        bindsym $mod+2 mode "mon2"
+        bindsym $mod+2 mode "Set Two"
 }
 
-bindsym $mod+2 mode "mon2"
-mode "mon2" {
+bindsym $mod+2 mode "Set Two"
+mode "Set Two" {
         set $mod Mod4
         bindsym 1 workspace 11
         bindsym 2 workspace 12
@@ -154,7 +157,7 @@ mode "mon2" {
         bindsym Escape mode "default"
         #or space again to leave it
         bindsym $mod+q mode "default"
-        bindsym $mod+1 mode "mon1"
+        bindsym $mod+1 mode "Set One"
 }
 
 bindsym $mod+Control Right workspace next
@@ -163,7 +166,7 @@ bindsym $mod+Control Left workspace prev
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec "i3-msg restart; ~/.config/polybar/polybar.sh"
 # exit i3
 bindsym $mod+Shift+e exit
 
