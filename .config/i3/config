@@ -42,6 +42,9 @@ client.unfocused		$dark   $dark   $white   $white
 client.focused_inactive	$dark   $dark   $white   $dark
 client.urgent			$orange $orange $dark    $white
 
+#get rid of those pesky boarders
+hide_edge_borders both
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
