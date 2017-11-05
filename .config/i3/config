@@ -197,8 +197,10 @@ bindsym $mod+r mode "resize"
 bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 exec .screenlayout/main.sh
-exec --no-start-id ~/.config/polybar/polybar.sh
-exec --no-start-id compton -b
-exec --no-start-id xmodmap ~/.Xmodmap
-exec --no-start-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec compton -b
+exec xmodmap ~/.Xmodmap
+exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+#the sleep is more for screenlayout to finish as polybar will freak out if the screens
+#aren't up
+exec "sleep 1 && ~/.config/polybar/polybar.sh"
 
