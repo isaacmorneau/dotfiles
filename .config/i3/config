@@ -18,24 +18,6 @@ set $cyan     #2AA198
 set $dark     #00252E
 
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3blocks
-    tray_output primary
-    colors {
-        statusline	#999999
-        background	$black
-
-        # Colors            border      backgr.     text
-        focused_workspace	$white	 	$white		$black
-        active_workspace	#073642 	#073642 	#696f89
-        inactive_workspace	#073642 	#073642     $white
-        urgent_workspace  	$orange		$orange		$dark
-    }
-}
-
 #class                  border  backgr. text    indicator
 client.focused			$white  $white  $dark    $dark
 client.unfocused		$dark   $dark   $white   $white
@@ -215,7 +197,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 exec .screenlayout/main.sh
-exec compton -b
-exec xmodmap ~/.Xmodmap
-exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec --no-start-id ~/.config/polybar/polybar.sh
+exec --no-start-id compton -b
+exec --no-start-id xmodmap ~/.Xmodmap
+exec --no-start-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 

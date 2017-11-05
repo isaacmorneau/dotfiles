@@ -11,8 +11,9 @@
 .config/*
 !.config/i3
 !.config/nvim
-.config/nvim/.netrwhist
+!.config/polybar
 !.config/termite
+.config/nvim/.netrwhist
 
 .local/share/*
 !.local/share/nvim/
