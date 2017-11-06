@@ -147,7 +147,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format = <label> <ramp-coreload>
+format = <ramp-coreload> <label>
 format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
@@ -172,7 +172,7 @@ ramp-coreload-7-foreground = #ff5555
 [module/memory]
 type = internal/memory
 interval = 2
-format = <label> <bar-used>
+format = <bar-used> <label>
 label = RAM %gb_used%/%gb_free%
 
 bar-used-indicator =
