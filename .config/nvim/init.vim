@@ -144,7 +144,7 @@ set background=dark
 command! PU PlugUpgrade | PlugUpdate
 
 
-"updadte once per day
+"update once per day
 let s:today = strftime("%Y%m%d") + 0
 let s:lastupdate = '~/.local/share/nvim/lastupdate'
 if empty(glob(s:lastupdate, 1))
@@ -246,10 +246,3 @@ let g:scratch_no_mappings = 1
 nmap <silent> gs <plug>(scratch-insert-reuse)
 xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
-
-
-"[Custom After ran]
-function! StartedVim()
-endfunction
-
-autocmd VimEnter * call StartedVim()
