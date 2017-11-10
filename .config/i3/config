@@ -30,6 +30,11 @@ hide_edge_borders vertical
 #slim down the borders
 for_window [class="^.*"] border pixel 1
 
+#i3 gaps additonal config
+gaps inner 5
+gaps outer 0
+smart_gaps on
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
