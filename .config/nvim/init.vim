@@ -119,6 +119,7 @@ set mouse=a
 
 call plug#begin('~/.local/share/nvim/plugged')
 "github pluugins
+Plug 'isaacmorneau/vim-update-daily'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
@@ -144,23 +145,6 @@ set background=dark
 command! PU PlugUpgrade | PlugUpdate
 
 
-"update once per day
-let s:today = strftime("%Y%m%d") + 0
-let s:lastupdate = '~/.local/share/nvim/lastupdate'
-if empty(glob(s:lastupdate, 1))
-    execute 'silent !echo ' . s:today . ' > ' . s:lastupdate
-    execute 'autocmd VimEnter * PU'
-else
-    let s:savedtimes = readfile(glob(s:lastupdate, 1))
-    for s:savedtime in s:savedtimes
-        if (s:savedtime + 0) < s:today
-            execute 'silent !echo ' . s:today . ' > ' . s:lastupdate
-            execute 'autocmd VimEnter * PU'
-        endif
-    endfor
-endif
-
-
 let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
 let s:need_install = join(s:need_install, ' ')
@@ -181,6 +165,11 @@ else
     finish
   endif
 endif
+
+"[update-daily]
+"will default to these but keeping it explicit
+let g:update_file = '~/.local/share/nvim/lastupdate'
+let g:update_daily = 'PU'
 
 "[one]
 colorscheme onedark
