@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/isaac/code/xpr2/src/web/js/modules/BCCA/Members'
-let g:netrw_dirhist_2='/home/isaac/code/xpr2/src/web/js/models'
-let g:netrw_dirhist_3='/home/isaac/code/xpr2/src/web/js/modules/BCCA'
-let g:netrw_dirhist_4='/home/isaac/code/xpr2/src/includes/classes/Xpr2/API/Resource/User'
-let g:netrw_dirhist_5='/home/isaac/code/xpr2/src/includes/classes/Xpr2/API/Resource/Event'
