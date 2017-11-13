@@ -37,3 +37,6 @@ export TERM=xterm-256color
 
 #fuck that stupid Ctl-s bullshit
 stty -ixon
+
+#if we ran wall lets get dem colors
+(wal -r -t &)
