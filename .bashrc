@@ -16,7 +16,7 @@ alias bk='cd -'
 
 
 ps1_proc_result () {
-    [[ $1 -ne 0 ]] && printf "|\033[31m$1"
+    [[ $1 -ne 0 ]] && printf "\033[43;33m \033[43;31m$1"
 }
 
 ps1_branch_result () {
@@ -25,7 +25,7 @@ ps1_branch_result () {
 
 PROMPT_COMMAND='ps1_ret=$?'
 # restriction being needs git 1.6.3 or newer
-PS1="\[\033[34m\]\D{%T}\[\033[m\]{\[\033[35m\]\`ps1_branch_result\`\[\033[m\]}\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[m\]:\[\033[33;1m\]\W\[\033[m\]\`ps1_proc_result \$ps1_ret\`\[\033[m\] "
+PS1="\[\033[44;30m\]\D{%T}\[\033[45;34m\]\[\033[45;30m\]\`ps1_branch_result\`\[\033[46;35m\]\[\033[46;30m\]\u\[\033[42;36m\]\[\033[42;30m\]\h\[\033[43;32m\]\[\033[43;30m\]\W\[\033[m\]\`ps1_proc_result \$ps1_ret\`\[\033[49;33m\]\[\033[m\] "
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
