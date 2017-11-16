@@ -39,4 +39,5 @@ export TERM=xterm-256color
 stty -ixon
 
 #if we ran wall lets get dem colors
-(wal -r -t &)
+#(wal -r -t &)
+#wal is too much im disabling it

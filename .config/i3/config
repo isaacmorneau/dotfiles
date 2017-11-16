@@ -202,9 +202,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #when i get tired of the background
-#instead of just the back ground do the whole color scheme
-#bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
-bindsym $mod+b exec rewal
+bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+#bindsym $mod+b exec rewal
+#wal is too much
 
 exec .screenlayout/main.sh
 exec compton -b
