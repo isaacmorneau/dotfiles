@@ -120,6 +120,7 @@ set mouse=a
 call plug#begin('~/.local/share/nvim/plugged')
 "github pluugins
 Plug 'isaacmorneau/vim-update-daily'
+"requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
@@ -142,7 +143,7 @@ colorscheme onedark
 set background=dark
 
 "check if we need an upgrade or an update
-command! PU PlugUpgrade | PlugUpdate
+command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
 
 
 let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
@@ -167,8 +168,7 @@ else
 endif
 
 "[update-daily]
-"will default to these but keeping it explicit
-let g:update_file = '~/.local/share/nvim/lastupdate'
+" custom command to also update remote plugins for stuff like deoplete
 let g:update_daily = 'PU'
 
 "[one]
@@ -235,3 +235,8 @@ let g:scratch_no_mappings = 1
 nmap <silent> gs <plug>(scratch-insert-reuse)
 xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
+
+"[Deoplete]
+let g:deoplete#enable_at_startup = 1
+"<TAB> completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
