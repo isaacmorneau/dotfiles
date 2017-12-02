@@ -18,6 +18,10 @@
 .local/share/*
 !.local/share/nvim/
 
+.local/share/nvim/swap/
+.local/share/nvim/plugged/
+!/.local/share/nvim/plugged/c.vim/
+
 .local/share/nvim/shada/main.shada
 .viminfo
 
@@ -25,8 +29,6 @@ code/
 Downloads/
 Pictures/
 
-.local/share/nvim/swap/
-.local/share/nvim/plugged/
 
 .vim/plugged/
 .vimswap

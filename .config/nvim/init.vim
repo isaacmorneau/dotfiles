@@ -144,6 +144,7 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-scripts/c.vim'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
@@ -249,3 +250,6 @@ nnoremap gZzZz gs
 let g:deoplete#enable_at_startup = 1
 "<TAB> completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"[c.vim]
+let g:C_UseTool_cmake = 'yes'
