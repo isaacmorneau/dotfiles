@@ -10,29 +10,23 @@
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# not really needed as fonts are handled my polybar and dmenu
 font pango:Hack 9
 
-# Hybrid colors
-set $black    #002B36
-set $white    #839496
-set $gray     #CCCCCC
-set $darkgray #666666
-set $green    #799F26
-set $blue     #4D73AA
-set $purple   #8473A7
-set $red      #B58900
-set $orange   #E59847
-set $cyan     #2AA198
-set $dark     #00252E
+set $foreground #878787
+set $background #353535
+set $extra      #9b1d1d
+# class                 border  	backgr. 	text    	indic.  	child_border
+client.background	    $background
+client.focused         	$foreground	$background	$foreground	$extra		$extra
+client.unfocused       	$foreground	$background	$foreground	$background	$background
+client.focused_inactive	$foreground	$background	$foreground	$background	$background
+client.urgent		    $foreground	$background	$foreground	$background	$background
+client.placeholder	    $foreground	$background	$foreground	$background	$background
 
 
-#class                  border  backgr. text    indicator
-client.focused			$white  $white  $dark    $dark
-client.unfocused		$dark   $dark   $white   $white
-client.focused_inactive	$dark   $dark   $white   $dark
-client.urgent			$orange $orange $dark    $white
+# start dmenu
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical
@@ -41,9 +35,10 @@ hide_edge_borders vertical
 for_window [class="^.*"] border pixel 1
 
 #i3 gaps additonal config
-gaps inner 5
-gaps outer 0
-smart_gaps on
+# can re enable for having small gaps between windows
+#gaps inner 5
+#gaps outer 0
+#smart_gaps on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -53,9 +48,6 @@ bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Hack-9'"
 
 # change focus
 bindsym $mod+h focus left
@@ -212,14 +204,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #when i get tired of the background
-bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+#bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #bindsym $mod+b exec rewal
-#wal is too much
+#wal is too much, its all too much
 
 exec .screenlayout/main.sh
 exec compton -b
 exec xmodmap ~/.Xmodmap
-exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec feh --bg-fill ~/.wallpaper.jpg
+# exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #the sleep is more for screenlayout to finish as polybar will freak out if the screens
 #aren't up
 exec "sleep 1 && ~/.config/polybar/polybar.sh"

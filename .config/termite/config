@@ -25,49 +25,45 @@ cursor_shape = ibeam
 browser = google-chrome-stable
 filter_unmatched_urls = true
 
-# one dark
 [colors]
-
-# special
-foreground      = #abb2bf
-foreground_bold = #abb2bf
-cursor          = #d3d0c8
-# set this color to 80% transparent so i can feel fancy 282c34
-background      = rgba(40, 44, 52, 0.8)
-
-# black
-color0  = #282c34
-color8  = #5c6370
-
-# red
-color1  = #e06c75
-color9  = #be5046
-
-# green
-color2  = #98c379
-color10 = #7a9f60
-
-# yellow
-color3  = #e5c07b
-color11 = #d19a66
-
-# blue
-color4  = #61afef
-color12 = #3b84c0
-
-# magenta
-color5  = #c678dd
-color13 = #9a52af
-
-# cyan
-color6  = #56b6c2
-color14 = #3c909b
-
-# white
-color7  = #abb2bf
-color15 = #828997
-
+background      = rgba(45, 40, 40, 0.3)
 # if unset, will reverse foreground and background
 highlight = 
 
-[hints]
+# special
+foreground      = #ffffff
+foreground_bold = #ffffff
+cursor          = #ffffff
+
+# black
+color0  = #202020
+color8  = #505050
+
+# red
+color1  = #a07070
+color9  = #d07070
+
+# green
+color2  = #70a070
+color10 = #70d070
+
+# yellow
+color3  = #a0a070
+color11 = #d0d070
+
+# blue
+color4  = #7070a0
+color12 = #7070d0
+
+# magenta
+color5  = #a070a0
+color13 = #d070d0
+
+# cyan
+color6  = #70a0a0
+color14 = #70d0d0
+
+# white
+color7  = #a0a0a0
+color15 = #f0f0f0
+
