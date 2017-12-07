@@ -32,7 +32,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353
 hide_edge_borders vertical
 
 #slim down the borders
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 #i3 gaps additonal config
 # can re enable for having small gaps between windows
