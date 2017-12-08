@@ -63,6 +63,9 @@ set shortmess=atI
 "the extension likely isnt lying
 filetype plugin on
 
+"to avoid the mistake of uppercasing these
+command! W :w
+command! Q :q
 
 "make sure i can actually save my stuff somewhere
 function! InitializeDirectories()
@@ -228,6 +231,17 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" to show buffer numbers for navigation
+function! WindowNumber(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
+    return 0
+endfunction
+
+call airline#add_statusline_func('WindowNumber')
+call airline#add_inactive_statusline_func('WindowNumber')
 
 
 "[NeoMake]
