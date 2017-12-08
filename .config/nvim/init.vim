@@ -148,6 +148,7 @@ Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/c.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
