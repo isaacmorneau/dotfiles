@@ -182,7 +182,7 @@ else
 endif
 
 "[update-daily]
-" custom command to also update remote plugins for stuff like deoplete
+"custom command to also update remote plugins for stuff like deoplete
 let g:update_daily = 'PU'
 
 "[one]
@@ -209,9 +209,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 "[Easy Align]
-" Start interactive EasyAlign in visual mode (e.g. vipga)
+"Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+"Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
 
@@ -222,7 +222,7 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" airline symbols
+"airline symbols
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_left_sep = ''
@@ -233,7 +233,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-" to show buffer numbers for navigation
+"to show buffer numbers for navigation
 function! WindowNumber(...)
     let builder = a:1
     let context = a:2
@@ -268,3 +268,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "[c.vim]
 let g:C_UseTool_cmake = 'yes'
+
+"[ctrlp.vim]
+let g:ctrlp_working_path_mode = 'ra'
+"ignore whats in git ignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
