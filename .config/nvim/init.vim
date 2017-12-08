@@ -101,8 +101,8 @@ function! InitializeDirectories()
         endif
     endif
     if !isdirectory(g:scratch_dir)
-        echo "Warning: Unable to create backup directory: " . directory
-        echo "Try: mkdir -p " . directory
+        echo "Warning: Unable to create backup directory: " . g:scratch_dir
+        echo "Try: mkdir -p " . g:scratch_dir
     endif
 endfunction
 call InitializeDirectories()
