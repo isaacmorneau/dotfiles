@@ -8,10 +8,6 @@
 !.config/termite
 .config/nvim/.netrwhist
 
-!.local/share/nvim/
-.local/share/nvim/*
-!.local/share/nvim/plugged/c.vim/
-
 !.Xdefaults
 !.Xmodmap
 !.Xresources
@@ -20,3 +16,4 @@
 !.gitignore
 !.wallpaper.jpg
 !.xinitrc
+!.local/bin
