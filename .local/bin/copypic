@@ -1,0 +1,2 @@
+#~/bin/bash
+xclip -selection clipboard -t image/png -i $1

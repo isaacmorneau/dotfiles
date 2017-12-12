@@ -1,0 +1,30 @@
+#!/bin/bash
+DEPS="""
+xorg-xinit
+i3-gaps
+curl
+neovim
+xclip
+feh
+polybar-git
+i3lock-color
+ttf-hack
+termite
+compton
+google-chrome
+exa-git
+arandr
+maim
+sl
+gti
+neofetch
+imagemagick
+catimg
+w3m
+"""
+pacaur --needed -S $DEPS
+PY_DEPS="""
+pywal
+neovim
+"""
+sudo pip3 install $PY_DEPS

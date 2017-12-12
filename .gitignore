@@ -16,4 +16,8 @@
 !.gitignore
 !.wallpaper.jpg
 !.xinitrc
+
+!.local
+.local/*
 !.local/bin
+

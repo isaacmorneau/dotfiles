@@ -1,0 +1,39 @@
+B='#00000000'
+S='#eeeeee22'
+V='#2e528cbb'
+R='#6d3636bb'
+G='#79879ebb'
+W='#5b6b84bb'
+
+screen='/tmp/lock.png'
+screen2='/tmp/lock2.png'
+
+maim -f 'png' > $screen
+#for square pixelation
+convert -resize 1%x100%\! -resize 10000%x100%\!\
+    $screen $screen2
+rm $screen
+i3lock \
+    --insidevercolor=$S\
+    --ringvercolor=$V\
+    \
+    --insidewrongcolor=$S\
+    --ringwrongcolor=$R\
+    \
+    --insidecolor=$S\
+    --ringcolor=$G\
+    --linecolor=$B\
+    --separatorcolor=$W\
+    \
+    --clock\
+    --indicator\
+    --radius=120\
+    --timefont="Hack"\
+    --timesize=32\
+    --datefont="Hack"\
+    --datesize=20\
+    --datestr="%A, %Y-%m-%d"\
+    \
+    --image="$screen2"
+rm $screen2
+

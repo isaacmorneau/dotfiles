@@ -1,0 +1,1 @@
+xrandr --query | grep " connected" | awk '{print $1}'
