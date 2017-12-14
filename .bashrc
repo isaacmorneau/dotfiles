@@ -27,7 +27,7 @@ __git_ps1 () {
 }
 
 #PROMPT_COMMAND='ps1_ret=$?'
-PS1="\[\e[34m\]\D{%T}\[\e[35m\](\`__git_ps1\`)\[\e[36m\]\u\[\e[m\]@\[\e[37m\]\h\[\e[m\]:\[\e[38m\]\W\[\e[m\]\$ "
+PS1="\[\e[34m\]\D{%T}\[\e[35m\](\`__git_ps1\`)\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\]\$ "
 
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
