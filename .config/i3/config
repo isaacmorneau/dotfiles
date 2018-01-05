@@ -26,7 +26,10 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
+# its not scraping PATH correctly
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
+# this only works if your commands are in `` ie run in a subshell, no idea why
+bindsym $mod+d exec --no-startup-id "dmenu_run -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical
@@ -99,74 +102,6 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-bindsym $mod+1 mode "Set One"
-mode "Set One" {
-        set $mod Mod4
-        bindsym 1 workspace 1
-        bindsym 2 workspace 2
-        bindsym 3 workspace 3
-        bindsym 4 workspace 4
-        bindsym 5 workspace 5
-        bindsym 6 workspace 6
-        bindsym 7 workspace 7
-        bindsym 8 workspace 8
-        bindsym 9 workspace 9
-        bindsym 0 workspace 10
-
-        # move focused container to workspace
-        bindsym Shift+1 move container to workspace 1
-        bindsym Shift+2 move container to workspace 2
-        bindsym Shift+3 move container to workspace 3
-        bindsym Shift+4 move container to workspace 4
-        bindsym Shift+5 move container to workspace 5
-        bindsym Shift+6 move container to workspace 6
-        bindsym Shift+7 move container to workspace 7
-        bindsym Shift+8 move container to workspace 8
-        bindsym Shift+9 move container to workspace 9
-        bindsym Shift+0 move container to workspace 10
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        #or space again to leave it
-        bindsym $mod+q mode "default"
-        bindsym $mod+2 mode "Set Two"
-}
-
-bindsym $mod+2 mode "Set Two"
-mode "Set Two" {
-        set $mod Mod4
-        bindsym 1 workspace 11
-        bindsym 2 workspace 12
-        bindsym 3 workspace 13
-        bindsym 4 workspace 14
-        bindsym 5 workspace 15
-        bindsym 6 workspace 16
-        bindsym 7 workspace 17
-        bindsym 8 workspace 18
-        bindsym 9 workspace 19
-        bindsym 0 workspace 20
-
-        # move focused container to workspace
-        bindsym Shift+1 move container to workspace 11
-        bindsym Shift+2 move container to workspace 12
-        bindsym Shift+3 move container to workspace 13
-        bindsym Shift+4 move container to workspace 14
-        bindsym Shift+5 move container to workspace 15
-        bindsym Shift+6 move container to workspace 16
-        bindsym Shift+7 move container to workspace 17
-        bindsym Shift+8 move container to workspace 18
-        bindsym Shift+9 move container to workspace 19
-        bindsym Shift+0 move container to workspace 20
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        #or space again to leave it
-        bindsym $mod+q mode "default"
-        bindsym $mod+1 mode "Set One"
-}
-
 bindsym $mod+Control Right workspace next
 bindsym $mod+Control Left workspace prev
 
@@ -203,17 +138,394 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#the only way i could think of doing all these workspaces
+
+bindsym $mod+1 mode "Page 1"
+bindsym $mod+2 mode "Page 2"
+bindsym $mod+3 mode "Page 3"
+bindsym $mod+4 mode "Page 4"
+bindsym $mod+5 mode "Page 5"
+bindsym $mod+6 mode "Page 6"
+bindsym $mod+7 mode "Page 7"
+bindsym $mod+8 mode "Page 8"
+bindsym $mod+9 mode "Page 9"
+bindsym $mod+0 mode "Page 0"
+mode "Page 1" {
+        set $mod Mod4
+        bindsym 1 workspace "11"
+        bindsym 2 workspace "12"
+        bindsym 3 workspace "13"
+        bindsym 4 workspace "14"
+        bindsym 5 workspace "15"
+        bindsym 6 workspace "16"
+        bindsym 7 workspace "17"
+        bindsym 8 workspace "18"
+        bindsym 9 workspace "19"
+        bindsym 0 workspace "10"
+        bindsym Shift+1 move container to workspace "11"
+        bindsym Shift+2 move container to workspace "12"
+        bindsym Shift+3 move container to workspace "13"
+        bindsym Shift+4 move container to workspace "14"
+        bindsym Shift+5 move container to workspace "15"
+        bindsym Shift+6 move container to workspace "16"
+        bindsym Shift+7 move container to workspace "17"
+        bindsym Shift+8 move container to workspace "18"
+        bindsym Shift+9 move container to workspace "19"
+        bindsym Shift+0 move container to workspace "10"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 2" {
+        set $mod Mod4
+        bindsym 1 workspace "21"
+        bindsym 2 workspace "22"
+        bindsym 3 workspace "23"
+        bindsym 4 workspace "24"
+        bindsym 5 workspace "25"
+        bindsym 6 workspace "26"
+        bindsym 7 workspace "27"
+        bindsym 8 workspace "28"
+        bindsym 9 workspace "29"
+        bindsym 0 workspace "20"
+        bindsym Shift+1 move container to workspace "21"
+        bindsym Shift+2 move container to workspace "22"
+        bindsym Shift+3 move container to workspace "23"
+        bindsym Shift+4 move container to workspace "24"
+        bindsym Shift+5 move container to workspace "25"
+        bindsym Shift+6 move container to workspace "26"
+        bindsym Shift+7 move container to workspace "27"
+        bindsym Shift+8 move container to workspace "28"
+        bindsym Shift+9 move container to workspace "29"
+        bindsym Shift+0 move container to workspace "20"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 3" {
+        set $mod Mod4
+        bindsym 1 workspace "31"
+        bindsym 2 workspace "32"
+        bindsym 3 workspace "33"
+        bindsym 4 workspace "34"
+        bindsym 5 workspace "35"
+        bindsym 6 workspace "36"
+        bindsym 7 workspace "37"
+        bindsym 8 workspace "38"
+        bindsym 9 workspace "39"
+        bindsym 0 workspace "30"
+        bindsym Shift+1 move container to workspace "31"
+        bindsym Shift+2 move container to workspace "32"
+        bindsym Shift+3 move container to workspace "33"
+        bindsym Shift+4 move container to workspace "34"
+        bindsym Shift+5 move container to workspace "35"
+        bindsym Shift+6 move container to workspace "36"
+        bindsym Shift+7 move container to workspace "37"
+        bindsym Shift+8 move container to workspace "38"
+        bindsym Shift+9 move container to workspace "39"
+        bindsym Shift+0 move container to workspace "30"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 4" {
+        set $mod Mod4
+        bindsym 1 workspace "41"
+        bindsym 2 workspace "42"
+        bindsym 3 workspace "43"
+        bindsym 4 workspace "44"
+        bindsym 5 workspace "45"
+        bindsym 6 workspace "46"
+        bindsym 7 workspace "47"
+        bindsym 8 workspace "48"
+        bindsym 9 workspace "49"
+        bindsym 0 workspace "40"
+        bindsym Shift+1 move container to workspace "41"
+        bindsym Shift+2 move container to workspace "42"
+        bindsym Shift+3 move container to workspace "43"
+        bindsym Shift+4 move container to workspace "44"
+        bindsym Shift+5 move container to workspace "45"
+        bindsym Shift+6 move container to workspace "46"
+        bindsym Shift+7 move container to workspace "47"
+        bindsym Shift+8 move container to workspace "48"
+        bindsym Shift+9 move container to workspace "49"
+        bindsym Shift+0 move container to workspace "40"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 5" {
+        set $mod Mod4
+        bindsym 1 workspace "51"
+        bindsym 2 workspace "52"
+        bindsym 3 workspace "53"
+        bindsym 4 workspace "54"
+        bindsym 5 workspace "55"
+        bindsym 6 workspace "56"
+        bindsym 7 workspace "57"
+        bindsym 8 workspace "58"
+        bindsym 9 workspace "59"
+        bindsym 0 workspace "50"
+        bindsym Shift+1 move container to workspace "51"
+        bindsym Shift+2 move container to workspace "52"
+        bindsym Shift+3 move container to workspace "53"
+        bindsym Shift+4 move container to workspace "54"
+        bindsym Shift+5 move container to workspace "55"
+        bindsym Shift+6 move container to workspace "56"
+        bindsym Shift+7 move container to workspace "57"
+        bindsym Shift+8 move container to workspace "58"
+        bindsym Shift+9 move container to workspace "59"
+        bindsym Shift+0 move container to workspace "50"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 6" {
+        set $mod Mod4
+        bindsym 1 workspace "61"
+        bindsym 2 workspace "62"
+        bindsym 3 workspace "63"
+        bindsym 4 workspace "64"
+        bindsym 5 workspace "65"
+        bindsym 6 workspace "66"
+        bindsym 7 workspace "67"
+        bindsym 8 workspace "68"
+        bindsym 9 workspace "69"
+        bindsym 0 workspace "60"
+        bindsym Shift+1 move container to workspace "61"
+        bindsym Shift+2 move container to workspace "62"
+        bindsym Shift+3 move container to workspace "63"
+        bindsym Shift+4 move container to workspace "64"
+        bindsym Shift+5 move container to workspace "65"
+        bindsym Shift+6 move container to workspace "66"
+        bindsym Shift+7 move container to workspace "67"
+        bindsym Shift+8 move container to workspace "68"
+        bindsym Shift+9 move container to workspace "69"
+        bindsym Shift+0 move container to workspace "60"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 7" {
+        set $mod Mod4
+        bindsym 1 workspace "71"
+        bindsym 2 workspace "72"
+        bindsym 3 workspace "73"
+        bindsym 4 workspace "74"
+        bindsym 5 workspace "75"
+        bindsym 6 workspace "76"
+        bindsym 7 workspace "77"
+        bindsym 8 workspace "78"
+        bindsym 9 workspace "79"
+        bindsym 0 workspace "70"
+        bindsym Shift+1 move container to workspace "71"
+        bindsym Shift+2 move container to workspace "72"
+        bindsym Shift+3 move container to workspace "73"
+        bindsym Shift+4 move container to workspace "74"
+        bindsym Shift+5 move container to workspace "75"
+        bindsym Shift+6 move container to workspace "76"
+        bindsym Shift+7 move container to workspace "77"
+        bindsym Shift+8 move container to workspace "78"
+        bindsym Shift+9 move container to workspace "79"
+        bindsym Shift+0 move container to workspace "70"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 8" {
+        set $mod Mod4
+        bindsym 1 workspace "81"
+        bindsym 2 workspace "82"
+        bindsym 3 workspace "83"
+        bindsym 4 workspace "84"
+        bindsym 5 workspace "85"
+        bindsym 6 workspace "86"
+        bindsym 7 workspace "87"
+        bindsym 8 workspace "88"
+        bindsym 9 workspace "89"
+        bindsym 0 workspace "80"
+        bindsym Shift+1 move container to workspace "81"
+        bindsym Shift+2 move container to workspace "82"
+        bindsym Shift+3 move container to workspace "83"
+        bindsym Shift+4 move container to workspace "84"
+        bindsym Shift+5 move container to workspace "85"
+        bindsym Shift+6 move container to workspace "86"
+        bindsym Shift+7 move container to workspace "87"
+        bindsym Shift+8 move container to workspace "88"
+        bindsym Shift+9 move container to workspace "89"
+        bindsym Shift+0 move container to workspace "80"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 9" {
+        set $mod Mod4
+        bindsym 1 workspace "91"
+        bindsym 2 workspace "92"
+        bindsym 3 workspace "93"
+        bindsym 4 workspace "94"
+        bindsym 5 workspace "95"
+        bindsym 6 workspace "96"
+        bindsym 7 workspace "97"
+        bindsym 8 workspace "98"
+        bindsym 9 workspace "99"
+        bindsym 0 workspace "90"
+        bindsym Shift+1 move container to workspace "91"
+        bindsym Shift+2 move container to workspace "92"
+        bindsym Shift+3 move container to workspace "93"
+        bindsym Shift+4 move container to workspace "94"
+        bindsym Shift+5 move container to workspace "95"
+        bindsym Shift+6 move container to workspace "96"
+        bindsym Shift+7 move container to workspace "97"
+        bindsym Shift+8 move container to workspace "98"
+        bindsym Shift+9 move container to workspace "99"
+        bindsym Shift+0 move container to workspace "90"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+mode "Page 0" {
+        set $mod Mod4
+        bindsym 1 workspace "01"
+        bindsym 2 workspace "02"
+        bindsym 3 workspace "03"
+        bindsym 4 workspace "04"
+        bindsym 5 workspace "05"
+        bindsym 6 workspace "06"
+        bindsym 7 workspace "07"
+        bindsym 8 workspace "08"
+        bindsym 9 workspace "09"
+        bindsym 0 workspace "00"
+        bindsym Shift+1 move container to workspace "01"
+        bindsym Shift+2 move container to workspace "02"
+        bindsym Shift+3 move container to workspace "03"
+        bindsym Shift+4 move container to workspace "04"
+        bindsym Shift+5 move container to workspace "05"
+        bindsym Shift+6 move container to workspace "06"
+        bindsym Shift+7 move container to workspace "07"
+        bindsym Shift+8 move container to workspace "08"
+        bindsym Shift+9 move container to workspace "09"
+        bindsym Shift+0 move container to workspace "00"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+        bindsym $mod+1 mode "Page 1"
+        bindsym $mod+2 mode "Page 2"
+        bindsym $mod+3 mode "Page 3"
+        bindsym $mod+4 mode "Page 4"
+        bindsym $mod+5 mode "Page 5"
+        bindsym $mod+6 mode "Page 6"
+        bindsym $mod+7 mode "Page 7"
+        bindsym $mod+8 mode "Page 8"
+        bindsym $mod+9 mode "Page 9"
+        bindsym $mod+0 mode "Page 0"
+}
+
+
+
 #when i get tired of the background
 #bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #bindsym $mod+b exec rewal
 #wal is too much, its all too much
 
 exec .screenlayout/main.sh
-exec compton -b
 exec xmodmap ~/.Xmodmap
 exec feh --bg-fill ~/.wallpaper.jpg
+exec --no-startup-id compton -b
+exec --no-startup-id unclutter &
 # exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #the sleep is more for screenlayout to finish as polybar will freak out if the screens
 #aren't up
-exec "sleep 1 && ~/.config/polybar/polybar.sh"
+exec --no-startup-id "sleep 1 && ~/.config/polybar/polybar.sh"
+
 

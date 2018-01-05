@@ -21,6 +21,7 @@ neofetch
 imagemagick
 catimg
 w3m
+unclutter-xfixes-git
 """
 pacaur --needed -S $DEPS
 PY_DEPS="""
