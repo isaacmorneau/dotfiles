@@ -15,7 +15,7 @@ font pango:Hack 9
 
 set $foreground #878787
 set $background #353535
-set $extra      #9b1d1d
+set $extra      #cc0000
 # class                 border  	backgr. 	text    	indic.  	child_border
 client.background	    $background
 client.focused         	$foreground	$background	$foreground	$extra		$extra
@@ -27,15 +27,16 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 # start dmenu
 # its not scraping PATH correctly
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
-# this only works if your commands are in `` ie run in a subshell, no idea why
-bindsym $mod+d exec --no-startup-id "dmenu_run -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
+# this only works if your commands are in `` ie run in a subshell, no idea why,
+#   fucking paths
+# bindsym $mod+d exec --no-startup-id "dmenu_run -i -nb '#353535' -nf '#878787' -sf '#878787' -sb '#9b1d1d' -fn 'Hack-9'"
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical
 
 #slim down the borders
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 #i3 gaps additonal config
 # can re enable for having small gaps between windows

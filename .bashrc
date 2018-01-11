@@ -34,7 +34,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
 export TERM=xterm-256color
-export PATH="$PATH:~/.local/bin"
 
 #fuck that stupid Ctl-s bullshit
 stty -ixon
