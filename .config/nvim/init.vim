@@ -62,13 +62,17 @@ set scrolloff=3
 set shortmess=atI
 "the extension likely isnt lying
 filetype plugin on
+"visualize whitepsace
+set listchars=tab:→→,trail:●,nbsp:○
+set list
+
 
 "to avoid the mistake of uppercasing these
 command! W :w
 command! Q :q
 
 "make sure i can actually save my stuff somewhere
-function! InitializeDirectories()
+function! InitializeDirectories()  
     let parent = $HOME
     let prefix = 'vim'
     let dir_list = {
