@@ -4,15 +4,8 @@ V='#2e528cbb'
 R='#6d3636bb'
 G='#79879ebb'
 W='#5b6b84bb'
-
 screen='/tmp/lock.png'
-screen2='/tmp/lock2.png'
-
-maim -f 'png' > $screen
-#for square pixelation
-convert -resize 1%x100%\! -resize 10000%x100%\!\
-    $screen $screen2
-rm $screen
+maim -f 'png' | convert -resize 1%x100%\! -resize 10000%x100%\! $screen
 i3lock \
     --insidevercolor=$S\
     --ringvercolor=$V\
@@ -35,5 +28,4 @@ i3lock \
     --datestr="%A, %Y-%m-%d"\
     \
     --image="$screen2"
-rm $screen2
-
+rm $screen
