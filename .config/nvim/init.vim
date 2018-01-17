@@ -65,6 +65,10 @@ filetype plugin on
 "visualize whitepsace
 set listchars=tab:→→,trail:●,nbsp:○
 set list
+"now za will toggle indentation collapsing
+set foldmethod=indent
+"and dont start folded
+au BufRead * normal zR
 
 
 "to avoid the mistake of uppercasing these
@@ -72,7 +76,7 @@ command! W :w
 command! Q :q
 
 "make sure i can actually save my stuff somewhere
-function! InitializeDirectories()  
+function! InitializeDirectories()
     let parent = $HOME
     let prefix = 'vim'
     let dir_list = {
