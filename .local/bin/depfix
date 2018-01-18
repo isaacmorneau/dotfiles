@@ -22,6 +22,9 @@ imagemagick
 catimg
 w3m
 unclutter-xfixes-git
+ranger
+mpv
+gifsicle
 """
 pacaur --needed -S $DEPS
 PY_DEPS="""
