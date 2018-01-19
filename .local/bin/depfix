@@ -26,7 +26,7 @@ ranger
 mpv
 gifsicle
 """
-pacaur --needed -S $DEPS
+trizen --needed -S $DEPS
 PY_DEPS="""
 pywal
 neovim
