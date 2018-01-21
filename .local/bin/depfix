@@ -25,6 +25,9 @@ unclutter-xfixes-git
 ranger
 mpv
 gifsicle
+rofi
+rofi-dmenu
+htop
 """
 trizen --needed -S $DEPS
 PY_DEPS="""

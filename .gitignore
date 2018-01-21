@@ -12,6 +12,7 @@
 !.Xmodmap
 !.Xresources
 !.bashrc
+!.bash_profile
 !.compton.config
 !.gitignore
 !.wallpaper.jpg
