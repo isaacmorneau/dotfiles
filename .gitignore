@@ -6,6 +6,7 @@
 !.config/nvim
 !.config/polybar
 !.config/termite
+!.config/rofi
 .config/nvim/.netrwhist
 
 !.Xdefaults

@@ -26,9 +26,7 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 
 #run a command
-bindsym $mod+c exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -lines 5 -width 50 -padding 10 -opacity "80" -font "Hack 9" -separator-style "none"
-#run a named gui program
-bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show drun -lines 5 -width 50 -padding 10 -opacity "80" -font "Hack 9" -separator-style "none"
+bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -font "Hack 9"
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical
