@@ -28,6 +28,7 @@ gifsicle
 rofi
 rofi-dmenu
 htop
+p7zip
 """
 trizen --needed -S $DEPS
 PY_DEPS="""
