@@ -65,11 +65,6 @@ filetype plugin on
 "visualize whitepsace
 set listchars=tab:→→,trail:●,nbsp:○
 set list
-"now za will toggle indentation collapsing
-set foldmethod=indent
-"and dont start folded
-au BufRead * normal zR
-
 
 "to avoid the mistake of uppercasing these
 command! W :w
@@ -282,3 +277,6 @@ let g:ctrlp_working_path_mode = 'ra'
 "ignore whats in git ignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_path_sort = 1
+
+"i dont know what adds this bullshit but its annoy as hell
+let g:omni_sql_no_default_maps = 1
