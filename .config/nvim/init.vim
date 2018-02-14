@@ -65,6 +65,8 @@ filetype plugin on
 "visualize whitepsace
 set listchars=tab:→→,trail:●,nbsp:○
 set list
+"to quickly clear highlight press ^/
+nmap <C-_> :nohlsearch<CR>
 
 "to avoid the mistake of uppercasing these
 command! W :w
