@@ -370,7 +370,7 @@ mode "Page 6" {
 
 exec .screenlayout/main.sh
 exec xmodmap ~/.Xmodmap
-exec feh --bg-fill ~/.wallpaper.jpg
+exec feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id compton -b
 exec --no-startup-id unclutter &
 # exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
