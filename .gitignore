@@ -17,6 +17,7 @@
 !.compton.config
 !.gitignore
 !.wallpaper.jpg
+!.wallpaper.png
 !.xinitrc
 
 !.local
