@@ -106,7 +106,7 @@ function! InitializeDirectories()
         endif
     endif
     if !isdirectory(g:scratch_dir)
-        echo "Warning: Unable to create backup directory: " . g:scratch_dir
+        echo "Warning: Unable to create scratch directory: " . g:scratch_dir
         echo "Try: mkdir -p " . g:scratch_dir
     endif
 endfunction
@@ -147,14 +147,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'joshdick/onedark.vim'
-"probably dont need this but meh /shrug
-Plug 'itchyny/vim-gitbranch'
 Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/c.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'chrisbra/csv.vim'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
