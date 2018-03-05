@@ -69,9 +69,9 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = selecion
-menu-0-0-exec = maim -s | xclip -selection clipboard -t image/png
+menu-0-0-exec = maim -su | xclip -selection clipboard -t image/png
 menu-0-1 = full screen
-menu-0-1-exec = maim | xclip -selection clipboard -t image/png
+menu-0-1-exec = maim -u | xclip -selection clipboard -t image/png
 
 [module/xwindow]
 type = internal/xwindow
