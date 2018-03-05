@@ -235,6 +235,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+let g:airline#extensions#tabline#enabled = 1
 
 "to show buffer numbers for navigation
 function! WindowNumber(...)
