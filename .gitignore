@@ -7,6 +7,7 @@
 !.config/polybar/
 !.config/termite/
 !.config/rofi/
+!.config/neofetch/
 .config/nvim/.netrwhist
 
 !.Xdefaults
