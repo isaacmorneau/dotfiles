@@ -1,0 +1,2 @@
+lastscratch=`ls -l $HOME/.vimscratch/ | awk '{print $9}' | tail -n 1`
+cat $HOME/.vimscratch/$lastscratch
