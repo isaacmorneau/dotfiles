@@ -15,7 +15,7 @@ font pango:Hack 9
 
 set $foreground #878787
 set $background #353535
-set $extra      #cc0000
+set $extra      #00cc00
 # class                 border  	backgr. 	text    	indic.  	child_border
 client.background	    $background
 client.focused         	$foreground	$background	$foreground	$extra		$extra
