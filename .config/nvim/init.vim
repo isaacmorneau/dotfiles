@@ -124,6 +124,7 @@ let s:vim_plug = '~/.local/share/nvim/site/autoload/plug.vim'
 if empty(glob(s:vim_plug, 1))
   execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
+
 "been around for ages yet isnt default for % to match if else etc
 runtime macros/matchit.vim
 
@@ -137,8 +138,6 @@ set mouse=a
 call plug#begin('~/.local/share/nvim/plugged')
 "github pluugins
 Plug 'isaacmorneau/vim-update-daily'
-"requires neovim pip package
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/vim-easy-align'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
@@ -150,8 +149,10 @@ Plug 'joshdick/onedark.vim'
 Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'vim-scripts/c.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+"requires neovim pip package
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
