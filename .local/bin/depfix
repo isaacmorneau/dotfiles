@@ -29,6 +29,7 @@ rofi
 rofi-dmenu
 htop
 p7zip
+ripgrep
 """
 trizen --needed -S $DEPS
 PY_DEPS="""
