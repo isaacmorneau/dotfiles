@@ -8,7 +8,8 @@
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 alias grep='grep --color=auto'
-alias ls='exa'
+alias ls='exa --group-directories-first'
+alias ll='exa -l --group-directories-first'
 alias sume='sudo -E'
 alias fucking='sudo'
 alias 'cd..'='cd ..'

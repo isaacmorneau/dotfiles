@@ -1,2 +1,6 @@
-lastscratch=`ls -l $HOME/.vimscratch/ | awk '{print $9}' | tail -n 1`
-cat $HOME/.vimscratch/$lastscratch
+if [[ "$1" == "" ]]; then
+    lastscratch=`find $HOME/.vimscratch/ -type f | sed 's/://g' | tail -n 1`
+else
+    lastscratch=`find $HOME/.vimscratch/ -type f | tail -n $1 | head -n 1`
+fi
+cat $lastscratch
