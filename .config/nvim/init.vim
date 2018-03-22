@@ -150,6 +150,7 @@ Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'chrisbra/Colorizer'
 "requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
