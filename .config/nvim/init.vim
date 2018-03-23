@@ -121,8 +121,11 @@ command! AltSync :!~/up2.sh
 
 "ensure we actually have vim plug
 let s:vim_plug = '~/.local/share/nvim/site/autoload/plug.vim'
+"if we dont have vimplug yet use this to disable erring first run sections
+let s:first_run = 0
 if empty(glob(s:vim_plug, 1))
-  execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    let s:first_run = 1
+    execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 "been around for ages yet isnt default for % to match if else etc
@@ -158,7 +161,9 @@ call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
 "are not appllied
-colorscheme onedark
+if s:first_run == 0
+    colorscheme onedark
+endif
 set background=dark
 
 "check if we need an upgrade or an update
@@ -169,21 +174,21 @@ let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
 let s:need_install = join(s:need_install, ' ')
 if has('vim_starting')
-  if s:need_clean
-    autocmd VimEnter * PlugClean!
-  endif
-  if len(s:need_install)
-    execute 'autocmd VimEnter * PlugInstall --sync' s:need_install '| source $MYVIMRC'
-    finish
-  endif
+    if s:need_clean
+        autocmd VimEnter * PlugClean!
+    endif
+    if len(s:need_install)
+        execute 'autocmd VimEnter * PlugInstall --sync' s:need_install '| source $MYVIMRC'
+        finish
+    endif
 else
-  if s:need_clean
-    PlugClean!
-  endif
-  if len(s:need_install)
-    execute 'PlugInstall --sync' s:need_install | source $MYVIMRC
-    finish
-  endif
+    if s:need_clean
+        PlugClean!
+    endif
+    if len(s:need_install)
+        execute 'PlugInstall --sync' s:need_install | source $MYVIMRC
+        finish
+    endif
 endif
 
 "[update-daily]
@@ -191,8 +196,10 @@ endif
 let g:update_daily = 'PU'
 
 "[one]
-colorscheme onedark
-set background=dark
+"it was the first run so now we need to enable it again
+if s:first_run == 1
+    colorscheme onedark
+endif
 "nice transparent background
 "(actually looks really bad with one, i just leave it here so i dont make the
 "same mistake again)
@@ -208,6 +215,7 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeSortHiddenFirst=1
+"^n to open the file browser
 map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -255,9 +263,9 @@ call airline#add_inactive_statusline_func('WindowNumber')
 autocmd! BufWritePost * Neomake
 
 let g:neomake_javascript_jshint_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
+            \ 'args': ['--verbose'],
+            \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+            \ }
 let g:neomake_javascript_enabled_makers = ['jshint']
 
 "[Scratch]
@@ -281,5 +289,13 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_path_sort = 1
 
-"i dont know what adds this bullshit but its annoy as hell
+"i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
+
+"first install stuff
+if s:first_run
+    echom '==>Initial Setup<=='
+    echom 'Several packages require the python3 neovim package. Please install this to have full functionality'
+    autocmd VimEnter * :term
+    autocmd VimLeave * :execute 'UpdateRemotePlugins'
+endif
