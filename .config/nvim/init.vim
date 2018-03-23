@@ -173,12 +173,24 @@ command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
 let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
 let s:need_install = join(s:need_install, ' ')
+
+
+"first install stuff
+if s:first_run
+    echom '==>Initial Setup<=='
+    echom 'Several packages require the python3 neovim package. Please install this to have full functionality.'
+    echom 'After neovim is installed run :UpdateRemotePlugins to complete install.'
+endif
 if has('vim_starting')
     if s:need_clean
         autocmd VimEnter * PlugClean!
     endif
     if len(s:need_install)
-        execute 'autocmd VimEnter * PlugInstall --sync' s:need_install '| source $MYVIMRC'
+        if s:first_run
+            execute 'autocmd VimEnter * PlugInstall --sync' s:need_install '| source $MYVIMRC | only! | term'
+        else
+            execute 'autocmd VimEnter * PlugInstall --sync' s:need_install ' | source $MYVIMRC'
+        endif
         finish
     endif
 else
@@ -186,7 +198,11 @@ else
         PlugClean!
     endif
     if len(s:need_install)
-        execute 'PlugInstall --sync' s:need_install | source $MYVIMRC
+        if s:first_run
+            execute 'PlugInstall --sync' s:need_install | source $MYVIMRC | only! | term
+        else
+            execute 'PlugInstall --sync' s:need_install | source $MYVIMRC
+        endif
         finish
     endif
 endif
@@ -291,11 +307,3 @@ let g:ctrlp_path_sort = 1
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
-
-"first install stuff
-if s:first_run
-    echom '==>Initial Setup<=='
-    echom 'Several packages require the python3 neovim package. Please install this to have full functionality'
-    autocmd VimEnter * :term
-    autocmd VimLeave * :execute 'UpdateRemotePlugins'
-endif
