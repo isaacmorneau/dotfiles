@@ -179,7 +179,7 @@ let s:need_install = join(s:need_install, ' ')
 if s:first_run
     echom '==>Initial Setup<=='
     echom 'Several packages require the python3 neovim package. Please install this to have full functionality.'
-    echom 'After neovim is installed run :UpdateRemotePlugins to complete install.'
+    echom 'After neovim is installed restart nvim to complete the install.'
 endif
 if has('vim_starting')
     if s:need_clean
