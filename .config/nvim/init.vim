@@ -65,8 +65,14 @@ filetype plugin on
 "visualize whitepsace
 set listchars=tab:→→,trail:●,nbsp:○
 set list
-"to quickly clear highlight press ^/
-nmap <C-_> :nohlsearch<CR>
+"share vim and system clipboard
+set clipboard+=unnamedplus
+"ex mode is BS disable it
+nnoremap Q <nop>
+"this is why we have airline
+set noshowmode
+
+
 
 "to avoid the mistake of uppercasing these
 command! W :w
@@ -112,11 +118,6 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-"work specific
-command! Sync :!~/up.sh
-command! AltSync :!~/up2.sh
-
-
 "==>all fancy plugin/magic stuff<==
 
 "ensure we actually have vim plug
@@ -131,11 +132,18 @@ endif
 "been around for ages yet isnt default for % to match if else etc
 runtime macros/matchit.vim
 
+"extra keybinds
+"to quickly clear highlight press ^/
+nmap <C-_> :nohlsearch<CR>
+"split nav with control dir
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
+
 "work around for mouse selection to clipboard
 "if term supports mouse then the selection will be visual anyway
 vnoremap <LeftRelease> "*ygv
-vmap C "*y
-vmap V "*p
 set mouse=a
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -153,11 +161,13 @@ Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'chrisbra/Colorizer'
+Plug 'luochen1990/rainbow'
 "the normal one doesnt prioritize exact matches so we need the py addition
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 "requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-clang'
 Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()
 
@@ -176,6 +186,8 @@ let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
 let s:need_install = join(s:need_install, ' ')
 
+"when entering a terminal enter in insert mode
+autocmd BufWinEnter,WinEnter term://* startinsert
 
 "first install stuff
 if s:first_run
@@ -295,6 +307,8 @@ nnoremap gZzZz gs
 
 "[Deoplete]
 let g:deoplete#enable_at_startup = 1
+"dont require the same file type
+let g:deoplete#buffer#require_same_filetype = 0
 "<TAB> completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -308,6 +322,31 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_path_sort = 1
 "this is to prioritize matches sanely such as exact first
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+"[rainbow]
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'lisp': {
+    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
