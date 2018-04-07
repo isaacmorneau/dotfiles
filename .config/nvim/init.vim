@@ -152,8 +152,10 @@ Plug 'joshdick/onedark.vim'
 Plug 'mtth/scratch.vim'
 Plug 'keith/swift.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'chrisbra/Colorizer'
+"the normal one doesnt prioritize exact matches so we need the py addition
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 "requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
@@ -304,6 +306,8 @@ let g:ctrlp_working_path_mode = 'ra'
 "ignore whats in git ignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_path_sort = 1
+"this is to prioritize matches sanely such as exact first
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
