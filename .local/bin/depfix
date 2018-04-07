@@ -30,6 +30,7 @@ rofi-dmenu
 htop
 p7zip
 ripgrep
+flashfocus-git
 """
 trizen --needed -S $DEPS
 PY_DEPS="""

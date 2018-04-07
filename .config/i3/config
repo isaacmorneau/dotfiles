@@ -373,6 +373,7 @@ exec xmodmap ~/.Xmodmap
 exec feh --bg-scale ~/.wallpaper.png
 exec --no-startup-id compton -C -I 0.05 -O 0.05 -f -b
 exec --no-startup-id unclutter &
+exec_always --no-startup-id flashfocus &
 # exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #the sleep is more for screenlayout to finish as polybar will freak out if the screens
 #aren't up
