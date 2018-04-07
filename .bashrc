@@ -38,8 +38,9 @@ export LC_ALL=en_US.UTF-8
 #dont do this but hey its the same escapes so whatever
 export TERM=xterm-256color
 
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+
+[ -f /usr/bin/clang ] && export CC=/usr/bin/clang
+[ -f /usr/bin/clang++ ] && export CXX=/usr/bin/clang++
 
 #fuck that stupid Ctl-s bullshit
 stty -ixon
