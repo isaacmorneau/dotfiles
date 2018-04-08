@@ -35,9 +35,7 @@ export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
-#dont do this but hey its the same escapes so whatever
-export TERM=xterm-256color
-
+[[ $TERM != 'screen-256color' ]] && export TERM=xterm-256color
 
 [ -f /usr/bin/clang ] && export CC=/usr/bin/clang
 [ -f /usr/bin/clang++ ] && export CXX=/usr/bin/clang++
