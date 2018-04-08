@@ -168,6 +168,7 @@ Plug 'FelikZ/ctrlp-py-matcher'
 "requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-clang'
+Plug 'Shougo/neoinclude.vim'
 Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 call plug#end()
 
@@ -311,6 +312,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#buffer#require_same_filetype = 0
 "<TAB> completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"dont litter your windows
+autocmd CompleteDone * pclose
 
 "[c.vim]
 let g:C_UseTool_cmake = 'yes'
