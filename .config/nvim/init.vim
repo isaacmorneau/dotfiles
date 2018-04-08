@@ -169,7 +169,14 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neoinclude.vim'
-Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+
+"dont add discord if its not installed(like on servers)
+let s:has_discord = 0
+silent !which discord || which discord-canary
+if(!v:shell_error)
+    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+endif
+
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
