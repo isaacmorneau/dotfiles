@@ -1,0 +1,6 @@
+file=$(mktemp|tr '[:upper:]' '[:lower:]')
+maim -su > $file
+name=$(echo $file | rg -o '\w+$')
+scp -P 7366 $file elly@vk-k.com:/mnt/md0/uploads/$name
+echo "https://$name.vk-k.com/"
+
