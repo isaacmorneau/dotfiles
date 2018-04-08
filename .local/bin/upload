@@ -2,5 +2,7 @@ file=$(mktemp|tr '[:upper:]' '[:lower:]')
 maim -su > $file
 name=$(echo $file | rg -o '\w+$')
 scp -P 7366 $file elly@vk-k.com:/mnt/md0/uploads/$name
-echo "https://$name.vk-k.com/"
-
+url="https://$name.vk-k.com/"
+echo $url | xclip -selection primary
+echo $url | xclip -selection secondary
+echo $url
