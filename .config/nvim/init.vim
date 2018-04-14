@@ -168,6 +168,7 @@ Plug 'FelikZ/ctrlp-py-matcher'
 "requires neovim pip package
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-clang'
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'Shougo/neoinclude.vim'
 
 "dont add discord if its not installed(like on servers)
@@ -298,7 +299,8 @@ call airline#add_inactive_statusline_func('WindowNumber')
 
 
 "[NeoMake]
-autocmd! BufWritePost * Neomake
+" When reading a buffer (after 1s), and when writing (no delay).
+call neomake#configure#automake('rw', 1000)
 
 let g:neomake_javascript_jshint_maker = {
             \ 'args': ['--verbose'],
