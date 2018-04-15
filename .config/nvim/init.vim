@@ -8,12 +8,10 @@
 "
 
 "Base vim setup
-if has("autocmd")
-    " Jump to last open
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    "Indentation rules for language
-    filetype plugin indent on
-endif
+" Jump to last open
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"Indentation rules for language
+filetype plugin indent on
 "lets be real, i only use the terminal.
 if has("gui_running")
     set guifont=Hack\ 10
@@ -58,6 +56,7 @@ set autoread
 set hidden
 "give it a little bigger of a bump when i go off the edge
 set scrolloff=3
+set sidescrolloff=5
 "i dont want to press enter when a command is done
 set shortmess=atI
 "the extension likely isnt lying
@@ -71,6 +70,8 @@ set clipboard+=unnamedplus
 nnoremap Q <nop>
 "this is why we have airline
 set noshowmode
+"delete comment character when joining commented lines
+set formatoptions+=j
 
 
 
@@ -147,29 +148,28 @@ vnoremap <LeftRelease> "*ygv
 set mouse=a
 
 call plug#begin('~/.local/share/nvim/plugged')
-"github pluugins
-Plug 'isaacmorneau/vim-update-daily'
-Plug 'junegunn/vim-easy-align'
-Plug 'neomake/neomake'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'joshdick/onedark.vim'
-Plug 'mtth/scratch.vim'
-Plug 'keith/swift.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'chrisbra/Colorizer'
-Plug 'luochen1990/rainbow'
-"the normal one doesnt prioritize exact matches so we need the py addition
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
+Plug 'ctrlpvim/ctrlp.vim' "match files with fuzzy finding with ^p
+Plug 'FelikZ/ctrlp-py-matcher' "the normal one doesnt prioritize exact matches so we need the py addition
+Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day
+Plug 'joshdick/onedark.vim' "main theme
+Plug 'junegunn/vim-easy-align' "alow mappings for lots of aligning
+Plug 'keith/swift.vim' "swift support
+Plug 'luochen1990/rainbow' "rainbow highlight brackets
+Plug 'mtth/scratch.vim' "notes file that saves daily
+Plug 'neomake/neomake' "do full syntax checking for most languages
+Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
+Plug 'scrooloose/nerdtree' "file browser
+Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
+Plug 'tpope/vim-surround' "change things surounding like ()->[]
+Plug 'vim-airline/vim-airline' "a statusbar
+Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 "requires neovim pip package
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
-Plug 'sebastianmarkow/deoplete-rust'
-Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
+Plug 'zchee/deoplete-clang' "better clang support
+Plug 'sebastianmarkow/deoplete-rust' "better rust support
+Plug 'Shougo/neoinclude.vim' "also check completion in includes
 
 "dont add discord if its not installed(like on servers)
 let s:has_discord = 0
@@ -177,7 +177,8 @@ silent !which discord || which discord-canary
 if(!v:shell_error)
     Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 endif
-
+"this should always be the last plugin
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
@@ -189,7 +190,6 @@ set background=dark
 
 "check if we need an upgrade or an update
 command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
-
 
 let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
@@ -258,6 +258,19 @@ let g:NERDTreeSortHiddenFirst=1
 map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"[NerdTree Git]
+let g:NERDTreeIndicatorMapCustom = {
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
 
 
 "[Easy Align]
@@ -307,6 +320,9 @@ let g:neomake_javascript_jshint_maker = {
             \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
             \ }
 let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_rust_enabled_makers = ['cargo']
+let g:neomake_cargo_args = ['check']
+
 
 "[Scratch]
 let g:scratch_persistence_file = g:scratch_dir . strftime("scratch_%Y-%m-%d")
@@ -338,27 +354,27 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "[rainbow]
 let g:rainbow_active = 1
 let g:rainbow_conf = {
-    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-    \   'operators': '_,_',
-    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-    \   'separately': {
-    \       '*': {},
-    \       'tex': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-    \       },
-    \       'lisp': {
-    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-    \       },
-    \       'vim': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-    \       },
-    \       'html': {
-    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-    \       },
-    \       'css': 0,
-    \   }
-    \}
+            \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+            \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+            \   'operators': '_,_',
+            \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+            \   'separately': {
+            \       '*': {},
+            \       'tex': {
+            \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+            \       },
+            \       'lisp': {
+            \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+            \       },
+            \       'vim': {
+            \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+            \       },
+            \       'html': {
+            \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+            \       },
+            \       'css': 0,
+            \   }
+            \}
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1

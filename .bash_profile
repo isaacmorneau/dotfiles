@@ -3,5 +3,5 @@
 #
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:~/.local/bin:~/.cargo/bin"
 export TERMINAL="termite"
