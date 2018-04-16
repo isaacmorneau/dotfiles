@@ -21,9 +21,9 @@ i3lock \
     --clock\
     --indicator\
     --radius=120\
-    --timefont="Hack"\
+    --time-font="Hack"\
     --timesize=32\
-    --datefont="Hack"\
+    --date-font="Hack"\
     --datesize=20\
     --datestr="%A, %Y-%m-%d"\
     \
