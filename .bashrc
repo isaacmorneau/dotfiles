@@ -17,6 +17,12 @@ alias bk='cd -'
 alias rg='rg --no-ignore'
 
 
+if [[ $EUID -eq 0 ]]; then
+    export PATH="$PATH:~/.local/bin:~/.cargo/bin"
+else
+    #if youre not root as a fall back check current dir for command
+    export PATH="$PATH:~/.local/bin:~/.cargo/bin:."
+fi
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 #ps1_proc_result () {

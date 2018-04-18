@@ -160,6 +160,7 @@ Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'scrooloose/nerdtree' "file browser
+Plug 'StanAngeloff/php.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
@@ -243,6 +244,9 @@ endif
 "(actually looks really bad with one, i just leave it here so i dont make the
 "same mistake again)
 "hi Normal ctermbg=NONE
+
+"[php.vim]
+let g:php_html_load = 0
 
 "[NerdTree]
 set encoding=utf-8
