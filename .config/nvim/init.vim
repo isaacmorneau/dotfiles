@@ -161,8 +161,9 @@ Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'scrooloose/nerdtree' "file browser
 Plug 'StanAngeloff/php.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
+"looks good but one of these slows down scrolling (probably both)
+"Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
@@ -262,20 +263,6 @@ let g:NERDTreeSortHiddenFirst=1
 map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"[NerdTree Git]
-let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ 'Ignored'   : '☒',
-            \ "Unknown"   : "?"
-            \ }
-
 
 "[Easy Align]
 "Start interactive EasyAlign in visual mode (e.g. vipga)
