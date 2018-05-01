@@ -145,7 +145,9 @@ nnoremap <C-h> <C-W><C-H>
 "work around for mouse selection to clipboard
 "if term supports mouse then the selection will be visual anyway
 vnoremap <LeftRelease> "*ygv
-set mouse=a
+"i dont actually want visual mode mouse control
+"but i still do want scroll and cursor clicking
+set mouse=ni
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
