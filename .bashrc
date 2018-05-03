@@ -15,6 +15,7 @@ alias fucking='sudo'
 alias 'cd..'='cd ..'
 alias bk='cd -'
 alias rg='rg --no-ignore'
+alias gitwhat='git log -p -M --follow --stat --'
 
 
 if [[ $EUID -eq 0 ]]; then
