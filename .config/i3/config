@@ -370,7 +370,7 @@ mode "Page 6" {
 
 exec .screenlayout/main.sh
 exec xmodmap ~/.Xmodmap
-exec feh --bg-scale ~/.wallpaper.png
+exec feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id compton -C -I 0.05 -O 0.05 -f -b
 exec --no-startup-id unclutter &
 exec_always --no-startup-id flashfocus -t 200
