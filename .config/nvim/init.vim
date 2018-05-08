@@ -65,7 +65,7 @@ filetype plugin on
 set listchars=tab:→→,trail:●,nbsp:○
 set list
 "share vim and system clipboard
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 "ex mode is BS disable it
 nnoremap Q <nop>
 "this is why we have airline
