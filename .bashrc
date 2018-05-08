@@ -24,6 +24,7 @@ else
     #if youre not root as a fall back check current dir for command
     export PATH="$PATH:~/.local/bin:~/.cargo/bin:."
 fi
+export EDITOR='nvim'
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 #ps1_proc_result () {

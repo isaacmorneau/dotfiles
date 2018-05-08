@@ -1,41 +1,48 @@
 #!/bin/bash
-DEPS="""
-xorg-xinit
-i3-gaps
+TERM="""
 curl
 neovim
-xclip
-feh
-polybar-git
+exa-git
+sl
+gti
+neofetch
+catimg
+w3m
+ranger
+htop
+p7zip
+ripgrep
+bat
+"""
+GUI="""
+flashfocus-git
+mpv
+gifsicle
+rofi
+rofi-dmenu
+unclutter-xfixes-git
+imagemagick
+arandr
+maim
 i3lock-color
 ttf-hack
 nerd-fonts-complete
 termite
 compton
 google-chrome
-exa-git
-arandr
-maim
-sl
-gti
-neofetch
-imagemagick
-catimg
-w3m
-unclutter-xfixes-git
-ranger
-mpv
-gifsicle
-rofi
-rofi-dmenu
-htop
-p7zip
-ripgrep
-flashfocus-git
+polybar-git
+feh
+xclip
+i3-gaps
+xorg-xinit
 """
-trizen --needed -S $DEPS
+
+echo "Installing terminal deps"
 PY_DEPS="""
-pywal
 neovim
 """
 sudo pip3 install $PY_DEPS
+trizen --needed -S $TERM
+read -p "Kill here to skip GUI" -n 1 -r
+trizen --needed -S $GUI
+
