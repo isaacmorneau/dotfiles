@@ -40,28 +40,28 @@ color0  = #4b5263
 color8  = #4b5263
 
 # red
-color1  = #be5046
-color9  = #be5046
+color1  = #ff4c4c
+color9  = #ff4c4c
 
 # green
-color2 = #98c379
-color10 = #98c379
+color2 = #34d83b
+color10 = #34d83b
 
 # yellow
-color3 = #FFEA33
-color11 = #FFEA33
+color3 = #ffe400
+color11 = #ffe400
 
 # blue
-color4 = #61afef
-color12 = #61afef
+color4 = #35a3fc
+color12 = #35a3fc
 
 # magenta
-color5  = #c678dd
-color13 = #c678dd
+color5  = #c250e5
+color13 = #c250e5
 
 # cyan
-color6 = #56b6c2
-color14 = #56b6c2
+color6 = #27f7d4
+color14 = #27f7d4
 
 # white
 color7 = #abb2bf

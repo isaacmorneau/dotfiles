@@ -1,0 +1,3 @@
+#just that, reloads configs
+killall -USR1 termite
+
