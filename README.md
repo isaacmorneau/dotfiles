@@ -17,12 +17,12 @@ details
 - cli
   - terminal: termite
   - editor: neovim
-  - font: hack
-  - theming: one dark
+  - font: hack (patched with nerd-fonts)
+  - theming: one dark inspired but higher saturation
 - gui
   - wm: i3
   - statusbar: polybar
   - launcher: rofi
   - compositor: compton
   - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
-  - wallpaper: gradient #0a0-#a0a
+  - wallpaper: revy minimal from black lagoon
