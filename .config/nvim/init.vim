@@ -141,6 +141,9 @@ nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
+"scroll with alt directions
+nnoremap <A-j> <C-e>
+nnoremap <A-k> <C-y>
 
 "tab nav with shift
 nnoremap H gT
