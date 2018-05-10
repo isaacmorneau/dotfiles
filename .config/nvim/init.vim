@@ -142,6 +142,13 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 
+"tab nav with shift
+nnoremap H gT
+nnoremap L gt
+"tab management with t leader
+nnoremap tn :tabnew<CR>
+nnoremap tq :tabclose<CR>
+
 "work around for mouse selection to clipboard
 "if term supports mouse then the selection will be visual anyway
 vnoremap <LeftRelease> "*ygv
