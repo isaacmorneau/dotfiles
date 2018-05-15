@@ -15,6 +15,7 @@ ripgrep
 bat
 """
 GUI="""
+dunst
 flashfocus-git
 mpv
 gifsicle
