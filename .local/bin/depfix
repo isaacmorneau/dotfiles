@@ -36,6 +36,7 @@ feh
 xclip
 i3-gaps
 xorg-xinit
+ida-free
 """
 
 echo "Installing terminal deps"
