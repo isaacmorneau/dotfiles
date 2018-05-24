@@ -165,14 +165,15 @@ Plug 'ctrlpvim/ctrlp.vim' "match files with fuzzy finding with ^p
 Plug 'FelikZ/ctrlp-py-matcher' "the normal one doesnt prioritize exact matches so we need the py addition
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day
 Plug 'joshdick/onedark.vim' "main theme
-Plug 'junegunn/vim-easy-align' "alow mappings for lots of aligning
+Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'scrooloose/nerdtree' "file browser
-Plug 'StanAngeloff/php.vim'
+Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
 "looks good but one of these slows down scrolling (probably both)
 "Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
@@ -335,7 +336,7 @@ xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
 
 "[Deoplete]
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 "dont require the same file type
 let g:deoplete#buffer#require_same_filetype = 0
 "<TAB> completion.
