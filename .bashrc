@@ -96,3 +96,7 @@ function weather () {
     curl wttr.in
 }
 
+function leetify () {
+    grep -oP '^[0-9a-folits]{4,7}$' | sort -R | head -n 25 | tee ~/tmp | tr 'aeolits' '4301175' > ~/tmp2 && paste -d"\t" ~/tmp ~/tmp2 && rm ~/tmp ~/tmp2
+}
+
