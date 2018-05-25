@@ -73,7 +73,8 @@ set noshowmode
 "delete comment character when joining commented lines
 set formatoptions+=j
 
-
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 "to avoid the mistake of uppercasing these
 command! W :w
