@@ -1,2 +1,0 @@
-#!/usr/bin/bash
-curl -s https://isitraining.in/vancouver | grep -oP '(?<=>)Yes|No(?=<)'

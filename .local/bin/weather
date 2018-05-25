@@ -1,1 +1,0 @@
-curl wttr.in

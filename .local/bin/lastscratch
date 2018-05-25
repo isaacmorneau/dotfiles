@@ -1,6 +1,0 @@
-if [[ "$1" == "" ]]; then
-    lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n 1`
-else
-    lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n $1 | head -n 1`
-fi
-cat $lastscratch
