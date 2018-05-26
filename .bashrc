@@ -53,3 +53,53 @@ stty -ixon
 #if we ran wall lets get dem colors
 #(wal -r -t &)
 #wal is too much im disabling it
+
+function google () {
+    u=`perl -MURI::Escape -wle 'print "http://google.com/search?q=".uri_escape(join " ", @ARGV)' $@`
+    w3m -no-mouse -F $u
+}
+
+function calc () {
+    perl -ple '$_=eval'
+}
+
+function bri () {
+    echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
+}
+
+function cpi () {
+    xclip -selection clipboard -t image/png -i $1
+}
+
+function lastscratch () {
+    if [[ "$1" == "" ]]; then
+        lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n 1`
+    else
+        lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n $1 | head -n 1`
+    fi
+    cat $lastscratch
+}
+
+function rain () {
+    curl -s https://isitraining.in/vancouver | grep -oP '(?<=>)Yes|No(?=<)'
+}
+
+function slackfmt () {
+    sed -E 's/^/    /' | sed -E 's/^([ ]{4,})(.+)([0-9]{2}:[0-9]{2})/\2/' | sed -E 's/[ ]{4,}[0-9]{2}:[0-9]{2}//' | sed -E 's/^[ ]{5,}/    /' | grep .
+}
+
+function reloadterm () {
+    killall -USR1 termite
+}
+
+function weather () {
+    curl wttr.in
+}
+
+function leetify () {
+    grep -oP '^([0-9a-fots]|(?<!i)l|(?<!l)i){4,7}$' | sort -R | head -n 25 | tee ~/tmp | tr 'aeolits' '4301175' | tr a-z A-Z > ~/tmp2 && paste -d"\t" ~/tmp ~/tmp2 && rm ~/tmp ~/tmp2
+}
+
+function mvsane () {
+    mv "$@" $(echo "$@" | sed -r 's/[^a-zA-Z0-9_.-]//g')
+}
