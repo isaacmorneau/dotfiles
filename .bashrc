@@ -103,3 +103,12 @@ function leetify () {
 function mvsane () {
     mv "$@" $(echo "$@" | sed -r 's/[^a-zA-Z0-9_.-]//g')
 }
+
+#thanks to john saying this:
+#   [15:51] john_a_macdonald: Oh fuck off
+#       The only worse option is mixing the digits
+#       I prefer listing dates as YDYY-MD-MY
+#i made it a thing
+function bestdate () {
+    date '+%Y-%m-%d' | sed -r 's/([0-9])([0-9])([0-9])([0-9])-([0-9])([0-9])-([0-9])([0-9])/\1\7\3\4-\5\8-\6\2/'
+}
