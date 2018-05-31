@@ -1,5 +1,5 @@
 [global]
-font = Hack 11
+font = Hack 10
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -54,7 +54,7 @@ ignore_newline = no
 
 # Hide duplicate's count and stack them
 stack_duplicates = yes
-hide_duplicates_count = yes
+hide_duplicates_count = no
 
 
 # The geometry of the window:
@@ -123,10 +123,10 @@ line_height = 3
 separator_height = 2
 
 # Padding between text and separator.
-padding = 6
+padding = 3
 
 # Horizontal padding.
-horizontal_padding = 6
+horizontal_padding = 3
 
 # Define a color for the separator.
 # possible values are:
@@ -139,13 +139,13 @@ separator_color = frame
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
 # automatically after a crash.
-startup_notification = false
+startup_notification = true
 
 # dmenu path.
 dmenu = /usr/bin/dmenu -p dunst:
 
 # Browser for opening urls in context menu.
-browser = /usr/bin/firefox -new-tab
+browser = /usr/bin/google-chrome-stable -new-tab
 
 # Align icons left/right/off
 icon_position = off
@@ -165,18 +165,18 @@ frame_color = "#8EC07C"
 # Xev might be helpful to find names for keys.
 
 # Close notification.
-close = ctrl+space
+close = mod1+space
 
 # Close all notifications.
-close_all = ctrl+shift+space
+close_all = mod1+shift+space
 
 # Redisplay last message(s).
 # On the US keyboard layout "grave" is normally above TAB and left
 # of "1".
-history = ctrl+grave
+history = mod1+grave
 
 # Context menu.
-context = ctrl+shift+period
+context = mod1+shift+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
