@@ -188,11 +188,10 @@ Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'Shougo/neoinclude.vim' "also check completion in includes
 
 "dont add discord if its not installed(like on servers)
-let s:has_discord = 0
-silent !which discord || which discord-canary
-if(!v:shell_error)
-    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
-endif
+"silent !which discord || which discord-canary
+"if(!v:shell_error)
+"    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+"endif
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()

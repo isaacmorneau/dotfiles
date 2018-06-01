@@ -9,6 +9,7 @@
 
 
 set $mod Mod4
+set $alt Mod1
 
 # not really needed as fonts are handled my polybar and dmenu
 font pango:Hack 9
@@ -110,34 +111,35 @@ bindsym $mod+Shift+r exec "i3-msg restart; ~/.config/polybar/polybar.sh"
 # exit i3
 bindsym $mod+Shift+o exit
 
-# resize window
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+#resize
+bindsym $mod+$alt+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+$alt+Down resize grow height 10 px or 10 ppt
+bindsym $mod+$alt+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+$alt+Right resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+bindsym $mod+$alt+h resize shrink width 10 px or 10 ppt
+bindsym $mod+$alt+j resize grow height 10 px or 10 ppt
+bindsym $mod+$alt+k resize shrink height 10 px or 10 ppt
+bindsym $mod+$alt+l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+#when i get tired of the background
+#bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+#bindsym $mod+b exec rewal
+#wal is too much, its all too much
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
+exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id feh --bg-fill ~/.wallpaper.png
+exec --no-startup-id compton -C -I 0.05 -O 0.05 -f -b
+exec --no-startup-id unclutter &
+exec --no-startup-id dunst &
+exec_always --no-startup-id flashfocus -t 200
+# exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+#the sleep is more for screenlayout to finish as polybar will freak out if the screens
+#aren't up
 
 #the only way i could think of doing all these workspaces
-
+#i am so sorry, just... dont look...
 bindsym $mod+1 mode "Page 1"
 bindsym $mod+2 mode "Page 2"
 bindsym $mod+3 mode "Page 3"
@@ -175,10 +177,6 @@ mode "Page 1" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
 mode "Page 2" {
         set $mod Mod4
@@ -211,10 +209,6 @@ mode "Page 2" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
 mode "Page 3" {
         set $mod Mod4
@@ -247,10 +241,6 @@ mode "Page 3" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
 mode "Page 4" {
         set $mod Mod4
@@ -283,10 +273,6 @@ mode "Page 4" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
 mode "Page 5" {
         set $mod Mod4
@@ -319,10 +305,6 @@ mode "Page 5" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
 mode "Page 6" {
         set $mod Mod4
@@ -355,29 +337,4 @@ mode "Page 6" {
         bindsym $mod+4 mode "Page 4"
         bindsym $mod+5 mode "Page 5"
         bindsym $mod+6 mode "Page 6"
-        bindsym $mod+7 mode "Page 7"
-        bindsym $mod+8 mode "Page 8"
-        bindsym $mod+9 mode "Page 9"
-        bindsym $mod+0 mode "Page 0"
 }
-
-
-
-#when i get tired of the background
-#bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
-#bindsym $mod+b exec rewal
-#wal is too much, its all too much
-
-exec .screenlayout/main.sh
-exec xmodmap ~/.Xmodmap
-exec feh --bg-fill ~/.wallpaper.png
-exec --no-startup-id compton -C -I 0.05 -O 0.05 -f -b
-exec --no-startup-id unclutter &
-exec --no-startup-id dunst &
-exec_always --no-startup-id flashfocus -t 200
-# exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
-#the sleep is more for screenlayout to finish as polybar will freak out if the screens
-#aren't up
-exec --no-startup-id "sleep 1 && ~/.config/polybar/polybar.sh"
-
-
