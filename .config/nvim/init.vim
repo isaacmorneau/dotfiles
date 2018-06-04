@@ -164,8 +164,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'ctrlpvim/ctrlp.vim' "match files with fuzzy finding with ^p
 Plug 'FelikZ/ctrlp-py-matcher' "the normal one doesnt prioritize exact matches so we need the py addition
-Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day
-Plug 'joshdick/onedark.vim' "main theme
+Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
+Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
@@ -175,9 +175,12 @@ Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitesp
 Plug 'scrooloose/nerdtree' "file browser
 Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
+Plug 'mhinz/vim-startify' "A nice start menu
+Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 "looks good but one of these slows down scrolling (probably both)
-"Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons < this is the slow one
+Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
+
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
@@ -188,10 +191,10 @@ Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'Shougo/neoinclude.vim' "also check completion in includes
 
 "dont add discord if its not installed(like on servers)
-"silent !which discord || which discord-canary
-"if(!v:shell_error)
-"    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
-"endif
+silent !which discord || which discord-canary
+if(!v:shell_error)
+    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+endif
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
