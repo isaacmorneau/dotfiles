@@ -72,7 +72,8 @@ nnoremap Q <nop>
 set noshowmode
 "delete comment character when joining commented lines
 set formatoptions+=j
-"for truecolor
+"this enables true color support but will break how everything looks if you
+"use a terminal that doesnt support it such as urxvt
 set tgc
 
 let g:python_host_prog = '/usr/bin/python2'
