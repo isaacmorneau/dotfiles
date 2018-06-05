@@ -72,6 +72,8 @@ nnoremap Q <nop>
 set noshowmode
 "delete comment character when joining commented lines
 set formatoptions+=j
+"for truecolor
+set tgc
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
