@@ -101,7 +101,7 @@ function leetify () {
 }
 
 function mvsane () {
-    mv "$@" $(echo "$@" | sed -r 's/[^a-zA-Z0-9_.-]//g')
+    mv "$@" $(echo "$@" | sed -r 's/[ ]+/_/g' | sed -r 's/[^a-zA-Z0-9_.-]//g' | sed -r 's/[_-]{2,}/-/g')
 }
 
 #thanks to john saying this:
