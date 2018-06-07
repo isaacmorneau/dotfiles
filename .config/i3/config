@@ -101,8 +101,12 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+Control Right workspace next
-bindsym $mod+Control Left workspace prev
+#windows like left and right workspaces
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+#with vim bindings
+bindsym $mod+Control+l workspace next
+bindsym $mod+Control+h workspace prev
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
