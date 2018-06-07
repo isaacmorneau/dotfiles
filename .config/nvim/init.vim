@@ -183,6 +183,8 @@ Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking g
 "looks good but one of these slows down scrolling (probably both)
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons < this is the slow one
 Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
+"while nerdtree is broken im going to try using fzf as my file movement
+Plug 'junegunn/fzf'
 
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
@@ -279,9 +281,13 @@ let g:NERDTreeDirArrows=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeSortHiddenFirst=1
 "^n to open the file browser
-map <C-n> :NERDTreeFocus<CR>
+"disabled until issue is fixed 
+"map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"[fzf]
+map <C-n> :FZF<CR>
 
 "[Easy Align]
 "Start interactive EasyAlign in visual mode (e.g. vipga)

@@ -13,6 +13,7 @@ htop
 p7zip
 ripgrep
 bat
+fzf
 """
 GUI="""
 dunst
