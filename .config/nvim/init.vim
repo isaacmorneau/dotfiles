@@ -28,14 +28,13 @@ set ignorecase
 set smartcase
 "i only have so much screen space
 set wrap
-"4 spaces is only spaces
-set tabstop=4
 "go back like a normal person
 set backspace=indent,eol,start
 "duh
 set autoindent
 set copyindent
-"see line 23
+"4 spaces is only spaces
+set tabstop=4
 set shiftwidth=4
 "which you would only see with this on
 set number
@@ -65,7 +64,9 @@ filetype plugin on
 set listchars=tab:→→,trail:●,nbsp:○
 set list
 "share vim and system clipboard
-set clipboard+=unnamed
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
 "ex mode is BS disable it
 nnoremap Q <nop>
 "this is why we have airline
@@ -75,13 +76,34 @@ set formatoptions+=j
 "this enables true color support but will break how everything looks if you
 "use a terminal that doesnt support it such as urxvt
 set tgc
+"set the encodings to be sane
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/bash
+endif
+
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 
 "to avoid the mistake of uppercasing these
-command! W :w
-command! Q :q
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qa! qa!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qa qa
 
 "make sure i can actually save my stuff somewhere
 function! InitializeDirectories()
@@ -182,9 +204,9 @@ Plug 'mhinz/vim-startify' "A nice start menu
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 "looks good but one of these slows down scrolling (probably both)
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons < this is the slow one
-Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
-"while nerdtree is broken im going to try using fzf as my file movement
-Plug 'junegunn/fzf'
+"this one also causes vim scratch and nerd tree to go into a forever loop.
+"Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
+Plug 'junegunn/fzf' "fuzzy jumping arround
 
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
@@ -271,7 +293,6 @@ endif
 let g:php_html_load = 0
 
 "[NerdTree]
-set encoding=utf-8
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
@@ -281,13 +302,30 @@ let g:NERDTreeDirArrows=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeSortHiddenFirst=1
 "^n to open the file browser
-"disabled until issue is fixed 
-"map <C-n> :NERDTreeFocus<CR>
+map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "[fzf]
-map <C-n> :FZF<CR>
+map <C-j> :FZF<CR>
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+
 
 "[Easy Align]
 "Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -355,9 +393,6 @@ let g:deoplete#buffer#require_same_filetype = 0
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "dont litter your windows
 autocmd CompleteDone * pclose
-
-"[c.vim]
-let g:C_UseTool_cmake = 'yes'
 
 "[ctrlp.vim]
 let g:ctrlp_working_path_mode = 'ra'
