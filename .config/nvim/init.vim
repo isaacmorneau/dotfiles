@@ -16,7 +16,6 @@ filetype plugin indent on
 if has("gui_running")
     set guifont=Hack\ 10
 endif
-
 "why not use ed otherwise?
 syntax on
 "what am i typing
@@ -33,13 +32,8 @@ set backspace=indent,eol,start
 "duh
 set autoindent
 set copyindent
-"4 spaces is only spaces
-set tabstop=4
-set shiftwidth=4
 "which you would only see with this on
 set number
-"tabs are bad
-set expandtab
 "whats open?
 set title
 "dont care if its not valid,dont tell me
@@ -65,7 +59,7 @@ set listchars=tab:→→,trail:●,nbsp:○
 set list
 "share vim and system clipboard
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+    set clipboard=unnamed,unnamedplus
 endif
 "ex mode is BS disable it
 nnoremap Q <nop>
@@ -82,6 +76,12 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
+"tabs are bad, also set this after encoding or weird things happen
+set expandtab
+"4 spaces is only spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -314,15 +314,15 @@ let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/
 
 " The Silver Searcher
 if executable('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-  set grepprg=ag\ --nogroup\ --nocolor
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+    set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " ripgrep
 if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+    let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+    set grepprg=rg\ --vimgrep
+    command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endif
 
 
