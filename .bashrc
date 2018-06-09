@@ -132,3 +132,12 @@ function truecolortest () {
     }'
 }
 
+#thanks to this https://gist.github.com/timperez/7892680 im adding whoisport
+function whoisport (){
+        port=$1
+        pidInfo=$(fuser $port/tcp 2> /dev/null)
+        pid=$(echo $pidInfo | cut -d':' -f2)
+        ls -l /proc/$pid/exe
+}
+
+
