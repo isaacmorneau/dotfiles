@@ -13,7 +13,13 @@ another that might be interesting is the [.bashrc functions](https://github.com/
 
 <hr>
 
-details
+## ripping note
+
+these dotfiles serve as what i use but hopefully as an inspiration to other people working on their own rices. if you found something you love or you want to say shamelessly steal lines from my vimrc why not drop a link as to where you found the idea in your dotfiles?
+
+these files were also made by reading a lot of others and ive added links to sources where i can remember them so if you have ideas for improvements id love to hear them.
+
+## details
 
 - distro: arch
 - cli
@@ -27,4 +33,4 @@ details
   - launcher: rofi
   - compositor: compton
   - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
-  - wallpaper: revy minimal from black lagoon
+  - wallpaper: some cyberpunk wallpaper i found on imgur
