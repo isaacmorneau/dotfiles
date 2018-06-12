@@ -224,6 +224,24 @@ if(!v:shell_error)
 endif
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
+
+"[startify]
+"this needs to before plug end or it wont take
+let g:startify_custom_header = ['   ███╗███╗   ██╗███╗██╗   ██╗██╗███╗   ███╗',
+                               \'   ██╔╝████╗  ██║╚██║██║   ██║██║████╗ ████║',
+                               \'   ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║',
+                               \'   ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+                               \'   ███╗██║ ╚████║███║ ╚████╔╝ ██║██║ ╚═╝ ██║',
+                               \'   ╚══╝╚═╝  ╚═══╝╚══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝']
+
+let g:startify_lists = [
+            \ { 'type': 'files',    'header': [ 'MRU']      },
+            \ { 'type': 'commands', 'header': [ 'Commands'] },
+            \ ]
+"tried to be clever and make this the winheight - padding so it filled the
+"screen but turns out that winheight isnt correct at this point in the config
+"and it needs to be here to be respected
+let g:startify_files_number = 25
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
@@ -405,6 +423,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "[rainbow]
 let g:rainbow_active = 1
 "honestly the default config is fine
+
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
