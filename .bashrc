@@ -133,11 +133,19 @@ function truecolortest () {
 }
 
 #thanks to this https://gist.github.com/timperez/7892680 im adding whoisport
-function whoisport (){
+function whoisport () {
         port=$1
         pidInfo=$(fuser $port/tcp 2> /dev/null)
         pid=$(echo $pidInfo | cut -d':' -f2)
         ls -l /proc/$pid/exe
 }
 
-
+#useful for debugging with binding with strace or whatever to a running process
+#starts a process stopped
+function startstopped () {
+    ( kill -SIGSTOP $BASHPID; exec $@ ) &
+}
+#lets it continue
+function resumestopped () {
+    kill -SIGCONT $(jobs -l | grep '( kill -SIGSTOP $BASHPID; exec $@ )' | awk '{print $2}')
+}
