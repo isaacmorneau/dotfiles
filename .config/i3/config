@@ -126,6 +126,9 @@ bindsym $mod+$alt+j resize grow height 10 px or 10 ppt
 bindsym $mod+$alt+k resize shrink height 10 px or 10 ppt
 bindsym $mod+$alt+l resize grow width 10 px or 10 ppt
 
+#if i get lost mod+/ will flash whats focused again
+bindsym $mod+slash exec --no-startup-id flash_window -t 200
+
 #when i get tired of the background
 #bindsym $mod+b exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #bindsym $mod+b exec rewal
