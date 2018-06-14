@@ -238,6 +238,8 @@ let g:startify_lists = [
             \ { 'type': 'files',    'header': [ 'MRU']      },
             \ { 'type': 'commands', 'header': [ 'Commands'] },
             \ ]
+"i dont want to be moved to a dir if chose a file there
+let g:startify_change_to_dir = 0
 "tried to be clever and make this the winheight - padding so it filled the
 "screen but turns out that winheight isnt correct at this point in the config
 "and it needs to be here to be respected
