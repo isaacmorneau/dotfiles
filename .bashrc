@@ -160,10 +160,21 @@ function shellencode () {
 }
 
 #do it a bunch
-function repeat() {
+function repeat () {
     local i max
     max=$1; shift;
     for ((i=1; i <= max ; i++)); do
         eval "$@";
     done
+}
+
+#gets random hex data by number of lines and number per line
+function hexlines () {
+    lin=$1
+    wid=$2
+    if [ $(($wid%2)) -eq 0 ]; then
+        head -c $(($lin * $wid / 2)) /dev/urandom | xxd -g0 -| awk '{print $2}' | tr -d '\n' | fold -w$wid && echo
+    else
+        head -c $(($lin * $(($wid / 2 + 1)))) /dev/urandom | xxd -g0 -| awk '{print $2}' | tr -d '\n' | fold -w$wid | head -n $lin
+    fi
 }
