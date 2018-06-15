@@ -54,15 +54,6 @@ stty -ixon
 #(wal -r -t &)
 #wal is too much im disabling it
 
-function google () {
-    u=`perl -MURI::Escape -wle 'print "http://google.com/search?q=".uri_escape(join " ", @ARGV)' $@`
-    w3m -no-mouse -F $u
-}
-
-function calc () {
-    perl -ple '$_=eval'
-}
-
 function bri () {
     echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
 }
@@ -154,5 +145,13 @@ function shellencode () {
     for F in "$@"
     do
         printf '"' && xxd -g 0 $F | awk '{print $2}' | fold -w2 | awk '{print "\\x" $1}' | tr -d '\n' && echo '"'
+    done
+}
+
+function repeat() {
+    local i max
+    max=$1; shift;
+    for ((i=1; i <= max ; i++)); do
+        eval "$@";
     done
 }
