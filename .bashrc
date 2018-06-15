@@ -54,14 +54,17 @@ stty -ixon
 #(wal -r -t &)
 #wal is too much im disabling it
 
+#change laptop brightness
 function bri () {
     echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
 }
 
+#cp image to clipboard
 function cpi () {
     xclip -selection clipboard -t image/png -i $1
 }
 
+#get the last scratch file or nth to the end from the vim scratch system
 function lastscratch () {
     if [[ "$1" == "" ]]; then
         lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n 1`
@@ -71,26 +74,32 @@ function lastscratch () {
     cat $lastscratch
 }
 
+#is it raining
 function rain () {
     curl -s https://isitraining.in/vancouver | grep -oP '(?<=>)Yes|No(?=<)'
 }
 
+#slack formatting is dumb, this makes it less dumb
 function slackfmt () {
     sed -E 's/^/    /' | sed -E 's/^([ ]{4,})(.+)([0-9]{2}:[0-9]{2})/\2/' | sed -E 's/[ ]{4,}[0-9]{2}:[0-9]{2}//' | sed -E 's/^[ ]{5,}/    /' | grep .
 }
 
+#new changes reload
 function reloadterm () {
     killall -USR1 termite
 }
 
+#what the weather currently is
 function weather () {
     curl wttr.in
 }
 
+#find leetspeekable names from text data
 function leetify () {
     grep -oP '^([0-9a-fots]|(?<!i)l|(?<!l)i){4,7}$' | sort -R | head -n 25 | tee ~/tmp | tr 'aeolits' '4301175' | tr a-z A-Z > ~/tmp2 && paste -d"\t" ~/tmp ~/tmp2 && rm ~/tmp ~/tmp2
 }
 
+#change filenames to be only sane characters
 function mvsane () {
     for F in "$@"
     do
@@ -107,6 +116,7 @@ function bestdate () {
     date '+%Y-%m-%d' | sed -r 's/([0-9])([0-9])([0-9])([0-9])-([0-9])([0-9])-([0-9])([0-9])/\1\7\3\4-\5\8-\6\2/'
 }
 
+#test truecolor support (youll know if it doesnt work)
 function truecolortest () {
     awk 'BEGIN{
     s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
@@ -141,6 +151,7 @@ function resumestopped () {
     kill -SIGCONT $(jobs -l | grep '( kill -SIGSTOP $BASHPID; exec $@ )' | awk '{print $2}')
 }
 
+#convert files to shellcode escaped strings
 function shellencode () {
     for F in "$@"
     do
@@ -148,6 +159,7 @@ function shellencode () {
     done
 }
 
+#do it a bunch
 function repeat() {
     local i max
     max=$1; shift;
