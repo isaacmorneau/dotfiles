@@ -149,3 +149,10 @@ function startstopped () {
 function resumestopped () {
     kill -SIGCONT $(jobs -l | grep '( kill -SIGSTOP $BASHPID; exec $@ )' | awk '{print $2}')
 }
+
+function shellencode () {
+    for F in "$@"
+    do
+        printf '"' && xxd -g 0 $F | awk '{print $2}' | fold -w2 | awk '{print "\\x" $1}' | tr -d '\n' && echo '"'
+    done
+}
