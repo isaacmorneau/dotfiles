@@ -12,7 +12,7 @@ set $mod Mod4
 set $alt Mod1
 
 # not really needed as fonts are handled my polybar and dmenu
-font pango:Hack 9
+font pango:ProFont 9
 
 set $foreground #878787
 set $background #353535
@@ -27,7 +27,7 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 
 #run a command
-bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -font "Hack 9"
+bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -font "ProFont 9"
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical

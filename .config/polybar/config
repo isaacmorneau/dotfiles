@@ -38,7 +38,7 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 
-font-0= hack:size=9
+font-0 = ProFont:size=11
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3
