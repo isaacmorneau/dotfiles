@@ -25,7 +25,7 @@ these files were also made by reading a lot of others and ive added links to sou
 - cli
   - terminal: termite
   - editor: neovim
-  - font: hack (patched with nerd-fonts)
+  - font: ProFont (patched with nerd-fonts)
   - theming: one dark inspired but higher saturation
 - gui
   - wm: i3
