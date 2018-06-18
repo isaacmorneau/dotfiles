@@ -1,3 +1,5 @@
+>"Look at your vim, now look back at mine, now back to your vim, now back to mine. Sadly it isn't mine, but if you stopped using your own dotfiles and switch to my dotfiles, it could look like mine." -Pongles, on Isaac's dotfiles.
+
 # isaac's dotfiles
 
 ![isaac's dotfiles](https://github.com/isaacmorneau/dotfiles/raw/master/.screenshot.png)
