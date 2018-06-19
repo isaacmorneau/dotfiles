@@ -39,7 +39,8 @@ module-margin-left = 0
 module-margin-right = 1
 
 font-0 = ProFont:size=11
-font-2 = siji:pixelsize=10;1
+font-1 = Hack Nerd Font:size=8
+font-2 = ProFont Nerd Font:size=8
 
 modules-left = i3
 modules-center = xwindow
