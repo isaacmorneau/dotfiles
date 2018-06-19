@@ -54,6 +54,9 @@ stty -ixon
 #(wal -r -t &)
 #wal is too much im disabling it
 
+#fzf is really rad everywhere may as well use rg here too
+FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
 #change laptop brightness
 function bri () {
     echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
