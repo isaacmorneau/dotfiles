@@ -31,6 +31,7 @@ ttf-hack
 profont
 nerd-fonts-complete
 termite
+alacritty
 compton
 google-chrome
 polybar-git
