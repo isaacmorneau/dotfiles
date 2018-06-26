@@ -29,9 +29,9 @@ filter_unmatched_urls = true
 [colors]
 
 # special
-foreground      = #dedede
-foreground_bold = #dedede
-cursor          = #dedede
+foreground      = #b6d0db
+foreground_bold = #b6d0db
+cursor          = #b6d0db
 # set this color to 90% transparent so i can feel fancy 282c34
 background      = rgba(40, 44, 52, 0.90)
 
@@ -64,8 +64,8 @@ color6 = #27f7d4
 color14 = #27f7d4
 
 # white
-color7 = #abb2bf
-color15 = #abb2bf
+color7 = #b6d0db
+color15 = #b6d0db
 
 # if unset, will reverse foreground and background
 highlight = 
