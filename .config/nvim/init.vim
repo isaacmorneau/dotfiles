@@ -187,8 +187,6 @@ set mouse=ni
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
-Plug 'ctrlpvim/ctrlp.vim' "match files with fuzzy finding with ^p
-Plug 'FelikZ/ctrlp-py-matcher' "the normal one doesnt prioritize exact matches so we need the py addition
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
@@ -422,14 +420,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-
-"[ctrlp.vim]
-let g:ctrlp_working_path_mode = 'ra'
-"ignore whats in git ignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_path_sort = 1
-"this is to prioritize matches sanely such as exact first
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "[rainbow]
 let g:rainbow_active = 1
