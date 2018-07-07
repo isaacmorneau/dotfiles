@@ -187,8 +187,6 @@ set mouse=ni
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
-Plug 'ctrlpvim/ctrlp.vim' "match files with fuzzy finding with ^p
-Plug 'FelikZ/ctrlp-py-matcher' "the normal one doesnt prioritize exact matches so we need the py addition
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
@@ -216,6 +214,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomp
 Plug 'zchee/deoplete-clang' "better clang support
 Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'Shougo/neoinclude.vim' "also check completion in includes
+Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
+Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
 
 "dont add discord if its not installed(like on servers)
 silent !which discord || which discord-canary
@@ -406,7 +406,7 @@ xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
 
 "[Deoplete]
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 "dont require the same file type
 let g:deoplete#buffer#require_same_filetype = 0
 "<TAB> completion.
@@ -414,13 +414,12 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "dont litter your windows
 autocmd CompleteDone * pclose
 
-"[ctrlp.vim]
-let g:ctrlp_working_path_mode = 'ra'
-"ignore whats in git ignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_path_sort = 1
-"this is to prioritize matches sanely such as exact first
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"[ultisnips]
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 "[rainbow]
 let g:rainbow_active = 1
