@@ -15,7 +15,7 @@ alias fucking='sudo'
 alias 'cd..'='cd ..'
 alias bk='cd -'
 alias gitwhat='git log -p -M --follow --stat --'
-alias fpsteam='flatpak run com.valvesoftware.Steam &; disown'
+alias fpsteam='flatpak run com.valvesoftware.Steam'
 
 
 if [[ $EUID -eq 0 ]]; then
