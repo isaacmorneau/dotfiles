@@ -1,0 +1,423 @@
+snippet main
+int main(int argc, const char **argv) {
+	${0}
+	return 0;
+}
+endsnippet
+snippet mainn
+int main(void) {
+	${0}
+	return 0;
+}
+endsnippet
+snippet inc
+#include <${1:stdio}.h>
+endsnippet
+snippet Inc
+#include "${1:`vim_snippets#Filename("$1.h")`}"
+endsnippet
+snippet ndef
+#ifndef $1
+#define ${1:SYMBOL} ${2:value}
+#endif /* ifndef $1 */
+endsnippet
+snippet def
+#define
+endsnippet
+snippet ifdef
+#ifdef ${1:FOO}
+	${2:#define }
+#endif
+endsnippet
+snippet #if
+#if ${1:FOO}
+	${0:${VISUAL}}
+#endif
+endsnippet
+snippet once
+#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
+#define $1
+
+${0}
+
+#endif /* end of include guard: $1 */
+endsnippet
+snippet nocxx
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+${0}
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
+
+endsnippet
+snippet if
+if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+snippet ife
+if (${1:true}) {
+	${2:${VISUAL}}
+} else {
+	${0}
+}
+endsnippet
+snippet el
+else {
+	${0:${VISUAL}}
+}
+endsnippet
+snippet elif
+else if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+snippet ifi
+if (${1:true}) ${0};
+
+endsnippet
+snippet t
+${1:/* condition */} ? ${2:a} : ${3:b}
+endsnippet
+snippet switch
+switch (${1:/* variable */}) {
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+	default:
+		${6}
+}
+endsnippet
+snippet switchndef
+switch (${1:/* variable */}) {
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+}
+endsnippet
+snippet case
+case ${1:/* variable case */}:
+	${2}
+	${3:break;}
+endsnippet
+snippet ret
+return ${0};
+endsnippet
+snippet for
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	${4}
+}
+endsnippet
+snippet forr
+for (int ${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
+	${5}
+}
+endsnippet
+snippet wh
+while (${1:/* condition */}) {
+	${0:${VISUAL}}
+}
+endsnippet
+snippet do
+do {
+	${0:${VISUAL}}
+} while (${1:/* condition */});
+
+endsnippet
+snippet fun
+${1:void} ${2:function_name}(${3}) {
+	${4}
+}
+endsnippet
+snippet fun0
+${1:void} ${2:function_name}() {
+	${3}
+}
+endsnippet
+snippet dfun0
+/*! \brief ${1:Brief function description here}
+ *
+ *  ${2:Detailed description of the function}
+ *
+ * \return ${3:Return parameter description}
+ */
+${4:void} ${5:function_name}() {
+	${6}
+}
+endsnippet
+snippet fun1
+${1:void} ${2:function_name}(${3:Type} ${4:Parameter}) {
+	${5}
+}
+endsnippet
+snippet dfun1
+/*! \brief ${1:Brief function description here}
+ *
+ *  ${2:Detailed description of the function}
+ *
+ * \param $3 ${4:Parameter description}
+ * \return ${5:Return parameter description}
+ */
+${6:void} ${7:function_name}(${8:Type} ${3:Parameter}) {
+	${9}
+}
+endsnippet
+snippet fun2
+${1:void} ${2:function_name}(${3:Type} ${4:Parameter}, ${5:Type} ${6:Parameter}) {
+	${7}
+}
+endsnippet
+snippet dfun2
+/*! \brief ${1:Brief function description here}
+ *
+ *  ${2:Detailed description of the function}
+ *
+ * \param $3 ${4:Parameter description}
+ * \param $5 ${6:Parameter description}
+ * \return ${7:Return parameter description}
+ */
+${8:void} ${9:function_name}(${10:Type} ${3:Parameter}, ${11:Type} ${5:Parameter}) {
+	${12}
+}
+endsnippet
+snippet fun3
+${1:void} ${2:function_name}(${3:Type} ${4:Parameter}, ${5:Type} ${6:Parameter}, ${7:Type} ${8:Parameter}) {
+	${9}
+}
+endsnippet
+snippet dfun3
+/*! \brief ${1:Brief function description here}
+ *
+ *  ${2:Detailed description of the function}
+ *
+ * \param $3 ${4:Parameter description}
+ * \param $5 ${6:Parameter description}
+ * \param $7 ${8:Parameter description}
+ * \return ${9:Return parameter description}
+ */
+${10:void} ${11:function_name}(${12:Type} ${3:Parameter}, ${13:Type} ${5:Parameter}, ${14:Type} ${7:Parameter}) {
+	${15}
+}
+endsnippet
+snippet fund
+${1:void} ${2:function_name}(${3});
+endsnippet
+snippet td
+typedef ${1:int} ${2:MyCustomType};
+endsnippet
+snippet st
+/*! \struct $1
+ *  \brief ${3:Brief struct description}
+ *
+ *  ${4:Detailed description}
+ */
+struct ${1:`vim_snippets#Filename('$1_t', 'name')`} {
+	${2:Data} /*!< ${4:Description} */
+}${5: /* optional variable list */};
+endsnippet
+snippet tds
+/*! \struct $2
+ *  \brief ${5:Brief struct description}
+ *
+ *  ${6:Detailed description}
+ */
+typedef struct ${2:_$1 }{
+	m_${3:Data} /*!< ${4:Description} */
+} ${1:`vim_snippets#Filename('$1_t', 'name')`};
+endsnippet
+snippet enum
+/*! \enum $1
+ *
+ *  ${2:Detailed description}
+ */
+enum ${1:name} { ${0} };
+endsnippet
+snippet tde
+/*! \enum $2
+ *
+ *  ${4:Detailed description}
+ */
+typedef enum {
+	${1:Data} /*!< ${3:Description} */
+} ${2:foo};
+endsnippet
+snippet pr
+printf("${1:%s}\n"${2});
+endsnippet
+snippet fpr
+fprintf(${1:stderr}, "${2:%s}\n"${3});
+endsnippet
+snippet prd
+printf("${1:} = %d\n", $1);
+endsnippet
+snippet prf
+printf("${1:} = %f\n", $1);
+endsnippet
+snippet prx
+printf("${1:} = %${2}\n", $1);
+endsnippet
+snippet getopt
+int choice;
+for (;;) {
+	static struct option long_options[] = {
+		/* Use flags like so:
+		{"verbose",	no_argument,	&verbose_flag, 'V'}*/
+		/* Argument styles: no_argument, required_argument, optional_argument */
+		{"version", no_argument,	0,	'v'},
+		{"help",	no_argument,	0,	'h'},
+		${1}
+		{0,0,0,0}
+	};
+
+	int option_index = 0;
+
+	/* Argument parameters:
+		no_argument: " "
+		required_argument: ":"
+		optional_argument: "::" */
+
+	choice = getopt_long( argc, argv, "vh",
+				long_options, &option_index);
+
+	if (choice == -1) {
+		break;
+	}
+
+	switch( choice ) {
+		case 'v':
+			${2}
+			break;
+		case 'h':
+			${3}
+			break;
+		case '?':
+			/* getopt_long will have already printed an error */
+			break;
+		default:
+			/* Not sure how to get here... */
+			return EXIT_FAILURE;
+	}
+}
+
+/* Deal with non-option arguments here */
+if (optind < argc) {
+	while (optind < argc) {
+		${0}
+	}
+}
+endsnippet
+snippet todo
+/*! TODO: ${1:Todo description here}
+ *  \todo $1
+ */
+endsnippet
+snippet .
+[${1}]
+endsnippet
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+
+priority -50
+
+snippet def "#define ..."
+#define $1
+endsnippet
+
+snippet #ifndef "#ifndef ... #define ... #endif"
+#ifndef ${1/([A-Za-z0-9_]+).*/$1/}
+#define ${1:SYMBOL} ${2:value}
+#endif /* ifndef $1 */
+endsnippet
+
+snippet #if "#if #endif" b
+#if ${1:0}
+${VISUAL}$0
+#endif
+endsnippet
+
+snippet mark "#pragma mark (mark)"
+#if 0
+${1:#pragma mark -
+}#pragma mark $2
+#endif
+
+$0
+endsnippet
+
+snippet main "main() (main)"
+int main(int argc, char **argv) {
+	${VISUAL}$0
+	return 0;
+}
+endsnippet
+
+snippet for "for loop (for)"
+for (${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for int loop (fori)"
+for (${4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s_%s' % (name,rand)).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}$0
+
+#endif /* end of include guard: $1 */
+endsnippet
+
+snippet fprintf "fprintf ..."
+fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+snippet eli "else if .. (eli)"
+else if (${1:/* condition */}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet printf "printf .. (printf)"
+printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+snippet st "struct"
+struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
+	${0:/* data */}
+};
+endsnippet
+
+snippet un "union"
+union ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
+	${0:/* data */}
+};
+endsnippet
+
+snippet fun "function" b
+${1:void} ${2:function_name}($3) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fund "function declaration" b
+${1:void} ${2:function_name}($3);
+endsnippet
+
+# vim:ft=snippets:

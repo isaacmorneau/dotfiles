@@ -1,0 +1,137 @@
+priority -50
+
+extends html
+
+priority -49
+
+snippet break "@break"
+@break
+endsnippet
+
+endsnippet
+snippet component "@component directive"
+@component('$1')
+	${2:${VISUAL}}
+@endcomponentendsnippet
+endsnippet
+snippet each "@each directive"
+@each('$1', $$2, '$3')
+endsnippet
+
+endsnippet
+snippet else "@else directive"
+@elseendsnippet
+endsnippet
+snippet eif "@else if directive"
+@else if ($1)
+	${2:${VISUAL}}endsnippet
+endsnippet
+snippet for "@for directive"
+@for ($1)
+	${2:${VISUAL}}
+@endfor
+endsnippet
+
+endsnippet
+snippet foreach "@foreach directive"
+@foreach ($$1 as $$2)
+	${3:${VISUAL}}
+@endforeachendsnippet
+endsnippet
+snippet extends "@extends directive"
+@extends('$1')
+endsnippet
+
+endsnippet
+snippet if "@if directive"
+@if ($1)
+	${2:${VISUAL}}
+@endifendsnippet
+endsnippet
+snippet ife "@if @else structure"
+@if ($1)
+	${2:${VISUAL}}
+@else
+	${3:${VISUAL}}
+@endif
+endsnippet
+
+endsnippet
+snippet include "@include directive"
+@include('$1')endsnippet
+endsnippet
+snippet includeIf "@includeIf directive"
+@includeIf('$1')
+endsnippet
+
+endsnippet
+snippet isset "@isset directive"
+@isset
+	${1:${VISUAL}}
+@endissetendsnippet
+endsnippet
+snippet inject "@inject directive"
+@inject('$1', '$2')
+endsnippet
+
+endsnippet
+snippet lang "@lang directive" i
+@lang('$1')endsnippet
+endsnippet
+snippet php "@php directive"
+@php
+	${1:${VISUAL}}
+@endphp
+endsnippet
+
+endsnippet
+snippet push "@push directive"
+@push('$1')
+	${2:${VISUAL}}
+@endpushendsnippet
+endsnippet
+snippet section "@section directive"
+@section('$1')
+endsnippet
+
+endsnippet
+snippet show "@show directive"
+@showendsnippet
+endsnippet
+snippet slot "@slot directive"
+@slot('$1')
+	${2:${VISUAL}}
+@endslot
+endsnippet
+
+endsnippet
+snippet unless "@unless directive"
+@unless
+	${1:${VISUAL}}
+@endunlessendsnippet
+endsnippet
+snippet verbatim "@verbatim directive"
+@verbatim
+	${0:$VISUAL}
+@endverbatim
+endsnippet
+
+endsnippet
+snippet wh "@while directive"
+@while ($1)
+	${2:${VISUAL}}
+@endwhileendsnippet
+endsnippet
+snippet yield "@yield directive"
+@yield('$1')
+endsnippet
+
+endsnippet
+snippet { "{{ }} statement." i
+{{ $1 }}endsnippet
+endsnippet
+snippet {! "{!! !!} statement" i
+{!! $1 !!}
+endsnippet
+
+endsnippet
