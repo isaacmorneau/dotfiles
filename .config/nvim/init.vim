@@ -420,6 +420,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsSnippetDirectories=["~/.local/snippets"]
 
 "[rainbow]
 let g:rainbow_active = 1
