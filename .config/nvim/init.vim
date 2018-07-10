@@ -182,6 +182,7 @@ nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
 "because using shift is slower than not
 nnoremap ; :
+nnoremap : ;
 "so that line wraps are per terminal line not per global line
 nnoremap j gj
 nnoremap k gk
