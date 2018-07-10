@@ -88,7 +88,10 @@ if exists('$SHELL')
 else
     set shell=/bin/bash
 endif
-
+"\ is annoying move it to comma
+let g:mapleader = ','
+"for full code pastes may as well use pastemode
+set pastetoggle=<leader>v
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
