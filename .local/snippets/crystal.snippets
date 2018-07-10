@@ -1,0 +1,144 @@
+
+snippet req "require"
+	require "${1}"
+
+endsnippet
+snippet case
+	case ${1:object}
+	when ${2:condition}
+		${0}
+	end
+endsnippet
+snippet when
+	when ${1:condition}
+		${0}
+
+endsnippet
+snippet def
+	def ${1:method_name}
+		${0}
+	end
+
+endsnippet
+snippet pdef
+	private def ${1:method_name}
+		${0}
+	end
+
+endsnippet
+snippet if
+	if ${1:condition}
+		${0:${VISUAL}}
+	end
+
+endsnippet
+snippet ife
+	if ${1:condition}
+		${2:${VISUAL}}
+	else
+		${0}
+	end
+
+endsnippet
+snippet wh
+	while ${1:condition}
+		${0:${VISUAL}}
+	end
+
+endsnippet
+snippet cla "class ".. end
+	class ${1:`substitute(vim_snippets#Filename(), "\(_\|^\)\(.\)", "\u\2", "g")`}
+		${0}
+	end
+
+endsnippet
+snippet mod "class ".. end
+	module ${1:`substitute(vim_snippets#Filename(), "\(_\|^\)\(.\)", "\u\2", "g")`}
+		${0}
+	end
+
+endsnippet
+snippet r
+	getter ${0:name}
+
+endsnippet
+snippet r!
+	getter! ${0:name}
+
+endsnippet
+snippet r?
+	getter? ${0:name}
+
+endsnippet
+snippet w
+	setter ${0:name}
+
+endsnippet
+snippet w!
+	setter! ${0:name}
+
+endsnippet
+snippet w?
+	setter? ${0:name}
+
+endsnippet
+snippet rw
+	property ${0:name}
+
+endsnippet
+snippet rw!
+	property! ${0:name}
+
+endsnippet
+snippet rw?
+	property? ${0:name}
+
+endsnippet
+snippet defs
+	def self.${1:class_method_name}
+		${0}
+	end
+
+endsnippet
+snippet defi
+	def initialize(${1})
+		${0}
+	end
+
+endsnippet
+snippet do
+	do
+		${0:${VISUAL}}
+	end
+
+endsnippet
+snippet dov
+	do |${1:v}|
+		${2}
+	end
+
+endsnippet
+snippet desc
+	describe ${1:`substitute(substitute(vim_snippets#Filename(), "_spec$", "", ""), "\(_\|^\)\(.\)", "\u\2", "g")`} do
+		${0}
+	end
+
+endsnippet
+snippet it
+	it "${1}" do
+		${0}
+	end
+endsnippet
+priority -50
+
+snippet "\b(de)?f" "def <name>..." r
+def ${1:method_name}${2:(${3:*args})}
+	$0
+end
+endsnippet
+
+snippet "\b(pde)?f" "private def <name>..." r
+private def ${1:method_name}${2:(${3:*args})}
+	$0
+end
+endsnippet

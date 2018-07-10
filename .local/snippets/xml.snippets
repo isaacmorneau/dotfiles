@@ -1,0 +1,31 @@
+
+snippet xml
+	<?xml version="1.0" encoding="UTF-8"?>
+
+endsnippet
+snippet t
+	<${1:}>
+		${2}
+	</$1>
+
+endsnippet
+snippet ti
+	<${1:}>${2}</$1>
+
+endsnippet
+priority -50
+
+snippet xml "XML declaration" b
+<?xml version="1.0"?>
+
+endsnippet
+
+snippet t "Simple tag" b
+<${1:tag}>
+	${2:content}
+</${1/([\w:._-]+).*/$1/}>
+endsnippet
+
+snippet ti "Inline tag" b
+<${1:tag}>${2:content}</${1/([\w:._-]+).*/$1/}>
+endsnippet

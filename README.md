@@ -21,16 +21,16 @@ these files were also made by reading a lot of others and ive added links to sou
 
 ## details
 
-- distro: arch
+- distro: [arch](https://www.ubuntu.com/)
 - cli
-  - terminal: termite
-  - editor: neovim
-  - font: ProFont (patched with nerd-fonts)
+  - terminal: [termite](https://github.com/thestinger/termite)
+  - editor: [neovim](https://github.com/neovim/neovim)
+  - font: [ProFont (patched with nerd-fonts)](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/ProFont)
   - theming: one dark inspired but higher saturation
 - gui
-  - wm: i3
-  - statusbar: polybar
-  - launcher: rofi
-  - compositor: compton
+  - wm: [i3](https://github.com/Airblader/i3)
+  - statusbar: [polybar](https://github.com/jaagr/polybar)
+  - launcher: [rofi](https://github.com/DaveDavenport/rofi)
+  - compositor: [compton](https://github.com/chjj/compton)
   - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
   - wallpaper: some cyberpunk wallpaper i found in the wallpaper channel of the nixnest discord

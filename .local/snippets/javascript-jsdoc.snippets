@@ -1,0 +1,50 @@
+priority -50
+
+snippet /* "A JSDoc comment" b
+/**
+ * ${1:${VISUAL}}$0
+ */
+endsnippet
+
+endsnippet
+snippet @au "@author email (First Last)"
+@author ${1:`!v g:snips_author`} [${2:`!v g:snips_author_email`}]endsnippet
+endsnippet
+snippet @li "@license Description"
+@license ${1:MIT}$0
+endsnippet
+
+endsnippet
+snippet @ver "@version Semantic version"
+@version ${1:0.1.0}$0endsnippet
+endsnippet
+snippet @fileo "@fileoverview Description" b
+/**
+ * @fileoverview ${1:${VISUAL:A description of the file}}$0
+ */
+endsnippet
+
+endsnippet
+snippet @constr "@constructor"
+@constructorendsnippet
+endsnippet
+snippet @p "@param {Type} varname Description"
+@param {${1:Type}} ${2:varname} ${3:Description}
+endsnippet
+
+endsnippet
+snippet @ret "@return {Type} Description"
+@return {${1:Type}} ${2:Description}endsnippet
+endsnippet
+snippet @pri "@private"
+@private
+endsnippet
+
+endsnippet
+snippet @over "@override"
+@overrideendsnippet
+endsnippet
+snippet @pro "@protected"
+@protected
+endsnippet
+endsnippet
