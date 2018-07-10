@@ -180,6 +180,8 @@ nnoremap L gt
 "tab management with t leader
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
+"because using shift is slower than not
+nnoremap ; :
 
 "work around for mouse selection to clipboard
 "if term supports mouse then the selection will be visual anyway
