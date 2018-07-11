@@ -33,4 +33,4 @@ these files were also made by reading a lot of others and ive added links to sou
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
   - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
-  - wallpaper: some cyberpunk wallpaper i found in the wallpaper channel of the nixnest discord
+  - wallpaper: some cyberpunk wallpaper i found on /r/cyberpunk
