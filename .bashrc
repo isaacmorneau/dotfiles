@@ -45,8 +45,8 @@ export LC_ALL=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
 [[ $TERM != 'screen-256color' ]] && export TERM=xterm-256color
 
-[ -f /usr/bin/clang ] && export CC=/usr/bin/clang
-[ -f /usr/bin/clang++ ] && export CXX=/usr/bin/clang++
+#[ -f /usr/bin/clang ] && export CC=/usr/bin/clang
+#[ -f /usr/bin/clang++ ] && export CXX=/usr/bin/clang++
 
 #fuck that stupid Ctl-s bullshit
 stty -ixon
@@ -256,4 +256,8 @@ function colortest () {
         printf "%s %s %s %-30s %s\x1b[0m\n" $foreground $base16_color_name $current_color_label ${ansi_label:-""} $block
     done;
 
+}
+
+function cRaZy () {
+    fold -w1 | awk 'NR % 2 == 1 {print toupper($0)}; NR % 2 == 0 {print tolower($0)}' | tr -d '\n'
 }
