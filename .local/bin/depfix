@@ -14,6 +14,7 @@ p7zip
 ripgrep
 bat
 fzf
+arp-scan
 """
 GUI="""
 dunst

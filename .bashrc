@@ -261,3 +261,7 @@ function colortest () {
 function cRaZy () {
     fold -w1 | awk 'NR % 2 == 1 {print toupper($0)}; NR % 2 == 0 {print tolower($0)}' | tr -d '\n'
 }
+
+function localscan () {
+    arp-scan --interface=$(ip link | grep 2 | awk '{print $2}' | tr -d ':') -l
+}
