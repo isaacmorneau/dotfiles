@@ -191,37 +191,38 @@ vnoremap <LeftRelease> "*ygv
 set mouse=ni
 
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
+Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
-Plug 'rakr/vim-one' "main color theme
+Plug 'joshdick/onedark.vim' "main color theme
+Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
+Plug 'mhinz/vim-startify' "A nice start menu
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'scrooloose/nerdtree' "file browser
-Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
+Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
+Plug 'tpope/vim-surround' "change things surounding like ()->[]
+Plug 'vim-airline/vim-airline' "a statusbar
+Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
-Plug 'mhinz/vim-startify' "A nice start menu
-Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
+"requires neovim pip package
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
+Plug 'Shougo/neoinclude.vim' "also check completion in includes
+Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
+Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
+Plug 'sebastianmarkow/deoplete-rust' "better rust support
+Plug 'zchee/deoplete-clang' "better clang support
+
 "looks good but one of these slows down scrolling (probably both)
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons < this is the slow one
 "this one also causes vim scratch and nerd tree to go into a forever loop.
 "Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
-Plug 'junegunn/fzf' "fuzzy jumping arround
-
-Plug 'tpope/vim-surround' "change things surounding like ()->[]
-Plug 'vim-airline/vim-airline' "a statusbar
-Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
-"requires neovim pip package
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
-Plug 'zchee/deoplete-clang' "better clang support
-Plug 'sebastianmarkow/deoplete-rust' "better rust support
-Plug 'Shougo/neoinclude.vim' "also check completion in includes
-Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
-Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
-
+"
 "dont add discord if its not installed(like on servers)
 silent !which discord || which discord-canary
 if(!v:shell_error)
@@ -254,10 +255,9 @@ call plug#end()
 "i put this here so it doesnt look dumb when doing an update and the colors
 "are not appllied
 if s:first_run == 0
-    colorscheme one
-    "regardless of what happens we want a dark theme
-    set background=dark
+    colorscheme onedark
 endif
+set background=dark
 
 "check if we need an upgrade or an update
 command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
@@ -308,9 +308,7 @@ let g:update_daily = 'PU'
 "[one]
 "it was the first run so now we need to enable it again
 if s:first_run == 1
-    colorscheme one
-    "regardless of what happens we want a dark theme
-    set background=dark
+    colorscheme onedark
 endif
 "nice transparent background
 "(actually looks really bad with one, i just leave it here so i dont make the
@@ -364,7 +362,7 @@ nmap ga <Plug>(EasyAlign)
 
 "[Airline]
 set laststatus=2
-let g:airline_theme='one'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
