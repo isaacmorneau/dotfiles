@@ -32,7 +32,7 @@ set backspace=indent,eol,start
 "duh
 set autoindent
 set copyindent
-"which you would only see with this on
+"line numbers
 set number
 "whats open?
 set title
@@ -193,7 +193,7 @@ set mouse=ni
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
-Plug 'joshdick/onedark.vim' "main color theme
+Plug 'rakr/vim-one' "main color theme
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
@@ -254,9 +254,10 @@ call plug#end()
 "i put this here so it doesnt look dumb when doing an update and the colors
 "are not appllied
 if s:first_run == 0
-    colorscheme onedark
+    colorscheme one
+    "regardless of what happens we want a dark theme
+    set background=dark
 endif
-set background=dark
 
 "check if we need an upgrade or an update
 command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
@@ -307,7 +308,9 @@ let g:update_daily = 'PU'
 "[one]
 "it was the first run so now we need to enable it again
 if s:first_run == 1
-    colorscheme onedark
+    colorscheme one
+    "regardless of what happens we want a dark theme
+    set background=dark
 endif
 "nice transparent background
 "(actually looks really bad with one, i just leave it here so i dont make the
@@ -361,7 +364,7 @@ nmap ga <Plug>(EasyAlign)
 
 "[Airline]
 set laststatus=2
-let g:airline_theme='onedark'
+let g:airline_theme='one'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
