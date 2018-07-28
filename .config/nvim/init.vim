@@ -190,10 +190,15 @@ vnoremap <LeftRelease> "*ygv
 "but i still do want scroll and cursor clicking
 set mouse=ni
 
+"some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
+Plug 'Shougo/neoinclude.vim' "also check completion in includes
+Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
 Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
+Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
@@ -204,18 +209,14 @@ Plug 'mhinz/vim-startify' "A nice start menu
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
+Plug 'sbdchd/neoformat' "allows the formatting of code sanely
 Plug 'scrooloose/nerdtree' "file browser
+Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
-"requires neovim pip package
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
-Plug 'Shougo/neoinclude.vim' "also check completion in includes
-Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
-Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
-Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'zchee/deoplete-clang' "better clang support
 
 "looks good but one of these slows down scrolling (probably both)
@@ -234,11 +235,11 @@ Plug 'ryanoasis/vim-devicons'
 "[startify]
 "this needs to before plug end or it wont take
 let g:startify_custom_header = ['   ███╗███╗   ██╗███╗██╗   ██╗██╗███╗   ███╗',
-                               \'   ██╔╝████╗  ██║╚██║██║   ██║██║████╗ ████║',
-                               \'   ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║',
-                               \'   ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-                               \'   ███╗██║ ╚████║███║ ╚████╔╝ ██║██║ ╚═╝ ██║',
-                               \'   ╚══╝╚═╝  ╚═══╝╚══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝']
+            \'   ██╔╝████╗  ██║╚██║██║   ██║██║████╗ ████║',
+            \'   ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║',
+            \'   ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+            \'   ███╗██║ ╚████║███║ ╚████╔╝ ██║██║ ╚═╝ ██║',
+            \'   ╚══╝╚═╝  ╚═══╝╚══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝']
 
 let g:startify_lists = [
             \ { 'type': 'files',    'header': [ 'MRU']      },
@@ -431,6 +432,12 @@ let g:UltiSnipsSnippetDirectories=["~/.local/snippets"]
 "[rainbow]
 let g:rainbow_active = 1
 "honestly the default config is fine
+
+"[neoformat]
+let g:neoformat_basic_format_align = 1
+let g:neoformat_basic_format_retab = 1
+let g:neoformat_basic_format_trim = 1
+nmap <leader>f :Neoformat<CR>
 
 
 "i dont know what adds this bullshit but its annoying as hell
