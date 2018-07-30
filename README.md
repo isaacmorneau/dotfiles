@@ -33,4 +33,4 @@ these files were also made by reading a lot of others and ive added links to sou
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
   - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
-  - wallpaper: promo screenshot from cyberpunk 2077 game
+  - wallpaper: cyberpunk 2020 fan art from /r/cyberpunk
