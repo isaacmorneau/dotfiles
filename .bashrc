@@ -101,7 +101,7 @@ function rain () {
 
 #slack formatting is dumb, this makes it less dumb
 function slackfmt () {
-    sed -E 's/^/    /' | sed -E 's/^([ ]{4,})(.+)([0-9]{2}:[0-9]{2})/\2/' | sed -E 's/[ ]{4,}[0-9]{2}:[0-9]{2}//' | sed -E 's/^[ ]{5,}/    /' | grep .
+    sed -r 's/^/    /;s/^([ ]{4,})(.+)([0-9]{2}:[0-9]{2})/\2/;s/[ ]{4,}[0-9]{2}:[0-9]{2}//;s/^[ ]{5,}/    /;' | grep .
 }
 
 #new changes reload
@@ -123,7 +123,7 @@ function leetify () {
 function mvsane () {
     for F in "$@"
     do
-        mv "$F" $(echo "$F" | sed -r 's/[ ]+/_/g' | sed -r 's/[^a-zA-Z0-9_.-]//g' | sed -r 's/[_-]{2,}/-/g')
+        mv "$F" $(echo "$F" | sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;')
     done
 }
 
@@ -264,4 +264,8 @@ function cRaZy () {
 
 function localscan () {
     arp-scan --interface=$(ip link | grep 2 | awk '{print $2}' | tr -d ':') -l
+}
+
+function fine () {
+    sed -r 's/(.)/\1 /g;s/(.*) /`\1`/g;'
 }
