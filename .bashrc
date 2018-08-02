@@ -269,3 +269,6 @@ function localscan () {
 function fine () {
     sed -r 's/(.)/\1 /g;s/(.*) /`\1`/g;'
 }
+function sofine () {
+    sed -r 's/(.)/\1 /g;s/(.*) /_\*\*`\1`\*\*_/g;'
+}
