@@ -82,7 +82,9 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
+"tell me whats going on
+"only enable when stuff breaks and you dont know why
+"let &verbose = 1
 if exists('$SHELL')
     set shell=$SHELL
 else
@@ -434,10 +436,23 @@ let g:rainbow_active = 1
 "honestly the default config is fine
 
 "[neoformat]
+"good for debugging broken formatters
+"let g:neoformat_verbose = 1
 let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
-nmap <leader>f :Neoformat<CR>
+let g:neoformat_c_clang_format = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['-style=~/.clang-format'],
+    \ }
+let g:neoformat_cpp_clang_format = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['-style=~/.clang-format'],
+    \ }
+
+let g:neoformat_enabled_c = ['clangformat']
+let g:neoformat_enabled_cpp = ['clangformat']
+nmap <C-f> :Neoformat<CR>
 
 
 "i dont know what adds this bullshit but its annoying as hell
