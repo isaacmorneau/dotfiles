@@ -16,6 +16,8 @@ alias 'cd..'='cd ..'
 alias bk='cd -'
 alias gitwhat='git log -p -M --follow --stat --'
 alias fpsteam='flatpak run com.valvesoftware.Steam'
+alias cmaker='cmake -DCMAKE_BUILD_TYPE=Release ..'
+alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug ..'
 
 
 if [[ $EUID -eq 0 ]]; then
