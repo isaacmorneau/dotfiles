@@ -195,7 +195,6 @@ set mouse=ni
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
-Plug 'Shougo/neoinclude.vim' "also check completion in includes
 Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
 Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
@@ -221,6 +220,8 @@ Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
 Plug 'zchee/deoplete-clang' "better clang support
 
+"horribly slow dont use neoinclude its several orders of magnitude higher
+"Plug 'Shougo/neoinclude.vim' "also check completion in includes
 "looks good but one of these slows down scrolling (probably both)
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "file type icons < this is the slow one
 "this one also causes vim scratch and nerd tree to go into a forever loop.
