@@ -33,7 +33,7 @@ profont
 nerd-fonts-complete
 termite
 alacritty-scrollback-git
-compton
+xcompmgr
 google-chrome
 polybar-git
 feh
@@ -48,7 +48,7 @@ PY_DEPS="""
 neovim
 """
 sudo pip3 install $PY_DEPS
-trizen --needed -S $TERM
+yay --needed -S $TERM
 read -p "Kill here to skip GUI" -n 1 -r
-trizen --needed -S $GUI
+yay --needed -S $GUI
 
