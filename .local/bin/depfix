@@ -33,7 +33,7 @@ profont
 nerd-fonts-complete
 termite
 alacritty-scrollback-git
-xcompmgr
+compton
 google-chrome
 polybar-git
 feh
