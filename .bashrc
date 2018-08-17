@@ -271,6 +271,13 @@ function localscan () {
 function fine () {
     sed -r 's/(.)/\1 /g;s/(.*) /`\1`/g;'
 }
+
 function sofine () {
     sed -r 's/(.)/\1 /g;s/(.*) /_\*\*`\1`\*\*_/g;'
+}
+
+#honestly why is this not built in...
+#sum ints one per line
+function total () {
+    awk '{s+=$1} END {print s}'
 }
