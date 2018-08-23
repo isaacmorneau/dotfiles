@@ -87,13 +87,18 @@ function cpi () {
 }
 
 #get the last scratch file or nth to the end from the vim scratch system
+#f can be added to get the path
 function lastscratch () {
-    if [[ "$1" == "" ]]; then
+    if [[ "$1" == "" || "$1" == "f" ]]; then
         lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n 1`
     else
         lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n $1 | head -n 1`
     fi
-    cat $lastscratch
+    if [[ "$2" == "" && "$1" != "f" ]]; then
+        cat $lastscratch
+    else
+        echo $lastscratch
+    fi
 }
 
 #is it raining
