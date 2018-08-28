@@ -201,6 +201,7 @@ Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking g
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
+"Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
