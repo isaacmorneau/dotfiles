@@ -459,7 +459,7 @@ let g:neoformat_enabled_cpp = ['clangformat']
 nmap <C-f> :Neoformat<CR>
 
 "[LookOfDisaproval]
-let g:LookOfDisapprovalTabThreshold=4
+let g:LookOfDisapprovalTabThreshold=5
 let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 
 "i dont know what adds this bullshit but its annoying as hell
