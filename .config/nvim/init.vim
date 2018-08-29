@@ -194,6 +194,7 @@ set mouse=ni
 
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
+"Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
 Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
 Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
@@ -201,7 +202,6 @@ Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking g
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
-"Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
@@ -233,6 +233,8 @@ silent !which discord || which discord-canary
 if(!v:shell_error)
     Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 endif
+"this needs to go after other syntax plugins so it can override their rules
+Plug 'dodie/vim-disapprove-deep-indentation'
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
 
@@ -456,6 +458,9 @@ let g:neoformat_enabled_c = ['clangformat']
 let g:neoformat_enabled_cpp = ['clangformat']
 nmap <C-f> :Neoformat<CR>
 
+"[LookOfDisaproval]
+let g:LookOfDisapprovalTabThreshold=4
+let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
