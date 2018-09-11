@@ -10,12 +10,18 @@
 alias grep='grep --color=auto'
 alias ls='exa --group-directories-first'
 alias ll='exa -l --group-directories-first'
+alias tree='tree -C'
+
 alias sume='sudo -E'
 alias fucking='sudo'
+
 alias 'cd..'='cd ..'
 alias bk='cd -'
+
 alias gitwhat='git log -p -M --follow --stat --'
+
 alias fpsteam='flatpak run com.valvesoftware.Steam'
+
 alias cmaker='cmake -DCMAKE_BUILD_TYPE=Release ..'
 alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug ..'
 
@@ -288,5 +294,5 @@ function total () {
 
 #this automatically generates index.html files for the entire current directory
 function mkhtmltree () {
-    find . -type d -exec bash -c 'cd {}; tree -DhHC . > index.html' \;
+    find . -type d -exec bash -c 'cd {}; tree --dirsfirst --du --prune -DhHCT {} . > index.html' \;
 }
