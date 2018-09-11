@@ -294,5 +294,5 @@ function total () {
 
 #this automatically generates index.html files for the entire current directory
 function mkhtmltree () {
-    find . -type d -exec bash -c 'cd {}; tree --dirsfirst --du --prune -DhHCT `basename "$PWD"` . > index.html' \;
+    find . -type d -exec bash -c 'cd {}; tree --dirsfirst --du --prune -DhHC . > index.html' \;
 }
