@@ -293,6 +293,7 @@ function total () {
 }
 
 #this automatically generates index.html files for the entire current directory
+#note the grep for exclusion is because the built in affects the output
 function mkhtmltree () {
-    find . -type d -exec bash -c 'cd {}; tree --dirsfirst --du --prune -DhHCI "*.html" . -o index.html' \;
+    find . -type d -exec bash -c 'cd {}; tree --dirsfirst --du --prune -DhHC . | grep -v "index.html" > index.html' \;
 }
