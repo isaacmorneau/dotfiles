@@ -286,6 +286,7 @@ function total () {
     awk '{s+=$1} END {print s}'
 }
 
+#this automatically generates index.html files for the entire current directory
 function mkhtmltree () {
-    find . -type d -exec bash -c 'tree -DhHC {} > {}/index.html' \;
+    find . -type d -exec bash -c 'cd {}; tree -DhHC . > index.html' \;
 }
