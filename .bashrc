@@ -262,7 +262,7 @@ function colortest () {
         non_padded_value=$((10#$padded_value))
         base16_color_name=${colors[$non_padded_value]}
         current_color_label=${current_color:-unknown}
-        ansi_label=${ansi_mappings[$non_padded_value]} 
+        ansi_label=${ansi_mappings[$non_padded_value]}
         block=$(printf "\x1b[48;5;${non_padded_value}m___________________________")
         foreground=$(printf "\x1b[38;5;${non_padded_value}m$color_variable")
         printf "%s %s %s %-30s %s\x1b[0m\n" $foreground $base16_color_name $current_color_label ${ansi_label:-""} $block
@@ -297,4 +297,39 @@ function total () {
 #also yes im fixing the CSS colors with sed, if you can get LS_COLORS to work you better open a PR
 function mkhtmltree () {
     find . -type d -exec bash -c "cd {}; tree --dirsfirst --du --prune -DhHC . | grep -v 'index.html' | sed -r '0,/(\.NORM.*)black/{s/(\.NORM.*)black/\1blue/};0,/(\.DIR.*)blue/{s/(\.DIR.*)blue/\1black/};s/\"([^\"]*\.(png|jpg))\">([^<]*)/\"\1\"><img src=\"\1\" height=\"200\">/g' > index.html" \;
+}
+
+function mkcdoc () {
+    for F in "$@"
+    do
+        sed -rf ~/.local/sed/mkcdoc.sed $F
+    done
+}
+
+function sedcheat () {
+    echo '==>sed quick guide<==
+:  # label
+=  # line_number
+a  # append_text_to_stdout_after_flush
+b  # branch_unconditional
+c  # range_change
+d  # pattern_delete_top/cycle
+D  # pattern_ltrunc(line+nl)_top/cycle
+g  # pattern=hold
+G  # pattern+=nl+hold
+h  # hold=pattern
+H  # hold+=nl+pattern
+i  # insert_text_to_stdout_now
+l  # pattern_list
+n  # pattern_flush=nextline_continue
+N  # pattern+=nl+nextline
+p  # pattern_print
+P  # pattern_first_line_print
+q  # flush_quit
+r  # append_file_to_stdout_after_flush
+s  # substitute
+t  # branch_on_substitute
+w  # append_pattern_to_file_now
+x  # swap_pattern_and_hold
+y  # transform_chars '
 }
