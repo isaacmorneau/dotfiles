@@ -33,7 +33,7 @@
     s/^[\n ]*(.*)/ \* parameters:\n \*    \1/g
     #indent and make all the lines *
     s/[ ]*,[ ]*/\n \*    /g
-    #add multiline comment before and after
+    #add notes section and terminate the comment
     s/$/\n \*\n \* notes:\n \*\n \* \*\/\n/g
     #print the arguments and the notes template
     p
