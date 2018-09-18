@@ -1,1 +1,0 @@
-ldd $(which $1) | grep $2
