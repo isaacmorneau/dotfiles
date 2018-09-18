@@ -299,10 +299,12 @@ function mkhtmltree () {
     find . -type d -exec bash -c "cd {}; tree --dirsfirst --du --prune -DhHC . | grep -v 'index.html' | sed -r '0,/(\.NORM.*)black/{s/(\.NORM.*)black/\1blue/};0,/(\.DIR.*)blue/{s/(\.DIR.*)blue/\1black/};s/\"([^\"]*\.(png|jpg))\">([^<]*)/\"\1\"><img src=\"\1\" height=\"200\">/g' > index.html" \;
 }
 
+#generate documentation comments for c style code
 function mkcdoc () {
     for F in "$@"
     do
-        sed -rf ~/.local/sed/mkcdoc.sed $F
+        # for the nice commented version see ~/.local/sed/mkcdoc.sed
+        sed -ir '/[a-zA-Z0-9_]+[ ]+[a-zA-Z0-9_]+\([^)]+\)[ ]*\{/{h;s/[a-zA-Z0-9_]+[ ]+([a-zA-Z0-9_]+).*/\1/g;s/^(.*)/\n\/\*\n \* function:\n \*    \1\n \*/g;p;g;s/([a-zA-Z0-9_]+).*/\1/g;s/^\n*(.*)/ \* return:\n \*    \1\n \*/g;p;g;s/.*\(([^)]+)\).*/\1/g;s/^[\n ]*(.*)/ \* parameters:\n \*    \1/g;s/[ ]*,[ ]*/\n \*    /g;s/$/\n \*\n \* notes:\n \*\n \* \*\/\n/g;p;g;}' $F
     done
 }
 
