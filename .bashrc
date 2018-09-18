@@ -25,6 +25,8 @@ alias fpsteam='flatpak run com.valvesoftware.Steam'
 alias cmaker='cmake -DCMAKE_BUILD_TYPE=Release ..'
 alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug ..'
 
+alias connected_mon='xrandr --query | grep " connected" | awk "{print \$1}"'
+
 if [[ $EUID -eq 0 ]]; then
     export PATH="$PATH:~/.local/bin:~/.cargo/bin"
 else
@@ -255,7 +257,7 @@ function colortest () {
     base04
     base06
     )
-    for padded_value in `seq -w 0 21`; do
+    for padded_value in `seq -w 0 15`; do
         color_variable="color${padded_value}"
         eval current_color=\$${color_variable}
         current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]') # get rid of slashes, and uppercase
