@@ -228,11 +228,6 @@ Plug 'zchee/deoplete-clang' "better clang support
 "this one also causes vim scratch and nerd tree to go into a forever loop.
 "Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
 "
-"dont add discord if its not installed(like on servers)
-silent !which discord || which discord-canary
-if(!v:shell_error)
-    Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
-endif
 "this needs to go after other syntax plugins so it can override their rules
 Plug 'dodie/vim-disapprove-deep-indentation'
 "this should always be the last plugin
