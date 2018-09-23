@@ -305,8 +305,7 @@ function mkhtmltree () {
 function mkcdoc () {
     for F in "$@"
     do
-        # for the nice commented version see ~/.local/sed/mkcdoc.sed
-        sed -ir '/[a-zA-Z0-9_]+[ ]+[a-zA-Z0-9_]+\([^)]+\)[ ]*\{/{h;s/[a-zA-Z0-9_]+[ ]+([a-zA-Z0-9_]+).*/\1/g;s/^(.*)/\n\/\*\n \* function:\n \*    \1\n \*/g;p;g;s/([a-zA-Z0-9_]+).*/\1/g;s/^\n*(.*)/ \* return:\n \*    \1\n \*/g;p;g;s/.*\(([^)]+)\).*/\1/g;s/^[\n ]*(.*)/ \* parameters:\n \*    \1/g;s/[ ]*,[ ]*/\n \*    /g;s/$/\n \*\n \* notes:\n \*\n \* \*\/\n/g;p;g;}' $F
+        sed -rf ~/.local/sed/mkcdoc.sed -i $F
     done
 }
 
