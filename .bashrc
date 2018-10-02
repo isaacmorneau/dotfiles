@@ -301,11 +301,18 @@ function mkhtmltree () {
     find . -type d -exec bash -c "cd {}; tree --dirsfirst --du --prune -DhHC . | grep -v 'index.html' | sed -r '0,/(\.NORM.*)black/{s/(\.NORM.*)black/\1blue/};0,/(\.DIR.*)blue/{s/(\.DIR.*)blue/\1black/};s/\"([^\"]*\.(png|jpg))\">([^<]*)/\"\1\"><img src=\"\1\" height=\"200\">/g' > index.html" \;
 }
 
-#generate documentation comments for c style code
+#generate documentation comments for c
 function mkcdoc () {
     for F in "$@"
     do
         sed -rf ~/.local/sed/mkcdoc.sed -i $F
+    done
+}
+#generate documentation comments for asm
+function mkcdoc () {
+    for F in "$@"
+    do
+        sed -rf ~/.local/sed/mkasmdoc.sed -i $F
     done
 }
 
