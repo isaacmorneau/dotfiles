@@ -60,6 +60,9 @@ export LC_ALL=en_US.UTF-8
 #fuck that stupid Ctl-s bullshit
 stty -ixon
 
+#auto cd
+shopt -s autocd
+
 #if we ran wall lets get dem colors
 #(wal -r -t &)
 #wal is too much im disabling it
@@ -342,4 +345,14 @@ t  # branch_on_substitute
 w  # append_pattern_to_file_now
 x  # swap_pattern_and_hold
 y  # transform_chars '
+}
+
+#sometimes you need to diff binary files, this makes it easy
+function bdiff () {
+    if [ $# -ne 2 ]
+    then
+        echo "usage: bdiff file1 file2"
+    else
+        diff --color=auto -c --label "$1" --label "$2" <(xxd "$1") <(xxd "$2")
+    fi
 }
