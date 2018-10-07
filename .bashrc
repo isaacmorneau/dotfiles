@@ -312,7 +312,7 @@ function mkcdoc () {
     done
 }
 #generate documentation comments for asm
-function mkcdoc () {
+function mksmdoc () {
     for F in "$@"
     do
         sed -rf ~/.local/sed/mkasmdoc.sed -i $F
