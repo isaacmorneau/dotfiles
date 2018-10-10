@@ -41,6 +41,10 @@ xclip
 i3-gaps
 xorg-xinit
 ida-free
+gtk-engine-murrine
+arc-gtk-theme
+arc-icon-theme
+lxappearance
 """
 
 echo "Installing terminal deps"
