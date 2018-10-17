@@ -306,6 +306,8 @@ endif
 "[update-daily]
 "custom command to also update remote plugins for stuff like deoplete
 let g:update_daily = 'PU'
+"i only want it to run if i open vim without args
+let g:update_noargs = 1
 
 "[one]
 "it was the first run so now we need to enable it again
