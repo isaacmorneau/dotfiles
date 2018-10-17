@@ -142,6 +142,20 @@ function mvsane () {
     done
 }
 
+#change access permissions to be only sane permissions
+function chmodsane () {
+    find "$1" -type d -exec chmod 755 {} \;
+    find "$1" -type f -exec chmod 644 {} \;
+}
+
+#change access permissions to be only sane permissions
+function chgrpsane () {
+    chgrp -R "$1" "$2"
+    find "$2" -type d -exec chmod 775 {} \;
+    find "$2" -type f -exec chmod 664 {} \;
+}
+
+
 #thanks to john saying this:
 #   [15:51] john_a_macdonald: Oh fuck off
 #       The only worse option is mixing the digits
