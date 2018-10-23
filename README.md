@@ -32,6 +32,6 @@ these files were also made by reading a lot of others and ive added links to sou
   - statusbar: [polybar](https://github.com/jaagr/polybar)
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
-  - lock: [custom similar to i3lock-fancy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/lock)
-  - wallpaper: cyberpunk from [Grey Chen](https://www.artstation.com/graychen) on /r/cyberpunk
+  - lock: just slock now
+  - wallpaper: some cloth render from my friend Devon
 
