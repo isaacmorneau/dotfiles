@@ -176,12 +176,9 @@ nnoremap <C-h> <C-W><C-H>
 nnoremap <A-j> <C-e>
 nnoremap <A-k> <C-y>
 
-"tab nav with shift
-"TODO find a different mapping, this is taken for jumping around the screeen
-"already
-"
-"nnoremap H gT
-"nnoremap L gt
+"tab nav with alt
+nnoremap <A-h> gT
+nnoremap <A-l> gt
 "tab management with t leader
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
