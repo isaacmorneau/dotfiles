@@ -368,3 +368,8 @@ function bdiff () {
         diff --color=auto -c --label "$1" --label "$2" <(xxd "$1") <(xxd "$2")
     fi
 }
+
+#dont ask me why i needed this, but it gets all the links in a page seperated by newlines
+function linkrip () {
+    sed -r 's/(href=")([^"]*)"/\n"\2"\n/' | grep -Po '^".*"$' | tr -d '"'
+}
