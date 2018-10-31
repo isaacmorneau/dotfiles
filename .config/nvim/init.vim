@@ -109,6 +109,9 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qa qa
+"i never want the help page! i allways wanted ESC
+nnoremap <F1> <ESC>
+inoremap <F1> <ESC>
 
 "make sure i can actually save my stuff somewhere
 function! InitializeDirectories()
