@@ -1,6 +1,6 @@
 # isaac's dotfiles
 
-![isaac's dotfiles](https://github.com/isaacmorneau/dotfiles/raw/master/.screenshot.png)
+![isaac's dotfiles](https://github.com/isaacmorneau/dotfiles/blob/master/.screenshot.png?raw=true)
 
 <p align="center">
   dotfiles as far as the eye can see: my development dotfiles
