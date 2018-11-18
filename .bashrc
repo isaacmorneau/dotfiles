@@ -46,7 +46,7 @@ __git_ps1 () {
 }
 
 #PROMPT_COMMAND='ps1_ret=$?'
-PS1="\[\e[34m\]\D{%T}\[\e[35m\](\`__git_ps1\`)\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\]\$ "
+PS1="\[\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\`__git_ps1\`\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\n\[\e[37m\]┕\[\e[m\]> "
 
 export LANG=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
