@@ -15,6 +15,7 @@ ripgrep
 bat
 fzf
 arp-scan
+moreutils
 """
 GUI="""
 dunst
