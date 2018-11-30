@@ -170,6 +170,11 @@ runtime macros/matchit.vim
 "extra keybinds
 "to quickly clear highlight press ^/
 nmap <C-_> :nohlsearch<CR>
+
+"how dare you not use regex by default
+nnoremap / /\v
+vnoremap / /\v
+
 "split nav with control dir
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
