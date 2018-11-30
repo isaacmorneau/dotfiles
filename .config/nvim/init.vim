@@ -203,12 +203,9 @@ set mouse=ni
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } "the main autocomple engine
-Plug 'SirVer/ultisnips' "who knew? turns out snippets are a thing and they are dope!
 Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
-Plug 'honza/vim-snippets' "we do actually need the snippets as they are not in the engine
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
@@ -221,13 +218,13 @@ Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'sbdchd/neoformat' "allows the formatting of code sanely
 Plug 'scrooloose/nerdtree' "file browser
-Plug 'sebastianmarkow/deoplete-rust' "better rust support
 Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
-Plug 'zchee/deoplete-clang' "better clang support
+Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
@@ -312,7 +309,7 @@ else
 endif
 
 "[update-daily]
-"custom command to also update remote plugins for stuff like deoplete
+"custom command to also update remote plugins
 let g:update_daily = 'PU'
 "i only want it to run if i open vim without args
 let g:update_noargs = 1
@@ -402,6 +399,10 @@ endfunction
 call airline#add_statusline_func('WindowNumber')
 call airline#add_inactive_statusline_func('WindowNumber')
 
+"[YouCompleteMe]
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+g:ycm_confirm_extra_conf = 0
+
 
 "[NeoMake]
 " When reading a buffer (after 1s), and when writing (no delay).
@@ -422,23 +423,6 @@ let g:scratch_no_mappings = 1
 nmap <silent> gs <plug>(scratch-insert-reuse)
 xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
-
-"[Deoplete]
-let g:deoplete#enable_at_startup = 1
-"dont require the same file type
-let g:deoplete#buffer#require_same_filetype = 0
-"<TAB> completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"dont litter your windows
-autocmd CompleteDone * pclose
-
-"[ultisnips]
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsSnippetDirectories=["~/.local/snippets"]
 
 "[rainbow]
 let g:rainbow_active = 1
