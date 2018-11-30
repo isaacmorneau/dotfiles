@@ -401,7 +401,7 @@ call airline#add_inactive_statusline_func('WindowNumber')
 
 "[YouCompleteMe]
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-g:ycm_confirm_extra_conf = 0
+let g:ycm_confirm_extra_conf = 0
 
 
 "[NeoMake]
