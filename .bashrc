@@ -14,6 +14,9 @@ alias tree='tree -C'
 
 alias sume='sudo -E'
 alias fucking='sudo'
+#:yeet:
+alias yeet='sudo'
+alias yoot='sudo -E'
 
 alias 'cd..'='cd ..'
 alias bk='cd -'
