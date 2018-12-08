@@ -1,2 +1,2 @@
 #if maim fails fallback to import
-xclip -selection c -t image/png <(maim -su||import png:-)
+{ maim -su||import png:-; } |xclip -selection clipboard -t image/png
