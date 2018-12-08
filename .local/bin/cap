@@ -1,5 +1,2 @@
-tmpf=$(mktemp)
 #if maim fails fallback to import
-maim -su>$tmpf||import png:->$tmpf
-xclip -selection c -t image/png <$tmpf
-rm $tmpf
+xclip -selection c -t image/png <(maim -su||import png:-)
