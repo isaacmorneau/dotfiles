@@ -1,2 +1,5 @@
-#maim -su | xclip -selection clipboard -t image/png
-import png:- | xclip -selection c -t image/png
+tmpf=$(mktemp)
+#if maim fails fallback to import
+maim -su>$tmpf||import png:->$tmpf
+xclip -selection c -t image/png <$tmpf
+rm $tmpf
