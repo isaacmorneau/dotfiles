@@ -16,6 +16,7 @@ bat
 fzf
 arp-scan
 moreutils
+dnsutils
 """
 GUI="""
 dunst
