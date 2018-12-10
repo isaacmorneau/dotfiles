@@ -17,6 +17,7 @@ fzf
 arp-scan
 moreutils
 dnsutils
+binwalk
 """
 GUI="""
 dunst
