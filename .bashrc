@@ -376,3 +376,14 @@ function bdiff () {
 function linkrip () {
     sed -r 's/(href=")([^"]*)"/\n"\2"\n/' | grep -Po '^".*"$' | tr -d '"'
 }
+
+#for ripping through directories looking for passwords
+
+function passgrep () {
+    if [ $# -eq 0 ]
+    then
+        rg --no-ignore -i '(pass(word|phrase|wd|[^a-z]))'
+    else
+        rg --no-ignore -i '(pass(word|phrase|wd|[^a-z]))' $@
+    fi
+}
