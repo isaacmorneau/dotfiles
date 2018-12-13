@@ -18,6 +18,7 @@ arp-scan
 moreutils
 dnsutils
 binwalk
+python-pip
 """
 GUI="""
 dunst
@@ -32,10 +33,9 @@ arandr
 maim
 i3lock-color
 ttf-hack
-profont
 nerd-fonts-complete
 termite
-alacritty-scrollback-git
+alacritty-git
 compton
 google-chrome
 polybar-git
@@ -54,8 +54,8 @@ echo "Installing terminal deps"
 PY_DEPS="""
 neovim
 """
-sudo pip3 install $PY_DEPS
 yay --needed -S $TERM
+sudo pip3 install $PY_DEPS
 read -p "Kill here to skip GUI" -n 1 -r
 yay --needed -S $GUI
 
