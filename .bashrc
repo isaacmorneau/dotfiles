@@ -30,6 +30,8 @@ alias cmaked='cmake -DCMAKE_BUILD_TYPE=Debug ..'
 
 alias connected_mon='xrandr --query | grep " connected" | awk "{print \$1}"'
 
+alias bn='LD_PRELOAD=libcurl.so.3 ~/binaryninja/binaryninja'
+
 if [[ $EUID -eq 0 ]]; then
     export PATH="$PATH:~/.local/bin:~/.cargo/bin"
 else

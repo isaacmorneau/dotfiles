@@ -56,6 +56,22 @@ neovim
 """
 yay --needed -S $TERM
 sudo pip3 install $PY_DEPS
+
 read -p "Kill here to skip GUI" -n 1 -r
 yay --needed -S $GUI
+
+read -p "Kill here to skip binaryninja plugins" -n 1 -r
+cd ~/.binaryninja/plugins
+git clone https://github.com/carstein/Syscaller
+git clone https://github.com/joshwatson/binaryninja-bookmarks
+git clone https://github.com/DatBrick/binja-msvc
+git clone https://github.com/RPISEC/llvm-deobfuscator
+git clone https://github.com/rick2600/xref_call_finder
+git clone https://github.com/Cryptogenic/idc_importer
+git clone https://github.com/ThisIsSecurity/djumpo_unchained
+git clone https://github.com/Rami114/cryptoscan
+git clone https://github.com/levyjm/WinAPI-Annotator
+git clone https://github.com/carstein/Annotator
+git clone https://github.com/toolCHAINZ/trickledown_vars
+
 
