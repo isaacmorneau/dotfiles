@@ -49,6 +49,7 @@ gtk-engine-murrine
 arc-gtk-theme
 arc-icon-theme
 lxappearance
+xdotool
 """
 
 echo "Installing terminal deps"
