@@ -19,6 +19,7 @@ moreutils
 dnsutils
 binwalk
 python-pip
+unzip
 """
 GUI="""
 dunst
