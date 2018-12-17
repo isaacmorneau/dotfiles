@@ -18,7 +18,7 @@ red = #ff4c4c
 [bar/main]
 monitor = ${env:MONITOR}
 width = 100%
-height = 15
+height = 20
 radius = 4.0
 fixed-center = false
 
@@ -29,7 +29,7 @@ line-size = 1
 line-color = #f00
 
 border-size = 0
-border-color = #000000
+border-color = #0000000
 
 padding-left = 1
 padding-right = 1
@@ -37,9 +37,8 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = ProFont:size=11
-font-1 = Hack Nerd Font:size=8
-font-2 = ProFont Nerd Font:size=8
+font-0 = ProFontWindows Nerd Font Mono:size=12
+font-1 = Hack Nerd Font:size=10
 
 modules-left = i3
 modules-center = xwindow
@@ -134,12 +133,12 @@ label = BL
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #ff
-bar-indicator-font = 2
+bar-indicator-font = 0
 bar-fill = ─
-bar-fill-font = 2
+bar-fill-font = 0
 bar-fill-foreground = #9f78e1
 bar-empty = ─
-bar-empty-font = 2
+bar-empty-font = 0
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
@@ -234,34 +233,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blue}
 
 label = %date% %time%
-
-[module/volume]
-type = internal/volume
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
