@@ -389,3 +389,8 @@ function passgrep () {
         rg --no-ignore -i '(pass(word|phrase|wd|[^a-z]))' $@
     fi
 }
+
+#all my v4 ips on all up interfaces
+function allv4 () {
+    ip addr show up | grep -v 'lo$' | grep 'inet ' | awk '{print $2}'
+}

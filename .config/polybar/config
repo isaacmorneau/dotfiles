@@ -1,4 +1,3 @@
-;
 ; ██╗███████╗ █████╗  █████╗  ██████╗███████╗    ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ; ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝    ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 ; ██║███████╗███████║███████║██║     ███████╗    ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
@@ -42,7 +41,7 @@ font-1 = Hack Nerd Font:size=10
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem xbacklight volume cap memory cpu wlan eth battery temperature date
+modules-right = filesystem cap memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 0
@@ -68,7 +67,7 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = selecion
-menu-0-0-exec = maim -su | xclip -selection clipboard -t image/png
+menu-0-0-exec = { maim -su||import png:-; } |xclip -selection clipboard -t image/png
 menu-0-1 = full screen
 menu-0-1-exec = maim -u | xclip -selection clipboard -t image/png
 
@@ -124,28 +123,6 @@ label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 0
-bar-fill = ─
-bar-fill-font = 0
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 0
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -175,7 +152,7 @@ ramp-coreload-7-foreground = #ff5555
 type = internal/memory
 interval = 2
 format = <bar-used> <label>
-label = RAM %gb_used%/%gb_free%
+label = RAM %gb_used%|%gb_free%
 
 bar-used-indicator =
 bar-used-width = 10
@@ -190,30 +167,22 @@ bar-used-empty-foreground = #444444
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = ${env:WIRE:wlp2s0}
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = 📶 <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% %local_ip%
 
 format-disconnected =
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:ETH:enp3s0}
 interval = 3.0
 
 format-connected-underline = ${colors.green}
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected = 🔌 <label-connected>
 label-connected = %local_ip%
 
 format-disconnected =
@@ -228,38 +197,9 @@ date-alt = " %Y-%m-%d"
 time = %H:%M:%S
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blue}
 
 label = %date% %time%
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
 
 [settings]
 screenchange-reload = true
