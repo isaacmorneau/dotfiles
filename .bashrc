@@ -89,11 +89,6 @@ export HISTFILE=~/.bash_eternal_history
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-#change laptop brightness
-function bri () {
-    echo $1 > /sys/class/backlight/amdgpu_bl0/brightness
-}
-
 #cp image to clipboard
 function cpi () {
     xclip -selection clipboard -t image/png -i $1

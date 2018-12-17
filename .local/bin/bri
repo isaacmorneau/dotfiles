@@ -1,0 +1,1 @@
+sudo tee -a /sys/class/backlight/*/brightness

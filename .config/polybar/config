@@ -41,7 +41,7 @@ font-1 = Hack Nerd Font:size=10
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem cap memory cpu wlan eth battery temperature date
+modules-right = cap memory cpu wlan eth date
 
 tray-position = right
 tray-padding = 0
@@ -74,17 +74,6 @@ menu-0-1-exec = maim -u | xclip -selection clipboard -t image/png
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:128:...%
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-mount-1 = /home
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -170,7 +159,7 @@ type = internal/network
 interface = ${env:WIRE:wlp2s0}
 interval = 3.0
 
-format-connected = 📶 <label-connected>
+format-connected = <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid% %local_ip%
 
@@ -182,7 +171,7 @@ interface = ${env:ETH:enp3s0}
 interval = 3.0
 
 format-connected-underline = ${colors.green}
-format-connected = 🔌 <label-connected>
+format-connected = <label-connected>
 label-connected = %local_ip%
 
 format-disconnected =
