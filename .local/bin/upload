@@ -1,8 +1,8 @@
-file=$(mktemp|tr '[:upper:]' '[:lower:]')
-maim -su > $file && \
-name=$(echo $file | rg -o '\w+$') && \
-scp -P 7366 $file elly@vk-k.com:/mnt/md0/uploads/$name && \
-url="https://$name.vk-k.com/" && \
-echo $url | xclip -selection primary && \
-echo $url | xclip -selection secondary && \
+name=$(mktemp -u XXXXXXXX|tr '[:upper:]' '[:lower:]')
+file="/tmp/$name"
+url="https://${name}i.vk-k.com/"
+{ maim -su||import png:-; } > $file &&\
+scp -P 7366 $file elly@vk-k.com:/usr/share/nginx/vk-k/i/${name} &&\
+echo $url | xclip -selection primary &&\
+echo $url | xclip -selection secondary &&\
 echo $url
