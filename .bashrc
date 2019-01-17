@@ -393,10 +393,12 @@ function allv4 () {
 function batstat () {
     for B in /sys/class/power_supply/BAT*
     do
-        echo "[$B]"
-        printf "capacity: "
-        cat "$B/capacity"
-        printf "status: "
-        cat "$B/status"
+        if [ -f "$B/capacity" ]; then
+            echo "[$B]"
+            printf "capacity: "
+            cat "$B/capacity"
+            printf "status: "
+            cat "$B/status"
+        fi
     done
 }
