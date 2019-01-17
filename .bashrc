@@ -389,3 +389,14 @@ function passgrep () {
 function allv4 () {
     ip addr show up | grep -v 'lo$' | grep 'inet ' | awk '{print $2}'
 }
+
+function batstat () {
+    for B in /sys/class/power_supply/BAT*
+    do
+        echo "[$B]"
+        printf "capacity: "
+        cat "$B/capacity"
+        printf "status: "
+        cat "$B/status"
+    done
+}
