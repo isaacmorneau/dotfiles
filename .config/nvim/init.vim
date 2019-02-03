@@ -339,7 +339,7 @@ let g:NERDTreeSortHiddenFirst=1
 "^n to open the file browser
 map <C-n> :NERDTreeFocus<CR>
 "close if its the last thing open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "[fzf]
 map <C-m> :FZF<CR>
