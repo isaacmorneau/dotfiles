@@ -235,6 +235,9 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 "
 "this needs to go after other syntax plugins so it can override their rules
 Plug 'dodie/vim-disapprove-deep-indentation'
+"this is to highlight the fileicons in nerdtree
+"if nerdtree is slow vist the github page as it has info on how to fix it
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
 
