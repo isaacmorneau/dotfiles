@@ -33,5 +33,5 @@ these files were also made by reading a lot of others and ive added links to sou
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
   - lock: just slock now
-  - wallpaper: original work from [pixiv](https://www.pixiv.net/member_illust.php?illust_id=72668704&mode=medium)
+  - wallpaper: original work from [pixiv](https://www.pixiv.net/member_illust.php?mode=medium&illust_id=72055179)
 
