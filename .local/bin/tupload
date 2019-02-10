@@ -1,7 +1,7 @@
 name=$(mktemp -u XXXXXXXX|tr '[:upper:]' '[:lower:]')
 url="https://${name}t.vk-k.com/"
 if [ -f "$1" ]; then
-    scp -P 7366 "$1" elly@vk-k.com:/usr/share/nginx/vk-k/t/${name} &&\
+    scp "$1" elly:/usr/share/nginx/vk-k/t/${name} &&\
     echo $url | xclip -selection primary &&\
     echo $url | xclip -selection secondary &&\
     echo $url;

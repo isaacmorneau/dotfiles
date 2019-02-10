@@ -26,12 +26,12 @@ these files were also made by reading a lot of others and ive added links to sou
   - terminal: [termite](https://github.com/thestinger/termite)
   - editor: [neovim](https://github.com/neovim/neovim)
   - font: [ProFont (patched with nerd-fonts)](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/ProFont)
-  - theming: one dark inspired but higher saturation
+  - theming: custom one dark inspired but higher saturation
 - gui
   - wm: [i3](https://github.com/Airblader/i3)
   - statusbar: [polybar](https://github.com/jaagr/polybar)
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
   - lock: just slock now
-  - wallpaper: some cloth render from my friend Devon
+  - wallpaper: original work from [pixiv](https://www.pixiv.net/member_illust.php?illust_id=72668704&mode=medium)
 
