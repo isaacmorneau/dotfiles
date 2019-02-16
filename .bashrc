@@ -402,3 +402,9 @@ function batstat () {
         fi
     done
 }
+
+#this is for ripping opcodes into python tables, dont ask i have strange needs
+#https://www.felixcloutier.com/x86/index.html ment to be run on pages from here
+function asm_to_python () {
+    echo "[" && curl -s https://www.felixcloutier.com/x86/$1 | grep -Eo '([0-9A-F]{2} )+' | sort | uniq | sed -r 's/ $//;s/ /,0x/;s/^/    \[0x/;s/$/\],/' && echo "]"
+}
