@@ -416,6 +416,7 @@ function everyopt_py () {
             continue
         else
             CLN="${O//:/_}"
+            CLN="${CLN//-/_}"
             [ -z "$CLNOPS" ] && CLNOPS="$CLN" || CLNOPS+=", $CLN"
             echo "#source: https://www.felixcloutier.com/x86/$O"
             echo "${CLN}_opts = ["
