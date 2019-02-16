@@ -404,20 +404,25 @@ function batstat () {
 }
 
 #this is for ripping opcodes into python tables, dont ask i have strange needs
-#https://www.felixcloutier.com/x86/index.html ment to be run on pages from here
-function asm_to_python () {
-    if [ $# -lt 1 ]
-    then
-        echo "please chose a page from https://www.felixcloutier.com/x86/index.html such as 'jcc'"
-    else
-        OPTS=$(curl -s https://www.felixcloutier.com/x86/$1|grep -E -e"<td>" -e"<em>"|grep -Eo '<td>([0-9A-F]{2} )+'|sed -r 's/<td>(.*) /\1/'|sort|uniq|sed -r 's/ /,0x/;s/^/    \[0x/;s/$/\],/')
-        if [ -z "$OPTS" ]
+#https://www.felixcloutier.com/x86/index.html
+function everyopt_py () {
+    OPTS=$(curl -s https://www.felixcloutier.com/x86/index.html | rg -o 'href="\..*?\.html'|cut -c9-|rev|cut -c6-|rev|sort|uniq)
+    CLNOPS=""
+    for O in $OPTS;
+    do
+        OP=$(curl -s https://www.felixcloutier.com/x86/$O|grep -E -e"<td>" -e"<em>"|grep -Eo '<td>([0-9A-F]{2} )+'|sed -r 's/<td>(.*) /\1/'|sort|uniq|sed -r 's/ /,0x/g;s/^/    \[0x/;s/$/\],/'|grep .)
+        if [ -z "$OP" ];
         then
-            echo "no abuseable opcodes found"
+            continue
         else
-            echo "["
-            echo "$OPTS"
-            echo "]"
+            CLN="${O//:/_}"
+            [ -z "$CLNOPS" ] && CLNOPS="$CLN" || CLNOPS+=", $CLN"
+            echo "#source: https://www.felixcloutier.com/x86/$O"
+            echo "${CLN}_opts = ["
+            echo "$OP"
+            echo ']'
         fi
-    fi
+    done
+    echo "everyopt = [$CLNOPS]"
+    exit 0
 }
