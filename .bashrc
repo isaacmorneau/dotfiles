@@ -406,5 +406,18 @@ function batstat () {
 #this is for ripping opcodes into python tables, dont ask i have strange needs
 #https://www.felixcloutier.com/x86/index.html ment to be run on pages from here
 function asm_to_python () {
-    echo "[" && curl -s https://www.felixcloutier.com/x86/$1 | grep -Eo '([0-9A-F]{2} )+' | sort | uniq | sed -r 's/ $//;s/ /,0x/;s/^/    \[0x/;s/$/\],/' && echo "]"
+    if [ $# -lt 1 ]
+    then
+        echo "please chose a page from https://www.felixcloutier.com/x86/index.html such as 'jcc'"
+    else
+        OPTS=$(curl -s https://www.felixcloutier.com/x86/$1|grep -E -e"<td>" -e"<em>"|grep -Eo '<td>([0-9A-F]{2} )+'|sed -r 's/<td>(.*) /\1/'|sort|uniq|sed -r 's/ /,0x/;s/^/    \[0x/;s/$/\],/')
+        if [ -z "$OPTS" ]
+        then
+            echo "no abuseable opcodes found"
+        else
+            echo "["
+            echo "$OPTS"
+            echo "]"
+        fi
+    fi
 }
