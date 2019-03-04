@@ -430,7 +430,7 @@ xmap <silent> gs <plug>(scratch-selection-reuse)
 nnoremap gZzZz gs
 
 "[rainbow]
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 "honestly the default config is fine
 
 "[neoformat]
@@ -458,3 +458,4 @@ let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
+
