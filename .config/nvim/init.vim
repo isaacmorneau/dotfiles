@@ -200,6 +200,9 @@ vnoremap <LeftRelease> "*ygv
 "but i still do want scroll and cursor clicking
 set mouse=ni
 
+"when the window gets resized reset the splits
+autocmd VimResized * wincmd =
+
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
