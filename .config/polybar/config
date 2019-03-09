@@ -41,11 +41,10 @@ font-1 = Hack Nerd Font:size=10
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cap memory cpu wlan eth bat date
+modules-right = cap memory cpu wlan eth bat time
 
 tray-position = right
 tray-padding = 0
-tray-transparent = true
 tray-background = ${root.background}
 
 scroll-up = i3wm-wsnext
@@ -184,19 +183,10 @@ label-connected = %local_ip%
 
 format-disconnected =
 
-[module/date]
-type = internal/date
+[module/time]
+type = custom/script
+exec = echo $(TZ=UTC date +"UTC %H:%M:%S") $(date +"LT %H:%M:%S %Y-%m-%d")
 interval = 1
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M:%S
-time-alt = %H:%M:%S
-
-format-underline = ${colors.blue}
-
-label = %date% %time%
 
 [settings]
 screenchange-reload = true
