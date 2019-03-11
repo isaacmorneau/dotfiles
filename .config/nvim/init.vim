@@ -202,10 +202,12 @@ let s:vim_plug = '~/.local/share/nvim/site/autoload/plug.vim'
 let s:first_run = 0
 if empty(glob(s:vim_plug, 1))
     let s:first_run = 1
-    execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    if (v:shell_error)
+    silent !which curl
+    if (!v:shell_error)
+        execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    else
         "damn it cloud, now i support /not/ having curl
-        execute 'silent !install -Dv wget -o' s:vim_plug 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        execute 'silent !install -D ' s:vim_plug ' && wget -q https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o' s:vim_plug
     endif
 endif
 
@@ -449,13 +451,13 @@ let g:neoformat_basic_format_align = 1
 let g:neoformat_basic_format_retab = 1
 let g:neoformat_basic_format_trim = 1
 let g:neoformat_c_clang_format = {
-    \ 'exe': 'clang-format',
-    \ 'args': ['-style=~/.clang-format'],
-    \ }
+            \ 'exe': 'clang-format',
+            \ 'args': ['-style=~/.clang-format'],
+            \ }
 let g:neoformat_cpp_clang_format = {
-    \ 'exe': 'clang-format',
-    \ 'args': ['-style=~/.clang-format'],
-    \ }
+            \ 'exe': 'clang-format',
+            \ 'args': ['-style=~/.clang-format'],
+            \ }
 
 let g:neoformat_enabled_c = ['clangformat']
 let g:neoformat_enabled_cpp = ['clangformat']
