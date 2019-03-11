@@ -7,7 +7,8 @@
 " ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝      ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "
 
-"Base vim setup
+"==>base vim setup<==
+
 " Jump to last open
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "Indentation rules for language
@@ -113,6 +114,46 @@ cnoreabbrev Qa qa
 nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 
+"been around for ages yet isnt default for % to match if else etc
+runtime macros/matchit.vim
+
+"extra keybinds
+"to quickly clear highlight press ^/
+nmap <C-_> :nohlsearch<CR>
+
+"how dare you not use regex by default
+nnoremap / /\v
+vnoremap / /\v
+
+"split nav with control dir
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
+"scroll with alt directions
+nnoremap <A-j> <C-e>
+nnoremap <A-k> <C-y>
+
+"tab nav with alt
+nnoremap <A-h> gT
+nnoremap <A-l> gt
+"tab management with t leader
+nnoremap tn :tabnew<CR>
+nnoremap tq :tabclose<CR>
+"so that line wraps are per terminal line not per global line
+nnoremap j gj
+nnoremap k gk
+"work around for mouse selection to clipboard
+"if term supports mouse then the selection will be visual anyway
+vnoremap <LeftRelease> "*ygv
+"i dont actually want visual mode mouse control
+"but i still do want scroll and cursor clicking
+set mouse=ni
+
+"when the window gets resized reset the splits
+autocmd VimResized * wincmd =
+
+"==>environment auto setup<==
 "make sure i can actually save my stuff somewhere
 function! InitializeDirectories()
     let parent = $HOME
@@ -162,46 +203,11 @@ let s:first_run = 0
 if empty(glob(s:vim_plug, 1))
     let s:first_run = 1
     execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    if (v:shell_error)
+        "damn it cloud, now i support /not/ having curl
+        execute 'silent !install -Dv wget -o' s:vim_plug 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    endif
 endif
-
-"been around for ages yet isnt default for % to match if else etc
-runtime macros/matchit.vim
-
-"extra keybinds
-"to quickly clear highlight press ^/
-nmap <C-_> :nohlsearch<CR>
-
-"how dare you not use regex by default
-nnoremap / /\v
-vnoremap / /\v
-
-"split nav with control dir
-nnoremap <C-j> <C-W><C-J>
-nnoremap <C-k> <C-W><C-K>
-nnoremap <C-l> <C-W><C-L>
-nnoremap <C-h> <C-W><C-H>
-"scroll with alt directions
-nnoremap <A-j> <C-e>
-nnoremap <A-k> <C-y>
-
-"tab nav with alt
-nnoremap <A-h> gT
-nnoremap <A-l> gt
-"tab management with t leader
-nnoremap tn :tabnew<CR>
-nnoremap tq :tabclose<CR>
-"so that line wraps are per terminal line not per global line
-nnoremap j gj
-nnoremap k gk
-"work around for mouse selection to clipboard
-"if term supports mouse then the selection will be visual anyway
-vnoremap <LeftRelease> "*ygv
-"i dont actually want visual mode mouse control
-"but i still do want scroll and cursor clicking
-set mouse=ni
-
-"when the window gets resized reset the splits
-autocmd VimResized * wincmd =
 
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
