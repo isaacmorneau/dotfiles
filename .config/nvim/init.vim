@@ -207,7 +207,8 @@ if empty(glob(s:vim_plug, 1))
         execute 'silent !curl -fLo' s:vim_plug '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     else
         "damn it cloud, now i support /not/ having curl
-        execute 'silent !install -D ' s:vim_plug ' && wget -q https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -o' s:vim_plug
+        echo "unabled to curl vimplug! either install curl and rerun or manually download it to " . g:vim_plug
+        exit 1
     endif
 endif
 
