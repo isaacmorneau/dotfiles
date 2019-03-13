@@ -60,7 +60,7 @@ export LANG=en_US.UTF-8
 #[ -f /usr/bin/clang ] && export CC=/usr/bin/clang
 #[ -f /usr/bin/clang++ ] && export CXX=/usr/bin/clang++
 
-[ -f $(which backup_tend 2> /dev/null) ] && alias shutdown="backup_tend && shutdown"
+hash backup_tend 2>/dev/null && alias shutdown="backup_tend && shutdown"
 
 #fuck that stupid Ctl-s bullshit
 stty -ixon
