@@ -407,3 +407,7 @@ function batstat () {
     done
 }
 
+# :3
+function exit () {
+    eval $BASH_COMMAND
+}
