@@ -212,13 +212,14 @@ function! Mks()
     let l:path = g:session_dir . g:session_file
     if filereadable(l:path)
         echo "Updating existing session"
+        if filewritable(l:path)
+            exec "mksession! " . l:path
+        else
+            echo "Failed to make session for " . l:path
+        endif
     else
         echo "Creating new session for " . g:session_file
-    endif
-    if filewritable(l:path)
-        exec "mksession! " . l:path
-    else
-        echo "Failed to make session for " . l:path
+        exec "mksession " . l:path
     endif
 endfunction
 command! Mks call Mks()
