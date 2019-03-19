@@ -411,3 +411,21 @@ function batstat () {
 function exit () {
     eval $BASH_COMMAND
 }
+
+# select a saved session and open it
+function nvimp() {
+    VCMD=$(command -v nvim &>/dev/null && echo nvim || echo vim)
+    if [ $VCMD == "nvim" ]; then
+        VFL="$HOME/.local/share/nvim/session"
+    else
+        VFL="$HOME/.vim/session"
+    fi
+    FILE=$(find $VFL -type f | fzf +m -1)
+    if [ -n "$FILE" ]; then
+        VCD=$(grep -Em 1 'cd ' $FILE)
+        if [ -n "$VCD" ]; then
+            ${VCD//\~/$HOME}
+        fi
+        $VCMD
+    fi
+}
