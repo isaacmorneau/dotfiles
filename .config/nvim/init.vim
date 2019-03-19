@@ -206,28 +206,25 @@ endfunction
 call InitializeDirectories()
 
 
+"sanitize where you are in case someone named it like an idiot (see mvsane in
+".bashrc)
 let g:session_file = substitute(getcwd(), "/", "_", "g")
 "make a session for this directory
 function! Mks()
-    let l:path = g:session_dir . g:session_file
-    if filereadable(l:path)
+    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
+    if !empty(glob(l:path, 1))
         echo "Updating existing session"
-        if filewritable(l:path)
-            exec "mksession! " . l:path
-        else
-            echo "Failed to make session for " . l:path
-        endif
     else
         echo "Creating new session for " . g:session_file
-        exec "mksession " . l:path
     endif
+    exec "mksession! " . l:path
 endfunction
 command! Mks call Mks()
 
 "load the session for the starting direcory if it exists
 function! Lds()
-    let l:path = g:session_dir . g:session_file
-    if filereadable(l:path)
+    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
+    if !empty(glob(l:path, 1))
         exec "source " . l:path
     else
         echo "No existing session for " . g:session_file
@@ -237,9 +234,9 @@ command! Lds call Lds()
 
 "remove the session for the starting directory if it exists
 function! Rms()
-    let l:path = g:session_dir . g:session_file
-    if filereadable(l:path)
-        if delete(l:path) == -1
+    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
+    if !empty(glob(l:path, 1))
+        if delete(g:session_dir . g:session_file) == -1
             echo "Failed to delete " . l:path
         else
             echo "Deleting session for " . g:session_file
@@ -249,6 +246,9 @@ function! Rms()
     endif
 endfunction
 command! Rms call Rms()
+
+"auto load the session for the directory if it exists
+autocmd VimEnter * nested Lds
 
 "==>all fancy plugin/magic stuff<==
 
@@ -280,7 +280,6 @@ Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
-Plug 'mhinz/vim-startify' "A nice start menu
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
@@ -308,26 +307,6 @@ Plug 'dodie/vim-disapprove-deep-indentation'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
-
-"[startify]
-"this needs to before plug end or it wont take
-let g:startify_custom_header = ['   ███╗███╗   ██╗███╗██╗   ██╗██╗███╗   ███╗',
-            \'   ██╔╝████╗  ██║╚██║██║   ██║██║████╗ ████║',
-            \'   ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║',
-            \'   ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
-            \'   ███╗██║ ╚████║███║ ╚████╔╝ ██║██║ ╚═╝ ██║',
-            \'   ╚══╝╚═╝  ╚═══╝╚══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝']
-
-let g:startify_lists = [
-            \ { 'type': 'files',    'header': [ 'MRU']      },
-            \ { 'type': 'commands', 'header': [ 'Commands'] },
-            \ ]
-"i dont want to be moved to a dir if chose a file there
-let g:startify_change_to_dir = 0
-"tried to be clever and make this the winheight - padding so it filled the
-"screen but turns out that winheight isnt correct at this point in the config
-"and it needs to be here to be respected
-let g:startify_files_number = 25
 call plug#end()
 
 "i put this here so it doesnt look dumb when doing an update and the colors
