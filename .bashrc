@@ -422,7 +422,7 @@ function nvimp() {
     fi
     FILE=$(find $VFL -type f | fzf +m -1)
     if [ -n "$FILE" ]; then
-        VCD=$(grep -Em 1 'cd ' $FILE)
+        VCD=$(grep -Em 1 'cd ' "$FILE")
         if [ -n "$VCD" ]; then
             ${VCD//\~/$HOME}
         fi
