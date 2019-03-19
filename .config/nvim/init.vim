@@ -167,7 +167,6 @@ function! InitializeDirectories()
     let common_dir = parent . '/.' . prefix
     "these are seperate as they are not settings
     let g:scratch_dir = common_dir . 'scratch/'
-    let g:session_dir = common_dir . 'session/'
 
     for [dirname, settingname] in items(dir_list)
         let directory = common_dir . dirname . '/'
@@ -189,66 +188,13 @@ function! InitializeDirectories()
         if !isdirectory(g:scratch_dir)
             call mkdir(g:scratch_dir)
         endif
-        if !isdirectory(g:session_dir)
-            call mkdir(g:session_dir)
-        endif
     endif
-
     if !isdirectory(g:scratch_dir)
         echo "Warning: Unable to create scratch directory: " . g:scratch_dir
         echo "Try: mkdir -p " . g:scratch_dir
     endif
-    if !isdirectory(g:session_dir)
-        echo "Warning: Unable to create scratch directory: " . g:session_dir
-        echo "Try: mkdir -p " . g:session_dir
-    endif
 endfunction
 call InitializeDirectories()
-
-
-"sanitize where you are in case someone named it like an idiot (see mvsane in
-".bashrc)
-let g:session_file = substitute(getcwd(), "/", "_", "g")
-"make a session for this directory
-function! Mks()
-    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
-    if !empty(glob(l:path, 1))
-        echo "Updating existing session"
-    else
-        echo "Creating new session for " . g:session_file
-    endif
-    exec "mksession! " . l:path
-endfunction
-command! Mks call Mks()
-
-"load the session for the starting direcory if it exists
-function! Lds()
-    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
-    if !empty(glob(l:path, 1))
-        exec "source " . l:path
-    else
-        echo "No existing session for " . g:session_file
-    endif
-endfunction
-command! Lds call Lds()
-
-"remove the session for the starting directory if it exists
-function! Rms()
-    let l:path = substitute(g:session_dir . g:session_file, " ", "\\\\ ", "g")
-    if !empty(glob(l:path, 1))
-        if delete(g:session_dir . g:session_file) == -1
-            echo "Failed to delete " . l:path
-        else
-            echo "Deleting session for " . g:session_file
-        endif
-    else
-        echo "No existing session for " . g:session_file
-    endif
-endfunction
-command! Rms call Rms()
-
-"auto load the session for the directory if it exists
-autocmd VimEnter * nested Lds
 
 "==>all fancy plugin/magic stuff<==
 
@@ -275,6 +221,7 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
+Plug 'isaacmorneau/vim-simple-sessions' "easily manage sessions
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
