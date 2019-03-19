@@ -165,6 +165,9 @@ function! InitializeDirectories()
                 \ 'undo':   'undodir' }
 
     let common_dir = parent . '/.' . prefix
+    "these are seperate as they are not settings
+    let g:scratch_dir = common_dir . 'scratch/'
+    let g:session_dir = common_dir . 'session/'
 
     for [dirname, settingname] in items(dir_list)
         let directory = common_dir . dirname . '/'
@@ -181,18 +184,70 @@ function! InitializeDirectories()
             exec "set " . settingname . "=" . directory
         endif
     endfor
-    let g:scratch_dir = common_dir . 'scratch'. '/'
+
     if exists("*mkdir")
         if !isdirectory(g:scratch_dir)
             call mkdir(g:scratch_dir)
         endif
+        if !isdirectory(g:session_dir)
+            call mkdir(g:session_dir)
+        endif
     endif
+
     if !isdirectory(g:scratch_dir)
         echo "Warning: Unable to create scratch directory: " . g:scratch_dir
         echo "Try: mkdir -p " . g:scratch_dir
     endif
+    if !isdirectory(g:session_dir)
+        echo "Warning: Unable to create scratch directory: " . g:session_dir
+        echo "Try: mkdir -p " . g:session_dir
+    endif
 endfunction
 call InitializeDirectories()
+
+
+let g:session_file = substitute(getcwd(), "/", "_", "g")
+"make a session for this directory
+function! Mks()
+    let l:path = g:session_dir . g:session_file
+    if filereadable(l:path)
+        echo "Updating existing session"
+    else
+        echo "Creating new session for " . g:session_file
+    endif
+    if filewritable(l:path)
+        exec "mksession! " . l:path
+    else
+        echo "Failed to make session for " . l:path
+    endif
+endfunction
+command! Mks call Mks()
+
+"load the session for the starting direcory if it exists
+function! Lds()
+    let l:path = g:session_dir . g:session_file
+    if filereadable(l:path)
+        exec "source " . l:path
+    else
+        echo "No existing session for " . g:session_file
+    endif
+endfunction
+command! Lds call Lds()
+
+"remove the session for the starting directory if it exists
+function! Rms()
+    let l:path = g:session_dir . g:session_file
+    if filereadable(l:path)
+        if delete(l:path) == -1
+            echo "Failed to delete " . l:path
+        else
+            echo "Deleting session for " . g:session_file
+        endif
+    else
+        echo "No existing session for " . g:session_file
+    endif
+endfunction
+command! Rms call Rms()
 
 "==>all fancy plugin/magic stuff<==
 
