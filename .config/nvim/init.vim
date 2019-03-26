@@ -217,7 +217,6 @@ endif
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
-Plug 'StanAngeloff/php.vim', {'for': 'php'} "sigh its for work
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
@@ -236,7 +235,6 @@ Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }  "this maddness is of my own design
 Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
