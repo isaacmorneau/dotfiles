@@ -142,7 +142,9 @@ function leetify () {
 function mvsane () {
     for F in "$@"
     do
-        mv "$F" $(echo "$F" | sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;')
+        SF="${F##*/}"
+        SP="${F%${SF}}"
+        mv "$F" "${SP}$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${SF}\")"
     done
 }
 
