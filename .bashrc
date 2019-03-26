@@ -143,7 +143,13 @@ function mvsane () {
     for F in "$@"
     do
         SF="${F##*/}"
-        SP="${F%${SF}}"
+        if [ -n "$SF" ]; then
+            SP="${F%${SF}}"
+        else
+            #moving a folder
+            SF="$F"
+            SP=""
+        fi
         mv "$F" "${SP}$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${SF}\")"
     done
 }
