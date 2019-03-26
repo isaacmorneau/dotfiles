@@ -281,7 +281,7 @@ function colortest () {
     for padded_value in `seq -w 0 15`; do
         color_variable="color${padded_value}"
         eval current_color=\$${color_variable}
-        current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]') # get rid of slashes, and uppercase
+        current_color=$(tr '[:lower:]' '[:upper:]' <<< "${current_color//\//}") # get rid of slashes, and uppercase
         non_padded_value=$((10#$padded_value))
         base16_color_name=${colors[$non_padded_value]}
         current_color_label=${current_color:-unknown}
