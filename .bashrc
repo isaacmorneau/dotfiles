@@ -150,7 +150,10 @@ function mvsane () {
             SF="$F"
             SP=""
         fi
-        mv "$F" "${SP}$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${SF}\")"
+        NN="${SP}$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${SF}\")"
+        if [ "${NN}" != "${F}" -a "${NN}/" != "${F}" ]; then
+            mv "$F" "$NN"
+        fi
     done
 }
 
