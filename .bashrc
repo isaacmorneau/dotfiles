@@ -440,3 +440,9 @@ function nvimp() {
         $VCMD
     fi
 }
+
+#sometimes you just need to reload it all
+function usb_knockknock() {
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger -v
+}
