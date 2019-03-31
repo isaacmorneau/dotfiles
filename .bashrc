@@ -446,3 +446,9 @@ function usb_knockknock() {
     sudo udevadm control --reload-rules
     sudo udevadm trigger -v
 }
+
+#for when you dont want any [redacted]
+function redact_anime() {
+    sed -r 's/[aA]+(.*)?[nN]+([^a-zA-Z]+|\1)?[1liI]+([^a-zA-Z]+|\1)?[mM]+([^a-zA-Z]+|\1)?[eEuU3]+/[redacted]/ig'
+}
+
