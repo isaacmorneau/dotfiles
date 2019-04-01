@@ -399,6 +399,6 @@ function redact_anime() {
 #the above spawned the following
 #this generates out a regex like above from a given word
 function censor_regex() {
-    sed -r 's/([a-z])/[\1]+(.*)?/;:a;/[^a-z]$/{q};s/(^.*[^a-z])([a-z])/\1[\2]+([^a-z]+|\\1)?/g;ta'
+    sed -r 's/([a-z])/[\1]+(.*)?/;:a;/[^a-z][a-z]$/{s/(.*)([a-z])$/\1[\2]+/;q};s/(^.*[^a-z])([a-z])/\1[\2]+([^a-z]+|\\1)?/g;ta'
 }
 
