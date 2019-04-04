@@ -402,3 +402,7 @@ function censor_regex() {
     sed -r 's/([a-z])/[\1]+(.*)?/;:a;/[^a-z][a-z]$/{s/(.*)([a-z])$/\1[\2]+/;q};s/(^.*[^a-z])([a-z])/\1[\2]+([^a-z]+|\\1)?/g;ta'
 }
 
+#i cant stand /**/ comments, this converts them to // style as best as it can
+function fix_comments() {
+    sed -r ':s;/\/\*/{:g;N;/\*\//{s/(.*)/\/\/\1/g;s/(\/\*|\*\/)//g;s/\n\s*\*/\n/g;s/\n/\n\/\//g;s/(^|\n)\s+\n//g;s/^[\s\/\n]*(\/\/)/\1/g;bs};bg}'
+}
