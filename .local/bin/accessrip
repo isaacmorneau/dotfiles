@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+#for ripping through directories looking for possible access methods
+if [ -x "$(command -v rg)" ]; then
+    GCMD='rg --no-ignore'
+else
+    echo "only ripgrep currently supported"
+    exit
+    GCMD='grep -rE'
+fi
+echo "==>passwords"
+$GCMD -i '(pass(word|phrase|wd|[^a-z]))'
+echo "==]twitter access token"
+$GCMD -i '[1-9][0-9]+-[0-9a-z]{40}'
+echo "==]facebook access token"
+$GCMD -i 'EAACEdEose0cBA[0-9a-z]+'
+echo "==]google api key"
+$GCMD -i 'AIza[0-9a-z\-_]{35}'
+echo "==]google oath"
+$GCMD -i '[0-9]+-[0-9a-z_]{32}\.apps\.googleusercontent\.com'
+echo "==]picatic api key"
+$GCMD 'sk_live_[0-9a-z]{32}'
+echo "==]stripe standard api key"
+$GCMD -i 'sk_live_[0-9a-z]{24}'
+echo "==]stripe restricted api key"
+$GCMD -i 'rk_live_[0-9a-z]{24}'
+echo "==]square access token"
+$GCMD -i 'sq0atp-[0-9a-z\-_]{22}'
+echo "==]square oath"
+$GCMD -i 'sq0csp-[0-9a-z\-_]{43}'
+echo "==]paypal braintree access token"
+$GCMD -i 'access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}'
+echo "==]amazon mws"
+$GCMD -i 'amzn\.mws\.[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}'
+echo "==]twilio api key"
+$GCMD -i 'SK[0-9a-f]{32}'
+echo "==]mailgun api key"
+$GCMD -i 'key-[0-9a-z]{32}'
+echo "==]mailchimp api key"
+#likely that the api keys for different regions have different 'us' strings
+$GCMD -i '0-9a-f]{32}-us[0-9]{1,2}'
+echo "==]amazon aws api key"
+$GCMD -i 'AKIA[0-9A-Z]{16}'
