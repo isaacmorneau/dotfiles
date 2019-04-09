@@ -333,17 +333,6 @@ function linkrip () {
     sed -r 's/(href=")([^"]*)"/\n"\2"\n/' | grep -Po '^".*"$' | tr -d '"'
 }
 
-#for ripping through directories looking for passwords
-
-function passgrep () {
-    if [ $# -eq 0 ]
-    then
-        rg --no-ignore -i '(pass(word|phrase|wd|[^a-z]))'
-    else
-        rg --no-ignore -i '(pass(word|phrase|wd|[^a-z]))' $@
-    fi
-}
-
 #all my v4 ips on all up interfaces
 function allv4 () {
     ip addr show up | grep -v 'lo$' | grep 'inet ' | awk '{print $2}'
