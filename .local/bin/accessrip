@@ -5,38 +5,48 @@ if [ -x "$(command -v rg)" ]; then
 else
     echo "only ripgrep currently supported"
     exit
-    GCMD='grep -rE'
 fi
+
+EXTRA=""
+case "$1" in
+    "extra")
+        EXTRA="true"
+        ;;
+    "*")
+        echo "recognized args: extra"
+        ;;
+esac
+
 echo "==>passwords"
-$GCMD -i '(pass(word|phrase|wd|[^a-z]))'
+$GCMD -i '(^|\s)(pass(word|phrase|wd))'
 echo "==]twitter access token"
-$GCMD -i '[1-9][0-9]+-[0-9a-z]{40}'
+$GCMD -i '[1-9][0-9]+-[0-9a-z]{40}' || echo "none"
 echo "==]facebook access token"
-$GCMD -i 'EAACEdEose0cBA[0-9a-z]+'
+$GCMD -i 'EAACEdEose0cBA[0-9a-z]+' || echo "none"
 echo "==]google api key"
-$GCMD -i 'AIza[0-9a-z\-_]{35}'
+$GCMD -i 'AIza[0-9a-z\-_]{35}' || echo "none"
 echo "==]google oath"
-$GCMD -i '[0-9]+-[0-9a-z_]{32}\.apps\.googleusercontent\.com'
+$GCMD -i '[0-9]+-[0-9a-z_]{32}\.apps\.googleusercontent\.com' || echo "none"
 echo "==]picatic api key"
-$GCMD 'sk_live_[0-9a-z]{32}'
+$GCMD 'sk_live_[0-9a-z]{32}' || echo "none"
 echo "==]stripe standard api key"
-$GCMD -i 'sk_live_[0-9a-z]{24}'
+$GCMD -i 'sk_live_[0-9a-z]{24}' || echo "none"
 echo "==]stripe restricted api key"
-$GCMD -i 'rk_live_[0-9a-z]{24}'
+$GCMD -i 'rk_live_[0-9a-z]{24}' || echo "none"
 echo "==]square access token"
-$GCMD -i 'sq0atp-[0-9a-z\-_]{22}'
+$GCMD -i 'sq0atp-[0-9a-z\-_]{22}' || echo "none"
 echo "==]square oath"
-$GCMD -i 'sq0csp-[0-9a-z\-_]{43}'
+$GCMD -i 'sq0csp-[0-9a-z\-_]{43}' || echo "none"
 echo "==]paypal braintree access token"
-$GCMD -i 'access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}'
+$GCMD -i 'access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}' || echo "none"
 echo "==]amazon mws"
-$GCMD -i 'amzn\.mws\.[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}'
+$GCMD -i 'amzn\.mws\.[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}' || echo "none"
 echo "==]twilio api key"
-$GCMD -i 'SK[0-9a-f]{32}'
+$GCMD -i 'SK[0-9a-f]{32}' || echo "none"
 echo "==]mailgun api key"
-$GCMD -i 'key-[0-9a-z]{32}'
+$GCMD -i 'key-[0-9a-z]{32}' || echo "none"
 echo "==]mailchimp api key"
 #likely that the api keys for different regions have different 'us' strings
-$GCMD -i '0-9a-f]{32}-us[0-9]{1,2}'
+$GCMD -i '[0-9a-f]{32}-us[0-9]{1,2}' || echo "none"
 echo "==]amazon aws api key"
-$GCMD -i 'AKIA[0-9A-Z]{16}'
+$GCMD -i 'AKIA[0-9A-Z]{16}' || echo "none"
