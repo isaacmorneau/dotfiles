@@ -452,3 +452,8 @@ let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
 
+"[gitgutter]
+"these are so that gitgutter gives more snappy updates when doing lots of
+"editing by rechecking on anything to do with insert
+autocmd insertleave * nested call gitgutter#process_buffer(bufnr(''), 0)
+autocmd insertenter * nested call gitgutter#process_buffer(bufnr(''), 0)
