@@ -40,7 +40,6 @@ window:
   decorations: none
 
   # When true, alacritty starts maximized.
-  start_maximized: false
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

@@ -142,18 +142,11 @@ function leetify () {
 function mvsane () {
     for F in "$@"
     do
-        SF="${F##*/}"
-        if [ -n "$SF" ]; then
-            SP="${F%${SF}}"
-        else
-            #moving a folder
-            SF="$F"
-            SP=""
-        fi
-        NN="${SP}$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${SF}\")"
-        if [ "${NN}" != "${F}" -a "${NN}/" != "${F}" ]; then
-            mv "$F" "$NN"
-        fi
+        FP=$(realpath "$F")
+        BN=$(basename "$FP")
+        BP=$(dirname "$FP")
+        NN="${BP}/$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${BN}\")"
+        mv "$FP" "$NN"
     done
 }
 
