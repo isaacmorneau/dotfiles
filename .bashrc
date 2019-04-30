@@ -388,3 +388,9 @@ function censor_regex() {
 function fix_comments() {
     sed -r ':s;/\/\*/{:g;N;/\*\//{s/(.*)/\/\/\1/g;s/(\/\*|\*\/)//g;s/\n\s*\*/\n/g;s/\n/\n\/\//g;s/(^|\n)\s+\n//g;s/^[\s\/\n]*(\/\/)/\1/g;bs};bg}'
 }
+
+#in place removal of anything nonprintable inspired by https://xkcd.com/2143/
+function asciionly() {
+    tmp=$(tr -d "\0" < "$1")
+    cat <<< "${tmp//[^ -~]}" > "$1"
+}
