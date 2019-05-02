@@ -46,12 +46,9 @@ export EDITOR='nvim'
 #}
 
 # restriction being needs git 1.6.3 or newer
-__git_ps1 () {
-    git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-'
-}
-
-#PROMPT_COMMAND='ps1_ret=$?'
-PS1="\[\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\`__git_ps1\`\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\n\[\e[37m\]┕\[\e[m\]> "
+__git_ps1="git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-'"
+__same_fs='[ $(df / | cut -d" " -f1 | tail -1) == $(df "$PWD" | cut -d" " -f1 | tail -1) ]'
+PS1="\[\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs} && printf \"\[\e[33m\]\" || printf \"\[\e[31m\]\")\W\n\[\e[37m\]┕\[\e[m\]> "
 
 export LANG=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
