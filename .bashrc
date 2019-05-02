@@ -48,7 +48,7 @@ export EDITOR='nvim'
 # restriction being needs git 1.6.3 or newer
 __git_ps1='git rev-parse --abbrev-ref HEAD 2>/dev/null||printf "-"'
 #this is so that the working dir goes red if the fs doesnt match the root as an indicator of risk otherwise its yellow
-__same_fs='[ "$(df --output=source /)" == "$(df --output=source .)" ]&&printf "\[\e[33m\]"||printf "\[\e[31m\]"'
+__same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&printf '\[\e[33m\]'||printf '\[\e[31m\]'"
 PS1="\e[m\]\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]┕\[\e[m\]> "
 
 export LANG=en_US.UTF-8
