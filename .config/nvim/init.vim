@@ -221,7 +221,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
-Plug 'isaacmorneau/vim-simple-sessions' "easily manage sessions
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
@@ -251,6 +250,8 @@ Plug 'dodie/vim-disapprove-deep-indentation'
 "this is to highlight the fileicons in nerdtree
 "if nerdtree is slow vist the github page as it has info on how to fix it
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"putting this farther down so the nested call happens more smoothly on loading
+Plug 'isaacmorneau/vim-simple-sessions' "easily manage sessions
 "this should always be the last plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
