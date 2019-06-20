@@ -9,4 +9,4 @@ else
     #if youre not root as a fall back check current dir for command
     export PATH="$PATH:~/.local/bin:~/.cargo/bin:."
 fi
-export TERMINAL="termite"
+export QT_QPA_PLATFORMTHEME="qt5ct"
