@@ -342,6 +342,7 @@ autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDT
 nnoremap <C-m> :FZF<CR>
 "binding it to leader enter so that its similar to my normal flow
 nnoremap <silent> <leader><CR> :call Fzf_preview()<CR>
+nnoremap <silent> <leader>, :call Fzf_all()<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -351,10 +352,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
 "rg>ag>find but fall back through each
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-if executable('ag')
-    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
 if executable('rg')
     let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
     set grepprg=rg\ --vimgrep
@@ -363,7 +360,14 @@ endif
 
 "fzf with a fancy preview
 function! Fzf_preview()
-  call fzf#run(fzf#wrap({'options': '--preview "bat --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
+    call fzf#run(fzf#wrap(
+        \ {'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
+endfunction
+"fzf but everything
+function! Fzf_all()
+    call fzf#run(fzf#wrap(
+        \ {'source':'find -type f 2>/dev/null',
+        \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
 endfunction
 
 "hide status line for fzf
