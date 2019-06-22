@@ -361,13 +361,13 @@ endif
 "fzf with a fancy preview
 function! Fzf_preview()
     call fzf#run(fzf#wrap(
-        \ {'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
+        \ {'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
 endfunction
 "fzf but everything
 function! Fzf_all()
     call fzf#run(fzf#wrap(
-        \ {'source':'find -type f 2>/dev/null',
-        \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
+        \ {'source': "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null",
+        \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
 endfunction
 
 "hide status line for fzf
