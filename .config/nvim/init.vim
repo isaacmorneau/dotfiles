@@ -222,7 +222,6 @@ Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking g
 Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
-Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
@@ -237,6 +236,9 @@ Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+Plug 'junegunn/fzf' "fuzzy jumping arround
+Plug 'junegunn/fzf.vim' "fuzzy jumping arround
 
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
@@ -359,7 +361,7 @@ if executable('rg')
     command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endif
 
-"fzf with a preview
+"fzf with a fancy preview
 function! Fzf_preview()
   call fzf#run(fzf#wrap({'options': '--preview "bat --theme OneHalfDark --style numbers,changes --color=always -r :'.&lines.' {}"'}))
 endfunction
