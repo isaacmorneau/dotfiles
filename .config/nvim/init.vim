@@ -234,8 +234,8 @@ Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
-Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+"Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/fzf.vim' "fuzzy jumping arround

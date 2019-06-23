@@ -395,3 +395,5 @@ function asciionly() {
     tmp=$(tr -d "\0" < "$1")
     cat <<< "${tmp//[^ -~]}" > "$1"
 }
+
+alias clap="sed -r 's/\\s+/ :clap: /g'"
