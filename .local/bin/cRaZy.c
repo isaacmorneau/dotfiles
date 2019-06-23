@@ -1,3 +1,6 @@
+//build with:
+//  clang cRaZy.c -Ofast -s -fno-ident -march=native -flto -o crazy2 -DPAGESIZE=$(getconf PAGESIZE)
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -5,8 +8,14 @@
 #include <unistd.h>
 
 int main(void) {
-    long sz         = sysconf(_SC_PAGESIZE);
-    uint8_t *buffer = (uint8_t *)malloc(sz);
+    long sz;
+#ifndef PAGESIZE
+    sz = sysconf(_SC_PAGESIZE);
+#else
+    sz = PAGESIZE;
+#endif
+    sz *= 32;//found via testing, 32 pages is the fastest
+    uint8_t *buffer = malloc(sz);
 
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
@@ -14,11 +23,11 @@ int main(void) {
     ssize_t ret;
     while ((ret = read(STDIN_FILENO, buffer, sz)) > 0) {
         for (ssize_t i = 0; i < ret; ++i) {
-            const uint8_t c = buffer[i];
+            const uint8_t c   = buffer[i];
             const bool toggle = (i & 1);
 
-            buffer[i] += (toggle && c >= 65 && c <= 90) * 32;
-            buffer[i] -= (!toggle && c >= 97 && c <= 122) * 32;
+            buffer[i] += (toggle && c >= 'A' && c <= 'Z') * 32;
+            buffer[i] -= (!toggle && c >= 'z' && c <= 'z') * 32;
         }
         write(STDOUT_FILENO, buffer, ret);
     }
