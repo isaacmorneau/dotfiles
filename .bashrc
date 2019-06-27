@@ -397,3 +397,13 @@ function asciionly() {
 }
 
 alias clap="sed -r 's/\\s+/ :clap: /g'"
+
+#extract an sql connection string for use manually
+function mysqlconf() {
+    sed -r 's#^.*mysql://([^:]+):([^@]+)\@([^/]+)/([^"]+)".*$#mysql -u\1 -p\2 -h\3 \4#g;tg;d;:g;' | sort | uniq
+}
+
+#god forbid you ever need this but it turns numbers into their ordinal counterparts ie 1st, 2nd, 3rd, 11th, 21st,...
+function ordinal() {
+    sed -r 's/(^|[^0-9]|[02-9])1( |$)/\11st\2/g;s/(^|[^0-9]|[02-9])2( |$)/\12nd\2/g;s/(^|[^0-9]|[02-9])3( |$)/\13rd\2/g;s/(^|[^0-9]|[0-9])?([0-9])( |$)/\1\2th\3/g'
+}
