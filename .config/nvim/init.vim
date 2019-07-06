@@ -33,8 +33,13 @@ set backspace=indent,eol,start
 "duh
 set autoindent
 set copyindent
+
+"setting both gives you 'hybrid' line numbers
+"relative line numbers
+set relativenumber
 "line numbers
 set number
+
 "whats open?
 set title
 "dont care if its not valid,dont tell me
