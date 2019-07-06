@@ -34,11 +34,15 @@ set backspace=indent,eol,start
 set autoindent
 set copyindent
 
-"setting both gives you 'hybrid' line numbers
-"relative line numbers
-set relativenumber
 "line numbers
 set number
+"setting both gives you 'hybrid' line numbers
+"this ensures that i only have it when im not in insert
+augroup numbertoggle
+    autocmd!
+    autocmd bufenter,focusgained,insertleave * set relativenumber
+    autocmd bufleave,focuslost,insertenter * set norelativenumber
+augroup END
 
 "whats open?
 set title
