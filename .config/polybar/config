@@ -80,7 +80,7 @@ menu-0-1-exec = maim -u | xclip -selection clipboard -t image/png
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:128:...%
+label = %title:0:100:...%
 
 [module/i3]
 type = internal/i3
