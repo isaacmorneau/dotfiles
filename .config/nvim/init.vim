@@ -40,8 +40,8 @@ set number
 "this ensures that i only have it when im not in insert
 augroup numbertoggle
     autocmd!
-    autocmd bufenter,focusgained,insertleave * set relativenumber
-    autocmd bufleave,focuslost,insertenter * set norelativenumber
+    autocmd bufenter,insertleave * set relativenumber
+    autocmd bufleave,insertenter * set norelativenumber
 augroup END
 
 "whats open?
