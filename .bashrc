@@ -142,11 +142,11 @@ function leetify () {
 function mvsane () {
     for F in "$@"
     do
-        FP=$(realpath "$F")
-        BN=$(basename "$FP")
-        BP=$(dirname "$FP")
-        NN="${BP}/$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;' <<< \"${BN}\")"
-        mv "$FP" "$NN"
+        FP=$(realpath -- "$F")
+        BN=$(basename -- "$FP")
+        BP=$(dirname -- "$FP")
+        NN="${BP}/$(sed -r 's/[ .]+/_/g;s/[ ]*\[[^]]*\][ ]*//g;s/[^a-zA-Z0-9_-]//g;s/[_-]{2,}/_/g;s/(^[ _-]+|[ _-]+$)//g' <<< \"${BN}\")"
+        [ "$FP" != "$NN" ] && mv -T -- "$FP" "$NN"
     done
 }
 
