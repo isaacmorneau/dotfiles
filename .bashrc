@@ -47,12 +47,6 @@ export EDITOR='nvim'
 #    [[ $1 -ne 0 ]] && printf "\033[43;33m \033[43;31m$1"
 #}
 
-# restriction being needs git 1.6.3 or newer
-__git_ps1='git rev-parse --abbrev-ref HEAD 2>/dev/null||printf "-"'
-#this is so that the working dir goes red if the fs doesnt match the root as an indicator of risk otherwise its yellow
-__same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&printf '\[\e[33m\]'||printf '\[\e[31m\]'"
-PS1="\e[m\]\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]┕\[\e[m\]> "
-
 export LANG=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
 [[ $TERM != 'screen-256color' ]] && export TERM=xterm-256color
@@ -408,3 +402,10 @@ function mysqlconf() {
 function ordinal() {
     sed -r 's/(^|[^0-9]|[02-9])1( |$)/\11st\2/g;s/(^|[^0-9]|[02-9])2( |$)/\12nd\2/g;s/(^|[^0-9]|[02-9])3( |$)/\13rd\2/g;s/(^|[^0-9]|[0-9])?([0-9])( |$)/\1\2th\3/g'
 }
+
+#moved this to the bottom because it breaks syntax highlighting bad
+# restriction being needs git 1.6.3 or newer
+__git_ps1='git rev-parse --abbrev-ref HEAD 2>/dev/null||printf "-"'
+#this is so that the working dir goes red if the fs doesnt match the root as an indicator of risk otherwise its yellow
+__same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&printf '\[\e[33m\]'||printf '\[\e[31m\]'"
+PS1="\e[m\]\e[37m\]┍\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]┕\[\e[m\]> "
