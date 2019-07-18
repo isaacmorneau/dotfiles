@@ -228,11 +228,9 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
-Plug 'chrisbra/Colorizer' "highlight hex codes with the color they are
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
-Plug 'keith/swift.vim' "swift support
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
