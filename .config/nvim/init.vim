@@ -131,6 +131,8 @@ runtime macros/matchit.vim
 "to quickly clear highlight press ^/
 nmap <C-_> :nohlsearch<CR>
 
+"better regex magic
+set magic
 "how dare you not use regex by default
 nnoremap / /\v
 vnoremap / /\v
