@@ -61,23 +61,6 @@ interval = 10
 label = BAT: %output%%
 format-underline = ${colors.green}
 
-[module/cap]
-type = custom/menu
-expand-right = true
-format-spacing = 1
-
-label-open = screen
-label-open-foreground = ${colors.blue}
-label-close = X
-label-close-foreground = ${colors.blue}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = selecion
-menu-0-0-exec = { maim -su||import png:-; } |xclip -selection clipboard -t image/png
-menu-0-1 = screen
-menu-0-1-exec = maim -u | xclip -selection clipboard -t image/png
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:100:...%
