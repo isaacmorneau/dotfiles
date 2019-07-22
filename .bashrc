@@ -14,6 +14,8 @@ alias tree='tree -C'
 #so new files are opened in tabs not background buffers
 alias nvim='nvim -p'
 alias nvimdiff='nvim -d'
+#ive done this too many times
+alias ':q'='exit'
 
 alias sume='sudo -E'
 alias fucking='sudo'
