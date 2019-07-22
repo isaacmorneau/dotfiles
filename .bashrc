@@ -11,6 +11,9 @@ alias grep='grep --color=auto'
 alias ls='exa --group-directories-first'
 alias ll='exa -l --group-directories-first'
 alias tree='tree -C'
+#so new files are opened in tabs not background buffers
+alias nvim='nvim -p'
+alias nvimdiff='nvim -d'
 
 alias sume='sudo -E'
 alias fucking='sudo'
