@@ -163,6 +163,9 @@ vnoremap <LeftRelease> "*ygv
 "i dont actually want visual mode mouse control
 "but i still do want scroll and cursor clicking
 set mouse=ni
+"keep visual selection after shift
+vnoremap < <gv
+vnoremap > >gv
 
 "when the window gets resized reset the splits
 autocmd VimResized * wincmd =
