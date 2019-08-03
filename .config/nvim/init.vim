@@ -71,6 +71,8 @@ set list
 "share vim and system clipboard
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
+else
+    set clipboard=unnamed
 endif
 "ex mode is BS disable it
 nnoremap Q <nop>
