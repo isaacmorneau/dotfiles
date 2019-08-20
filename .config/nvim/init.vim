@@ -122,7 +122,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qa qa
-"i never want the help page! i allways wanted ESC
+"i never want the help page! i always wanted ESC
 nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 
