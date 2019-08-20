@@ -234,6 +234,11 @@ if empty(glob(s:vim_plug, 1))
     endif
 endif
 
+"basicallly the -p option but auto
+if !&diff && argc() > 1
+	autocmd VimEnter * nested :execute 'silent argdo :tab split' | tabclose
+endif
+
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
