@@ -169,6 +169,8 @@ set mouse=ni
 "keep visual selection after shift
 vnoremap < <gv
 vnoremap > >gv
+"reselect last pasted block
+nnoremap gp `[v`]
 
 "when the window gets resized reset the splits
 autocmd VimResized * wincmd =
