@@ -157,6 +157,9 @@ nnoremap tq :tabclose<CR>
 "so that line wraps are per terminal line not per global line
 nnoremap j gj
 nnoremap k gk
+"and also for arrow keys
+nnoremap <Up> g<Up>
+nnoremap <Down> g<Down>
 "work around for mouse selection to clipboard
 "if term supports mouse then the selection will be visual anyway
 vnoremap <LeftRelease> "*ygv
