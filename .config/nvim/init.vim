@@ -172,7 +172,9 @@ vnoremap > >gv
 "reselect last pasted block
 nnoremap gp `[v`]
 "repeat to the whole selected set
-vnoremap . :normal! .<CR>
+vnoremap . :norm! .<CR>
+"similar to above but allows a macro to be selected
+vnoremap @ :'<,'>norm! @
 
 "when the window gets resized reset the splits
 autocmd VimResized * wincmd =
