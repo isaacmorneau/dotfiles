@@ -371,6 +371,7 @@ nnoremap <C-m> :FZF<CR>
 "binding it to leader enter so that its similar to my normal flow
 nnoremap <silent> <leader><CR> :call Fzf_preview()<CR>
 nnoremap <silent> <leader>, :call Fzf_all()<CR>
+nnoremap <silent> <leader>/ :BLines<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
