@@ -258,6 +258,7 @@ Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'sbdchd/neoformat' "allows the formatting of code sanely
 Plug 'scrooloose/nerdtree' "file browser
+Plug 'scrooloose/nerdcommenter' "basically decent block comments
 Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
