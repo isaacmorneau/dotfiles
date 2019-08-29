@@ -70,7 +70,9 @@ else
     set clipboard=unnamed
 endif
 "ex mode is BS disable it
-nnoremap Q <nop>
+"replaced below by having it be a macro runner
+"nnoremap Q <nop>
+
 "this is why we have airline
 set noshowmode
 "delete comment character when joining commented lines
