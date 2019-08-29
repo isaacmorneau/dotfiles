@@ -278,6 +278,7 @@ Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/fzf.vim' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
+Plug 'junegunn/vim-peekaboo' "allows registers and macros to be viewed as used
 
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
