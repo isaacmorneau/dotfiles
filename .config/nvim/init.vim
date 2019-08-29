@@ -1,11 +1,6 @@
-"
-" ██╗███████╗ █████╗  █████╗  ██████╗███████╗    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
-" ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝    ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-" ██║███████╗███████║███████║██║     ███████╗    ██║   ██║██║██╔████╔██║██████╔╝██║
-" ██║╚════██║██╔══██║██╔══██║██║     ╚════██║    ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
-" ██║███████║██║  ██║██║  ██║╚██████╗███████║     ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
-" ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝      ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-"
+"sources of my own inspiration
+"https://github.com/junegunn/dotfiles/blob/master/vimrc
+
 
 "==>base vim setup<==
 
@@ -95,6 +90,11 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+"dont update everything it takes too long
+set lazyredraw
+"so you can select things when there arent characters there
+set virtualedit=block
+
 "tell me whats going on
 "only enable when stuff breaks and you dont know why
 "let &verbose = 1
@@ -175,6 +175,15 @@ nnoremap gp `[v`]
 vnoremap . :norm! .<CR>
 "similar to above but allows a macro to be selected
 vnoremap @ :'<,'>norm! @
+"interacts nicely with the one below as q is used the most
+vnoremap <leader>@ :'<,'>norm! @q<CR>
+" qq to record, Q to replay
+nnoremap Q @q
+
+" jk | Escaping!
+inoremap jk <Esc>
+xnoremap jk <Esc>
+cnoremap jk <C-c>
 
 "when the window gets resized reset the splits
 autocmd VimResized * wincmd =
