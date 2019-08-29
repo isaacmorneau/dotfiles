@@ -251,14 +251,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter' " The git gutter being the extra column tracking git changes by numbering
 Plug 'isaacmorneau/vim-update-daily' "update vim plugins once a day (yea i made this one)
 Plug 'joshdick/onedark.vim' "main color theme
-Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'luochen1990/rainbow' "rainbow highlight brackets
 Plug 'mtth/scratch.vim' "notes file that saves daily
 Plug 'neomake/neomake' "do full syntax checking for most languages
 Plug 'ntpeters/vim-better-whitespace' "show when there is gross trailing whitespace
 Plug 'sbdchd/neoformat' "allows the formatting of code sanely
-Plug 'scrooloose/nerdtree' "file browser
 Plug 'scrooloose/nerdcommenter' "basically decent block comments
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFocus' } "file browser
 Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
@@ -266,8 +265,10 @@ Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 "Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
+"seriously junegunn is incredible. i love his stuff
 Plug 'junegunn/fzf' "fuzzy jumping arround
 Plug 'junegunn/fzf.vim' "fuzzy jumping arround
+Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
