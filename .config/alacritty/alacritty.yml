@@ -156,7 +156,7 @@ colors:
     yellow:  '0xffe400'
     blue:    '0x35a3fc'
     magenta: '0xc250e5'
-    cyan:    '0x27f7d4'
+    cyan:    '0x51ffc5'
     white:   '0xb6d0db'
   bright:
     black:   '0x4b5263'
@@ -165,7 +165,7 @@ colors:
     yellow:  '0xffe400'
     blue:    '0x35a3fc'
     magenta: '0xc250e5'
-    cyan:    '0x27f7d4'
+    cyan:    '0x51ffc5'
     white:   '0xb6d0db'
 
   # Cursor colors

@@ -16,7 +16,7 @@ font pango:ProFontWindows Nerd Font Mono 12
 
 set $foreground #878787
 set $background #353535
-set $extra      #00ffed
+set $extra      #55ffc5
 # class                 border  	backgr. 	text    	indic.  	child_border
 client.background	    $background
 client.focused         	$foreground	$background	$foreground	$extra		$extra
