@@ -33,5 +33,5 @@ these files were also made by reading a lot of others and ive added links to sou
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
   - lock: just slock now
-  - wallpaper: a composit of my commissioned works from [oyk](https://twitter.com/sspcs_vnt) and [sea urchin](https://twitter.com/unimon_e)
+  - wallpaper: a commissioned work from [@HK_819](https://twitter.com/HK_819)
 
