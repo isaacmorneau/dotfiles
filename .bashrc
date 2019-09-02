@@ -142,7 +142,7 @@ function mvsane () {
         FP=$(realpath -- "$F")
         BN=$(basename -- "$FP")
         BP=$(dirname -- "$FP")
-        NN="${BP}/$(sed -r 's/[ .]+/_/g;s/[ ]*\[[^]]*\][ ]*//g;s/[^a-zA-Z0-9_-]//g;s/[_-]{2,}/_/g;s/(^[ _-]+|[ _-]+$)//g' <<< \"${BN}\")"
+        NN="${BP}/$(sed -r 's/[ ]+/_/g;s/[^a-zA-Z0-9_.-]//g;s/[_-]{2,}/-/g;s/(^[ _-]+|[ _-]+$)//g' <<< \"${BN}\")"
         [ "$FP" != "$NN" ] && mv -T -- "$FP" "$NN"
     done
 }
