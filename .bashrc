@@ -135,7 +135,6 @@ function leetify () {
 }
 
 #change filenames to be only sane characters
-#also strips stuff inside of [] because thats never useful info
 function mvsane () {
     for F in "$@"
     do
