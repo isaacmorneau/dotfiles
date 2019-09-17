@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 seconds=$(ffprobe -show_format "$1" 2>&1 | grep -oE 'Duration: [0-9:]+' | cut -d' ' -f2 |  awk -F':' '{print $1 * 60 * 60 + $2 * 60 + $3}')
 instant=$(shuf -i "0-$seconds" -n 1)
-echo "$instant/$seconds in $1" > /tmp/randwall
+echo $(date +%T -u "-d@$instant") in "$1" > /tmp/randwall
 file=$(mktemp -u randwall.XXXXXX.jpg)
-ffmpeg -ss "$instant" -i "$1" -vframes 1 -q:v 1 "$file"
+ffmpeg -ss "$instant" -i "$1" -vframes 1 -q:v 1 "$file" &>/dev/null
 feh --bg-fill "$file"
 rm "$file"
