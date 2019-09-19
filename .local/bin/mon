@@ -2,8 +2,11 @@
 #inspired by https://superuser.com/a/992924  https://superuser.com/a/1238384 https://gist.github.com/naelstrof/f9b74b5221cdc324c0911c89a47b8d97
 #none of those solutions really gave me what i wanted which was a bounding box for that monitor to screenshot
 read -r X Y < <(slop -f '%x %y' -llc 0.33,1,0.77,0.4)
+if [ "$X" -eq 0 -a "$Y" -eq 0 ];then
+    eval "$(xdotool getmouselocation --shell)"
+fi
 for mon in $(xrandr | grep -Eo '([0-9]+[x+-]){3}[0-9]+'); do
 	split=$(sed -r 's/[^0-9]+/ /g' <<< "$mon")
 	read -r w h x y <<< "$split"
-	[ $x -lt $X -a $(($x + $w)) -gt $X -a $y -lt $Y -a $(($y + $h)) -gt $Y ] && maim -Bug "$mon" | xclip -selection clipboard -t image/png && notify-send -t 1000 'screenshot taken'
+	[ $x -le $X -a $(($x + $w)) -ge $X -a $y -le $Y -a $(($y + $h)) -ge $Y ] && maim -Bug "$mon" | xclip -selection clipboard -t image/png && notify-send -t 1000 'screenshot taken'
 done
