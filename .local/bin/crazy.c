@@ -27,7 +27,7 @@ int main(void) {
             const bool toggle = (i & 1);
 
             buffer[i] += (toggle && c >= 'A' && c <= 'Z') * 32;
-            buffer[i] -= (!toggle && c >= 'z' && c <= 'z') * 32;
+            buffer[i] -= (!toggle && c >= 'a' && c <= 'z') * 32;
         }
         write(STDOUT_FILENO, buffer, ret);
     }
