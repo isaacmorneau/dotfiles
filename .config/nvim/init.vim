@@ -176,9 +176,11 @@ vnoremap <leader>@ :'<,'>norm! @q<CR>
 nnoremap Q @q
 
 " jk | Escaping!
-inoremap jk <Esc>
-xnoremap jk <Esc>
-cnoremap jk <C-c>
+" nice idea but i dont actually use it its mostly annoying
+" use ^[ like normal people
+"inoremap jk <Esc>
+"xnoremap jk <Esc>
+"cnoremap jk <C-c>
 
 "thought it best to centralize all the autocmds in one place
 augroup initialization
