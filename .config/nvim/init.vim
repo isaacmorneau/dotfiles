@@ -31,13 +31,6 @@ set copyindent
 
 "line numbers
 set number
-"setting both gives you 'hybrid' line numbers
-"this ensures that i only have it when im not in insert
-augroup numbertoggle
-    autocmd!
-    autocmd bufenter,insertleave * set relativenumber
-    autocmd bufleave,insertenter * set norelativenumber
-augroup END
 
 "whats open?
 set title
@@ -187,8 +180,40 @@ inoremap jk <Esc>
 xnoremap jk <Esc>
 cnoremap jk <C-c>
 
-"when the window gets resized reset the splits
-autocmd VimResized * wincmd =
+"thought it best to centralize all the autocmds in one place
+augroup initialization
+    "clear out old autocommands and dont break anything if this file is
+    "sourced again
+    autocmd!
+
+    "setting both number and relativenumber gives you 'hybrid' line numbers
+    "this ensures that i only have it when im not in insert
+    autocmd bufenter,insertleave * set relativenumber
+    autocmd bufleave,insertenter * set norelativenumber
+
+    "when the window gets resized reset the splits
+    autocmd VimResized * wincmd =
+
+    "these are so that gitgutter gives more snappy updates when doing lots of
+    "editing by rechecking on anything to do with insert
+    autocmd insertleave * nested call gitgutter#process_buffer(bufnr(''), 0)
+    autocmd insertenter * nested call gitgutter#process_buffer(bufnr(''), 0)
+
+    "hide status line for fzf
+    autocmd! FileType fzf
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    "close NERDTREE if its the last thing open
+    autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    "basicallly the -p option but auto
+    if !&diff && argc() > 1
+        autocmd VimEnter * nested :execute 'silent argdo :tab split' | tabclose
+    endif
+
+    "when entering a terminal enter in insert mode
+    autocmd BufWinEnter,WinEnter term://* startinsert
+augroup END
 
 "==>environment auto setup<==
 "make sure i can actually save my stuff somewhere
@@ -251,11 +276,6 @@ if empty(glob(s:vim_plug, 1))
     endif
 endif
 
-"basicallly the -p option but auto
-if !&diff && argc() > 1
-	autocmd VimEnter * nested :execute 'silent argdo :tab split' | tabclose
-endif
-
 "some of these require the neovim pip package
 call plug#begin('~/.local/share/nvim/plugged')
 "Plug 'isaacmorneau/vim-fibo-indent' "for maximal indentation viewing pleasure
@@ -313,9 +333,6 @@ command! PU PlugUpgrade | PlugUpdate | UpdateRemotePlugins
 let s:need_install = keys(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
 let s:need_clean = len(s:need_install) + len(globpath(g:plug_home, '*', 0, 1)) > len(filter(values(g:plugs), 'stridx(v:val.dir, g:plug_home) == 0'))
 let s:need_install = join(s:need_install, ' ')
-
-"when entering a terminal enter in insert mode
-autocmd BufWinEnter,WinEnter term://* startinsert
 
 "first install stuff
 if s:first_run
@@ -377,8 +394,6 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeSortHiddenFirst=1
 "^n to open the file browser
 nnoremap <C-n> :NERDTreeFocus<CR>
-"close if its the last thing open
-autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "[fzf]
 nnoremap <C-m> :FZF<CR>
@@ -413,10 +428,6 @@ function! Fzf_all()
         \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
 endfunction
 
-"hide status line for fzf
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 "match current color scheme
 let g:fzf_colors =
@@ -529,8 +540,3 @@ let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
 
-"[gitgutter]
-"these are so that gitgutter gives more snappy updates when doing lots of
-"editing by rechecking on anything to do with insert
-autocmd insertleave * nested call gitgutter#process_buffer(bufnr(''), 0)
-autocmd insertenter * nested call gitgutter#process_buffer(bufnr(''), 0)
