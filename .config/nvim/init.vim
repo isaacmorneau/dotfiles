@@ -146,6 +146,8 @@ nnoremap <A-k> <C-y>
 "tab nav with alt
 nnoremap <A-h> gT
 nnoremap <A-l> gt
+nnoremap <A-j> :tabm -1<CR>
+nnoremap <A-k> :tabm +1<CR>
 "tab management with t leader
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
