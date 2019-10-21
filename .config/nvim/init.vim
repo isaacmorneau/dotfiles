@@ -43,9 +43,8 @@ set undolevels=1000
 set undoreload=10000
 "reload when i change it with say git
 set autoread
-"as it turns out keeping loads of files in the background is a pain in the
-"ass. offload filecaching to linux it does it fine.
-set nohidden
+"cleanup old buffers with :CloseHiddenBuffers
+set hidden
 "give it a little bigger of a bump when i go off the edge
 set scrolloff=3
 set sidescrolloff=5
@@ -297,6 +296,7 @@ Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
+Plug 'Asheq/close-buffers.vim' " to cleanup loads of unused buffers
 "Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
