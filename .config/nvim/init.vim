@@ -43,9 +43,9 @@ set undolevels=1000
 set undoreload=10000
 "reload when i change it with say git
 set autoread
-"manage buffers nicely
-"if i open another file over an existing one, keep the other in the background
-set hidden
+"as it turns out keeping loads of files in the background is a pain in the
+"ass. offload filecaching to linux it does it fine.
+set nohidden
 "give it a little bigger of a bump when i go off the edge
 set scrolloff=3
 set sidescrolloff=5
