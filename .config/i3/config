@@ -12,7 +12,7 @@ set $mod Mod4
 set $alt Mod1
 
 # not really needed as fonts are handled my polybar and dmenu
-font pango:ProFontWindows Nerd Font Mono 12
+font pango:ProFontWindows Nerd Font Mono 10
 
 set $foreground #878787
 set $background #353535
