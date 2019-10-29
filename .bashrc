@@ -404,6 +404,22 @@ function ordinal() {
     sed -r 's/(^|[^0-9]|[02-9])1( |$)/\11st\2/g;s/(^|[^0-9]|[02-9])2( |$)/\12nd\2/g;s/(^|[^0-9]|[02-9])3( |$)/\13rd\2/g;s/(^|[^0-9]|[0-9])?([0-9])( |$)/\1\2th\3/g'
 }
 
+function mvmanual () {
+    for F in "$@"
+    do
+        FP=$(realpath -- "$F")
+        BN=$(basename -- "$FP")
+        BP=$(dirname -- "$FP")
+        TMP_FILE=$(mktemp)
+        cat -- > "${TMP_FILE}" <<< "${BN}"
+        nvim "${TMP_FILE}"
+        NN=$(<"${TMP_FILE}")
+        rm "${TMP_FILE}"
+        NP="${BP}/$NN"
+        [ "$FP" != "$NP" ] && mv -T -- "$FP" "$NP"
+    done
+}
+
 #moved this to the bottom because it breaks syntax highlighting bad
 __last_cmd="[ \$? == 0 ]&&printf '\[\e[32m\]^_^'||printf '\[\e[31m\]ಠ_ಠ'"
 # restriction being needs git 1.6.3 or newer
