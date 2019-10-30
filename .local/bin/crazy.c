@@ -1,5 +1,5 @@
 //build with:
-//  clang cRaZy.c -Ofast -s -fno-ident -march=native -flto -o crazy2 -DPAGESIZE=$(getconf PAGESIZE)
+//  clang crazy.c -Ofast -s -fno-ident -march=native -flto -o crazy -DPAGESIZE=$(getconf PAGESIZE)
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -26,8 +26,8 @@ int main(void) {
             const uint8_t c   = buffer[i];
             const bool toggle = (i & 1);
 
-            buffer[i] += (toggle && c >= 'A' && c <= 'Z') * 32;
-            buffer[i] -= (!toggle && c >= 'a' && c <= 'z') * 32;
+            buffer[i] += (toggle & (c >= 'A') & (c <= 'Z')) << 5;
+            buffer[i] -= (!toggle & (c >= 'a') & (c <= 'z')) << 5;
         }
         write(STDOUT_FILENO, buffer, ret);
     }
