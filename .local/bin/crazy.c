@@ -37,12 +37,40 @@ int main(void) {
     ssize_t ret;
     //while splice and vmsplice were tested the cost of moving to kernel space and back was not worth it
     while ((ret = read(STDIN_FILENO, buffer, sz)) > 0) {
-        for (ssize_t i = 0; i < sz; ++i) {
-            const uint8_t c   = buffer[i];
-            const bool t = (i & 1);
+        //found via testing 4 unrolls is optimal before it seems the instruction cache is full
+        for (ssize_t i = 0; i < sz; i+=4) {
+            {
+                const size_t idx = (i+0);
+                const uint8_t c   = buffer[idx];
+                const bool t = (idx & 1);
 
-            buffer[i] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
-            buffer[i] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
+                buffer[idx] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
+                buffer[idx] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
+            }
+            {
+                const size_t idx = (i+1);
+                const uint8_t c   = buffer[idx];
+                const bool t = (idx & 1);
+
+                buffer[idx] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
+                buffer[idx] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
+            }
+            {
+                const size_t idx = (i+2);
+                const uint8_t c   = buffer[idx];
+                const bool t = (idx & 1);
+
+                buffer[idx] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
+                buffer[idx] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
+            }
+            {
+                const size_t idx = (i+3);
+                const uint8_t c   = buffer[idx];
+                const bool t = (idx & 1);
+
+                buffer[idx] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
+                buffer[idx] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
+            }
         }
         write(STDOUT_FILENO, buffer, ret);
     }
