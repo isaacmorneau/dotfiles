@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <sys/mman.h>
 
 #define CASE_FLIP(x) ((x) << 5)
 #define GREATER_EQUAL(x, p) ((x) >= (p))
@@ -23,9 +25,13 @@ int main(void) {
 #endif
     sz *= 32;//found via testing, 32 pages is the fastest
     uint8_t *buffer = malloc(sz);
+    //rather significant improvement
+    madvise(buffer, sz, MADV_SEQUENTIAL);
 
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
+    //for some reason the already sequential stdin benifits from this
+    posix_fadvise(STDIN_FILENO, 0, 0, POSIX_FADV_SEQUENTIAL);
 
     ssize_t ret;
     //while splice and vmsplice were tested the cost of moving to kernel space and back was not worth it
