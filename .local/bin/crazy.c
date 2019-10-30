@@ -37,7 +37,7 @@ int main(void) {
     ssize_t ret;
     //while splice and vmsplice were tested the cost of moving to kernel space and back was not worth it
     while ((ret = read(STDIN_FILENO, buffer, sz)) > 0) {
-        for (ssize_t i = 0; i < ret; ++i) {
+        for (ssize_t i = 0; i < sz; ++i) {
             const uint8_t c   = buffer[i];
             const bool t = (i & 1);
 
