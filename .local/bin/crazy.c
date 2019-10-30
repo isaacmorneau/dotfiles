@@ -24,6 +24,7 @@ int main(void) {
     sz = PAGESIZE;
 #endif
     sz *= 32;//found via testing, 32 pages is the fastest
+    //malloc for some reason performed better than mmap even with madvise HUGEPAGES enabled
     uint8_t *buffer = malloc(sz);
     //rather significant improvement
     madvise(buffer, sz, MADV_SEQUENTIAL);
