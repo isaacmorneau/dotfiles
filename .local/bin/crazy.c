@@ -7,6 +7,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define CASE_FLIP(x) ((x) << 5)
+#define GREATER_EQUAL(x, p) ((x) >= (p))
+#define LESS_EQUAL(x, p) ((x) <= (p))
+#define UPPER_CASE(x) (GREATER_EQUAL(x, 'A') & LESS_EQUAL(x, 'Z'))
+#define LOWER_CASE(x) (GREATER_EQUAL(x, 'a') & LESS_EQUAL(x, 'z'))
+#define TOGGLE_ZERO(t, c) ((t) & (c))
+
 int main(void) {
     long sz;
 #ifndef PAGESIZE
@@ -24,10 +31,10 @@ int main(void) {
     while ((ret = read(STDIN_FILENO, buffer, sz)) > 0) {
         for (ssize_t i = 0; i < ret; ++i) {
             const uint8_t c   = buffer[i];
-            const bool toggle = (i & 1);
+            const bool t = (i & 1);
 
-            buffer[i] += (toggle & (c >= 'A') & (c <= 'Z')) << 5;
-            buffer[i] -= (!toggle & (c >= 'a') & (c <= 'z')) << 5;
+            buffer[i] += CASE_FLIP(TOGGLE_ZERO(t, UPPER_CASE(c)));
+            buffer[i] -= CASE_FLIP(TOGGLE_ZERO(!t, LOWER_CASE(c)));
         }
         write(STDOUT_FILENO, buffer, ret);
     }
