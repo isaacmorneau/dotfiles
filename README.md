@@ -9,7 +9,8 @@
 
 of the entire repo the the most note worthy is the [nvim config](https://github.com/isaacmorneau/dotfiles/blob/master/.config/nvim/init.vim)
 <br/>
-another that might be interesting is the [.bashrc functions](https://github.com/isaacmorneau/dotfiles/blob/master/.bashrc)
+another that might be interesting is the [.bashrc functions](https://github.com/isaacmorneau/dotfiles/blob/master/.bashrc).
+madness lies in my implementation of [cRaZy](https://github.com/isaacmorneau/dotfiles/blob/master/.local/bin/crazy.c)
 
 <hr>
 
