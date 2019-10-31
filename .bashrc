@@ -235,7 +235,7 @@ function hexlines () {
 #for testing ricing colors
 alias colortest="echo use bettercolor instead"
 
-#check ~/.local/bin/cRaZy.c for the version now in use
+#check ~/.local/bin/crazy.c for the version now in use
 #function cRaZy () {
 #    fold -w1 | awk 'NR % 2 == 1 {print toupper($0)}; NR % 2 == 0 {print tolower($0)}' | tr -d '\n'
 #}
@@ -254,9 +254,10 @@ function sofine () {
 
 #honestly why is this not built in...
 #sum ints one per line
-function total () {
-    awk '{s+=$1} END {print s}'
-}
+#check ~/.local/bin/total.c for the version now in use
+#function total () {
+#    awk '{s+=$1} END {print s}'
+#}
 
 #this automatically generates index.html files for the entire current directory
 #note the grep for exclusion is because the built in affects the output

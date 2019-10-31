@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 int fast_atoi(const char * restrict p) {
     int x = 0;
@@ -33,6 +35,8 @@ int main(void) {
     char *line = NULL;
     size_t len = 0;
     ssize_t nread;
+
+    posix_fadvise(STDIN_FILENO, 0, 0, POSIX_FADV_SEQUENTIAL);
 
     while ((nread = getline(&line, &len, stdin)) != -1) {
         total += fast_atoi(line);
