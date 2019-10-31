@@ -17,15 +17,14 @@
 #define TOGGLE_ZERO(t, c) ((t) & (c))
 
 int main(void) {
-    long sz;
+    //found via testing, 32 pages is the fastest
 #ifndef PAGESIZE
-    sz = sysconf(_SC_PAGESIZE);
+    const long sz = sysconf(_SC_PAGESIZE) * 32;
 #else
-    sz = PAGESIZE;
+    const long sz = PAGESIZE * 32;
 #endif
-    sz *= 32;//found via testing, 32 pages is the fastest
-    //malloc for some reason performed better than mmap even with madvise HUGEPAGES enabled
-    uint8_t *buffer = malloc(sz);
+    uint8_t * const restrict buffer = malloc(sz);
+
     //rather significant improvement
     madvise(buffer, sz, MADV_SEQUENTIAL);
 
@@ -76,3 +75,4 @@ int main(void) {
     }
     return 0;
 }
+
