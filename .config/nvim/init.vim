@@ -172,7 +172,7 @@ vnoremap . :norm! .<CR>
 "similar to above but allows a macro to be selected
 vnoremap @ :'<,'>norm! @
 "interacts nicely with the one below as q is used the most
-vnoremap <leader>@ :'<,'>norm! @q<CR>
+vnoremap Q :'<,'>norm! @q<CR>
 " qq to record, Q to replay
 nnoremap Q @q
 
