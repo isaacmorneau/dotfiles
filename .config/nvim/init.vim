@@ -306,6 +306,9 @@ Plug 'junegunn/fzf.vim' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'junegunn/vim-peekaboo' "allows registers and macros to be viewed as used
 
+Plug 'kana/vim-textobj-user' "library for defining usermode text object
+Plug 'Julian/vim-textobj-variable-segment' "select stuff within variable chunks like bar from fooBarBaz
+
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
 "looks good but one of these slows down scrolling (probably both)
