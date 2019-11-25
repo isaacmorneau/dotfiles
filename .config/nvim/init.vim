@@ -176,6 +176,9 @@ vnoremap Q :'<,'>norm! @q<CR>
 " qq to record, Q to replay
 nnoremap Q @q
 
+"S and cc are duplicates so mimic the inverse of J for S
+nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
+
 " jk | Escaping!
 " nice idea but i dont actually use it its mostly annoying
 " use ^[ like normal people
