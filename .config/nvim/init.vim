@@ -513,6 +513,13 @@ endfunction
 call airline#add_statusline_func('WindowNumber')
 call airline#add_inactive_statusline_func('WindowNumber')
 
+"im on so many systems i forget where i left which vim instance so now i show
+"hostname
+function! AirlineInit()
+    let g:airline_section_a = airline#section#create(['%{hostname()}', ' ', 'mode'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
 "[YouCompleteMe]
 "let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
