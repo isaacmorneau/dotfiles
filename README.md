@@ -29,7 +29,7 @@ these files were also made by reading a lot of others and ive added links to sou
   - font: [ProFont (patched with nerd-fonts)](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/ProFont)
   - theming: custom one dark inspired but higher saturation
 - gui
-  - wm: [i3](https://github.com/Airblader/i3)
+  - wm: [i3](https://i3wm.org/)
   - statusbar: [polybar](https://github.com/jaagr/polybar)
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [compton](https://github.com/chjj/compton)
