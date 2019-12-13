@@ -20,6 +20,8 @@ dnsutils
 binwalk
 python-pip
 unzip
+unrar
+most
 """
 GUI="""
 dunst
