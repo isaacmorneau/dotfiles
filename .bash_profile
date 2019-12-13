@@ -10,3 +10,4 @@ else
     export PATH="$PATH:~/.local/bin:~/.cargo/bin:."
 fi
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export PAGER='most -r'
