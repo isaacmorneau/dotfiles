@@ -408,7 +408,8 @@ endif
 "nice transparent background
 "(actually looks really bad with one, i just leave it here so i dont make the
 "same mistake again)
-"hi Normal ctermbg=NONE
+"second ammendment, it actually looks good with a dark background
+hi Normal ctermbg=NONE
 
 "[php.vim]
 let g:php_html_load = 0
