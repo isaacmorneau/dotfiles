@@ -36,6 +36,9 @@ alias bn='LD_PRELOAD=libcurl.so.3 ~/binaryninja/binaryninja'
 
 alias mpvf='mpv "$(fzf)"'
 
+#kill bg tasks ignoring sigterm
+alias kbg='kil -9 "$(jobs -p)"'
+
 if [[ $EUID -eq 0 ]]; then
     export PATH="$PATH:~/.local/bin:~/.cargo/bin"
 else
