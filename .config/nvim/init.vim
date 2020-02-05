@@ -284,6 +284,52 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
+"https://vim.fandom.com/wiki/Move_current_window_between_tabs
+function MoveToPrevTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() != 1
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabprev
+    endif
+    sp
+  else
+    close!
+    exe "0tabnew"
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+function MoveToNextTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() < tab_nr
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabnext
+    endif
+    sp
+  else
+    close!
+    tabnew
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+nnoremap <A-.> :call MoveToNextTab()<CR>
+nnoremap <A-,> :call MoveToPrevTab()<CR>
 "==>all fancy plugin/magic stuff<==
 
 "ensure we actually have vim plug
@@ -324,8 +370,8 @@ Plug 'Asheq/close-buffers.vim' " to cleanup loads of unused buffers
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 "seriously junegunn is incredible. i love his stuff
-Plug 'junegunn/fzf' "fuzzy jumping arround
-Plug 'junegunn/fzf.vim' "fuzzy jumping arround
+Plug 'junegunn/fzf', { 'on' : 'FZF' } "fuzzy jumping arround
+Plug 'junegunn/fzf.vim', { 'on' : 'FZF' } "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'junegunn/vim-peekaboo' "allows registers and macros to be viewed as used
 
@@ -343,7 +389,7 @@ Plug 'Julian/vim-textobj-variable-segment' "select stuff within variable chunks 
 Plug 'dodie/vim-disapprove-deep-indentation'
 "this is to highlight the fileicons in nerdtree
 "if nerdtree is slow vist the github page as it has info on how to fix it
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeFocus' }
 "putting this farther down so the nested call happens more smoothly on loading
 Plug 'isaacmorneau/vim-simple-sessions' "easily manage sessions
 "this should always be the last plugin
