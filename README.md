@@ -24,7 +24,7 @@ these files were also made by reading a lot of others and ive added links to sou
 
 - distro: [arch](https://www.ubuntu.com/)
 - cli
-  - terminal: [termite](https://github.com/thestinger/termite)
+  - terminal: [alacritty](https://github.com/alacritty/alacritty) with a [termite](https://github.com/thestinger/termite) fallback
   - editor: [neovim](https://github.com/neovim/neovim)
   - font: [ProFont (patched with nerd-fonts)](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/ProFont)
   - theming: custom one dark inspired but higher saturation
@@ -32,7 +32,7 @@ these files were also made by reading a lot of others and ive added links to sou
   - wm: [i3](https://i3wm.org/)
   - statusbar: [polybar](https://github.com/jaagr/polybar)
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
-  - compositor: [compton](https://github.com/chjj/compton)
+  - compositor: [picom](https://github.com/yshui/picom)
   - lock: just slock now
-  - wallpaper: a commissioned work from [@HK_819](https://twitter.com/HK_819)
+  - wallpaper: a commissioned work from [@houchi714285](https://twitter.com/houchi714285)
 
