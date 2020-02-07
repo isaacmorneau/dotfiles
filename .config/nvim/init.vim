@@ -370,8 +370,8 @@ Plug 'Asheq/close-buffers.vim' " to cleanup loads of unused buffers
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
 "seriously junegunn is incredible. i love his stuff
-Plug 'junegunn/fzf', { 'on' : 'FZF' } "fuzzy jumping arround
-Plug 'junegunn/fzf.vim', { 'on' : 'FZF' } "fuzzy jumping arround
+Plug 'junegunn/fzf' "fuzzy jumping arround
+Plug 'junegunn/fzf.vim' "fuzzy jumping arround
 Plug 'junegunn/vim-easy-align' "allow mappings for lots of aligning
 Plug 'junegunn/vim-peekaboo' "allows registers and macros to be viewed as used
 
