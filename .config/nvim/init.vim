@@ -212,11 +212,6 @@ augroup initialization
     "sourced again
     autocmd!
 
-    "setting both number and relativenumber gives you 'hybrid' line numbers
-    "this ensures that i only have it when im not in insert
-    autocmd bufenter,insertleave * set relativenumber
-    autocmd bufleave,insertenter * set norelativenumber
-
     "when the window gets resized reset the splits
     autocmd VimResized * wincmd =
 
