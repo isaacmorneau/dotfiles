@@ -28,6 +28,7 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 #run a command
 bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -font "ProFont 9"
+bindsym --release $mod+Escape exec slock
 
 #get rid of the borders on the sides of the screen
 hide_edge_borders vertical
