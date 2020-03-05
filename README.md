@@ -34,5 +34,5 @@ these files were also made by reading a lot of others and ive added links to sou
   - launcher: [rofi](https://github.com/DaveDavenport/rofi)
   - compositor: [picom](https://github.com/yshui/picom)
   - lock: just slock now
-  - wallpaper: a commissioned work from [@houchi714285](https://twitter.com/houchi714285)
+  - wallpaper: a commissioned work from [@peperou9](https://twitter.com/peperou9)
 
