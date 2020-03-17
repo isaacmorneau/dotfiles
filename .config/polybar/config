@@ -168,7 +168,7 @@ format-disconnected =
 
 [module/time]
 type = custom/script
-exec = echo $(TZ=UTC date +"UTC %H:%M:%S") $(date +"LT %H:%M:%S %Y-%m-%d")
+exec = echo $(TZ=UTC date +"UTC %H:%M:%S") $(TZ='Asia/Tokyo' date +"JST %H:%M:%S")  $(date +"PST %H:%M:%S %Y-%m-%d")
 interval = 1
 
 [settings]
