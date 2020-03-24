@@ -55,6 +55,8 @@ filetype plugin on
 "visualize whitepsace
 set listchars=tab:→→,trail:●,nbsp:○
 set list
+"fold on syntax but this can be indent if that makes it easier
+set foldmethod=syntax
 "share vim and system clipboard
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
@@ -139,8 +141,8 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 "scroll with alt directions
-nnoremap <A-j> <C-e>
-nnoremap <A-k> <C-y>
+"nnoremap <A-j> <C-e>
+"nnoremap <A-k> <C-y>
 
 "tab nav with alt
 nnoremap <A-h> gT
