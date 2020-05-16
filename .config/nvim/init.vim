@@ -56,7 +56,7 @@ filetype plugin on
 set listchars=tab:→→,trail:●,nbsp:○
 set list
 "fold on syntax but this can be indent if that makes it easier
-set foldmethod=syntax
+"set foldmethod=syntax
 "share vim and system clipboard
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
