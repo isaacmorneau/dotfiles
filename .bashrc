@@ -400,7 +400,7 @@ alias clap="sed -r 's/\\s+/ :clap: /g'"
 
 #extract an sql connection string for use manually
 function mysqlconf() {
-    sed -r 's#^.*mysql://([^:]+):([^@]+)\@([^/]+)/([^"]+)".*$#mysql -u\1 -p\2 -h\3 \4#g;tg;d;:g;' | sort | uniq
+    sed -r 's#^.*?mysql://([^:]+):([^@]+)\@([^/]+)/([a-zA-Z0-9_-]+).*?$#mysql -u\1 -p\2 -h\3 \4#g;tg;d;:g;' | sort | uniq
 }
 
 #god forbid you ever need this but it turns numbers into their ordinal counterparts ie 1st, 2nd, 3rd, 11th, 21st,...
