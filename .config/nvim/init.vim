@@ -149,6 +149,11 @@ nnoremap <A-h> gT
 nnoremap <A-l> gt
 nnoremap <A-j> :tabm -1<CR>
 nnoremap <A-k> :tabm +1<CR>
+
+"why isnt this built in? move back a word to the end
+nnoremap <silent> <leader>b ge
+nnoremap <silent> <leader>B gE
+
 "tab management with t leader
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
