@@ -47,10 +47,9 @@ else
 fi
 export EDITOR='nvim'
 
+#include completion sources
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
-#ps1_proc_result () {
-#    [[ $1 -ne 0 ]] && printf "\033[43;33m \033[43;31m$1"
-#}
+[ -r /usr/share/fzf/completion.bash   ] && . /usr/share/fzf/completion.bash
 
 export LANG=en_US.UTF-8
 #this is to get around the fact that no one knows what termite is so ssh'ing is a pain
