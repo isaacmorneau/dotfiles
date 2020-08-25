@@ -138,7 +138,7 @@ bindsym $mod+slash exec --no-startup-id flash_window -t 200
 exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png && sleep 2 && feh --bg-fill ~/.wallpaper.png
-exec --no-startup-id picom -C -I 0.05 -O 0.05 -f -b
+exec --no-startup-id picom -C -I 0.05 -O 0.05 -b
 exec --no-startup-id unclutter &
 exec --no-startup-id dunst &
 exec_always --no-startup-id flashfocus -t 200

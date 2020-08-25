@@ -158,8 +158,8 @@ nnoremap <silent> <leader>B gE
 nnoremap tn :tabnew<CR>
 nnoremap tq :tabclose<CR>
 "so that line wraps are per terminal line not per global line
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 "and also for arrow keys
 nnoremap <Up> g<Up>
 nnoremap <Down> g<Down>
