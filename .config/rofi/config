@@ -1,3 +1,0 @@
-rofi.kb-cancel: Escape
-rofi.modi: window,run,drun
-rofi.theme: ~/.config/rofi/theme.rasi

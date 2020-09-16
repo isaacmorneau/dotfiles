@@ -1,0 +1,5 @@
+configuration {
+	modi: "window,run,drun";
+	theme: "~/.config/rofi/theme.rasi";
+	kb-cancel: "Escape";
+}
