@@ -96,19 +96,11 @@ function cpi () {
     xclip -selection clipboard -t image/png -i $1
 }
 
-#get the last scratch file or nth to the end from the vim scratch system
-#f can be added to get the path
+#get the last scratch file or specify a range via line
 function lastscratch () {
-    if [[ "$1" == "" || "$1" == "f" ]]; then
-        lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n 1`
-    else
-        lastscratch=`find $HOME/.vimscratch/ -type f | sort | tail -n $1 | head -n 1`
-    fi
-    if [[ "$2" == "" && "$1" != "f" ]]; then
-        cat $lastscratch
-    else
-        echo $lastscratch
-    fi
+    for F in $(find "$HOME/.vimscratch/" -type f | sort -r | line ${@:-1}); do
+        cat "$F"
+    done
 }
 
 #is it raining
