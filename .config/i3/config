@@ -11,6 +11,9 @@
 set $mod Mod4
 set $alt Mod1
 
+#required with multiple x11 screens
+focus_follows_mouse yes
+
 # not really needed as fonts are handled my polybar and dmenu
 font pango:ProFontWindows Nerd Font Mono 10
 
@@ -109,6 +112,13 @@ bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+l workspace next
 bindsym $mod+Control+h workspace prev
 
+#swap between x screens
+bindsym $mod+Control+Up exec "~/.local/bin/xscreenswitch"
+bindsym $mod+Control+Down exec "~/.local/bin/xscreenswitch"
+#with vim bindings
+bindsym $mod+Control+k exec "~/.local/bin/xscreenswitch"
+bindsym $mod+Control+j exec "~/.local/bin/xscreenswitch"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -135,10 +145,12 @@ bindsym $mod+slash exec --no-startup-id flash_window -t 200
 #bindsym $mod+b exec rewal
 #wal is too much, its all too much
 
-exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
+#superceeded by manual xorg.conf
+#exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
+exec --no-startup-id ~/.config/polybar/polybar.sh
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png && sleep 2 && feh --bg-fill ~/.wallpaper.png
-exec --no-startup-id picom -b &
+exec --no-startup-id picom -b
 exec --no-startup-id unclutter &
 exec --no-startup-id dunst &
 exec_always --no-startup-id flashfocus -t 200
