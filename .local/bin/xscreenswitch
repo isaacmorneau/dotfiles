@@ -1,0 +1,5 @@
+#!/bin/bash
+eval $(xdotool getmouselocation --shell)
+[ $SCREEN -eq 0 ] && xdotool mousemove_relative 0 -1080 || xdotool mousemove_relative 0 1080
+eval $(xdotool getmouselocation --shell)
+xdotool windowfocus $WINDOW
