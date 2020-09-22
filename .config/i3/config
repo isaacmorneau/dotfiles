@@ -112,12 +112,8 @@ bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+l workspace next
 bindsym $mod+Control+h workspace prev
 
-#swap between x screens
-bindsym $mod+Control+Up exec "~/.local/bin/xscreenswitch"
-bindsym $mod+Control+Down exec "~/.local/bin/xscreenswitch"
-#with vim bindings
-bindsym $mod+Control+k exec "~/.local/bin/xscreenswitch"
-bindsym $mod+Control+j exec "~/.local/bin/xscreenswitch"
+#needs an additional process of indirection to focus properly somehow
+bindsym $mod+Tab exec --no-startup-id ~/.local/bin/xscreenswitch &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
