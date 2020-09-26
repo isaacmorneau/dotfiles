@@ -263,21 +263,25 @@ function mkhtmltree () {
 function autoindex () {
     title=$(basename "$PWD")
     echo "<html><head><title>$title</title><style type=\"text/css\">body{margin:40px auto;color:#444;padding:0 10px}h1{text-align: center};h1,h2,h3{line-height:1.2}</style></head><body><h1>$title</h1><hr/>" > index.html
-    if [ $(find . -maxdepth 1 -type d | wc -l) -gt "1" ]; then
+    folders=$(find . -maxdepth 1 -type d | sort)
+    if [ "$(wc -l <<< "$folders")" -gt "1" ]; then
         echo "<h2>Folders</h2><hr/><ul>" >> index.html
-        for d in $(find . -maxdepth 1 -type d | sort); do
+        while IFS= read -r d
+        do
             [ "$d" == "." ] && continue
             echo "<li><a href=\"$d\">${d#./}</a></li>" >> index.html
-            (cd "$d"; autoindex 1)
-        done
+            (cd "$d"; autoindex)
+        done <<< "$folders"
         echo "</ul>" >> index.html
     fi
-    if [ $(find . -maxdepth 1 -type f | wc -l) != "0" ]; then
+    files=$(find . -maxdepth 1 -type f | sort)
+    if [ $(wc -l <<< "$files") != "0" ]; then
         echo "<h2>Files</h2><hr/><ul>" >> index.html
-        for f in $(find . -maxdepth 1 -type f | sort); do
+        while IFS= read -r f
+        do
             [ "$f" == "./index.html" ] && continue
-            echo "<li><a href=\"$f\">${f#./}</a></li>" >> index.html
-        done
+            echo "<li><a href=\"$f\">$(stat -c '%y %n' "${f#./}")</a></li>" >> index.html
+        done <<< "$files"
         echo "</ul>" >> index.html
     fi
     echo "</body></html>" >> index.html
