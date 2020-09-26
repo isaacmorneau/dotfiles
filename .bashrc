@@ -260,6 +260,29 @@ function mkhtmltree () {
     find . -type d -exec bash -c "cd {}; tree --dirsfirst --du --prune -DhHC . | grep -v 'index.html' | sed -r '0,/(\.NORM.*)black/{s/(\.NORM.*)black/\1blue/};0,/(\.DIR.*)blue/{s/(\.DIR.*)blue/\1black/};s/\"([^\"]*\.(png|jpg))\">([^<]*)/\"\1\"><img src=\"\1\" height=\"200\">/g' > index.html" \;
 }
 
+function autoindex () {
+    title=$(basename "$PWD")
+    echo "<html><head><title>$title</title><style type=\"text/css\">body{margin:40px auto;color:#444;padding:0 10px}h1{text-align: center};h1,h2,h3{line-height:1.2}</style></head><body><h1>$title</h1><hr/>" > index.html
+    if [ $(find . -maxdepth 1 -type d | wc -l) -gt "1" ]; then
+        echo "<h2>Folders</h2><hr/><ul>" >> index.html
+        for d in $(find . -maxdepth 1 -type d | sort); do
+            [ "$d" == "." ] && continue
+            echo "<li><a href=\"$d\">${d#./}</a></li>" >> index.html
+            (cd "$d"; autoindex 1)
+        done
+        echo "</ul>" >> index.html
+    fi
+    if [ $(find . -maxdepth 1 -type f | wc -l) != "0" ]; then
+        echo "<h2>Files</h2><hr/><ul>" >> index.html
+        for f in $(find . -maxdepth 1 -type f | sort); do
+            [ "$f" == "./index.html" ] && continue
+            echo "<li><a href=\"$f\">${f#./}</a></li>" >> index.html
+        done
+        echo "</ul>" >> index.html
+    fi
+    echo "</body></html>" >> index.html
+}
+
 #generate documentation comments for c
 function mkcdoc () {
     for F in "$@"
