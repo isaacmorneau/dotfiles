@@ -276,13 +276,13 @@ function autoindex () {
     fi
     files=$(find . -maxdepth 1 -type f | sort)
     if [ $(wc -l <<< "$files") != "0" ]; then
-        echo "<h2>Files</h2><hr/><ul>" >> index.html
+        echo "<h2>Files</h2><hr/><table><tr><th>Bytes</th><th>File Name</th></tr>" >> index.html
         while IFS= read -r f
         do
             [ "$f" == "./index.html" ] && continue
-            echo "<li><a href=\"$f\">$(stat -c '%y %n' "${f#./}")</a></li>" >> index.html
+            echo "<tr><td>$(stat -c '%s' "$f")</td><td><a href=\"$f\">${f#./}</a></td>" >> index.html
         done <<< "$files"
-        echo "</ul>" >> index.html
+        echo "</table>" >> index.html
     fi
     echo "</body></html>" >> index.html
 }
