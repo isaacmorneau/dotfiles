@@ -87,9 +87,6 @@ export HISTTIMEFORMAT="[%F %T] "
 # Change the file location because certain bash sessions truncate .bash_history file upon close.
 # http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
 export HISTFILE=~/.bash_eternal_history
-# Force prompt to write history after every command.
-# http://superuser.com/questions/20900/bash-history-loss
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 #cp image to clipboard
 function cpi () {
@@ -443,10 +440,18 @@ function mvmanual () {
 }
 
 #moved this to the bottom because it breaks syntax highlighting bad
-__last_cmd="[ \$? == 0 ]&&printf '\[\e[32m\]^_^'||printf '\[\e[31m\]ಠ_ಠ'"
+__last_cmd="[ \$? == 0 ]&&printf '\[\e[32m\]^_^'||printf '\[\e[31m\]o_o'"
 # restriction being needs git 1.6.3 or newer
 __git_ps1='git rev-parse --abbrev-ref HEAD 2>/dev/null||printf "-"'
 #this is so that the working dir goes red if the fs doesnt match the root as an indicator of risk otherwise its yellow
 __same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&printf '\[\e[33m\]'||printf '\[\e[31m\]'"
 
-PS1="\e[m\]\e[37m\]┍\$(${__last_cmd})\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]┕\[\e[m\]> "
+#notify the user if any command has taken more than 120 seconds to complete (false positives if you leave your terminal hanging, press enter to refresh the timer)
+PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&notify-send -t 5000 "Command finished." "$(HISTTIMEFORMAT="" history 1|tr -s \' \'|cut -d\' \' -f2-)";__lastchecked=$(history 1)'
+
+PS1="${__notify_long}\e[m\]\e[37m\]\$(${__last_cmd})\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]\[\e[m\]> "
+
+
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
