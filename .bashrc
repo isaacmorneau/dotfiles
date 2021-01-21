@@ -446,8 +446,13 @@ __git_ps1='git rev-parse --abbrev-ref HEAD 2>/dev/null||printf "-"'
 #this is so that the working dir goes red if the fs doesnt match the root as an indicator of risk otherwise its yellow
 __same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&printf '\[\e[33m\]'||printf '\[\e[31m\]'"
 
+#this way we can add things to an ignore list that we dont want notifications about
+function __send_real () {
+    cmd="$(HISTTIMEFORMAT="" history 1|tr -s ' '|cut -d' ' -f2-)"
+    grep -q "$(cut -d' ' -f1 <<< "$cmd")" ~/.bash_ignore || notify-send -t 5000 "Command Finished" "$cmd"
+}
 #notify the user if any command has taken more than 120 seconds to complete (false positives if you leave your terminal hanging, press enter to refresh the timer)
-PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&notify-send -t 5000 "Command Finished" "$(HISTTIMEFORMAT="" history 1|tr -s \' \'|cut -d\' \' -f2-)";__lastchecked=$(history 1)'
+PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&__send_real;__lastchecked=$(history 1)'
 
 PS1="\e[m\]\e[37m\]\$(${__last_cmd})\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]:\$(${__same_fs})\W\n\[\e[37m\]\[\e[m\]> "
 
