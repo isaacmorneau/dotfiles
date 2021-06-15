@@ -147,7 +147,7 @@ exec --no-startup-id ~/.config/polybar/polybar.sh
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png && sleep 2 && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id picom -b
-exec --no-startup-id unclutter &
+exec --no-startup-id unclutter --ignore-scrolling --timeout 3&
 exec --no-startup-id dunst &
 exec_always --no-startup-id flashfocus -t 200
 # exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
