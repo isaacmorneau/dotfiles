@@ -63,7 +63,7 @@ format-underline = ${colors.green}
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:100:...%
+label = %title:0:60:…%
 
 [module/i3]
 type = internal/i3
@@ -104,12 +104,12 @@ label-visible-padding = ${self.label-focused-padding}
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format = <ramp-coreload> <label>
+interval = 1
+format = <ramp-coreload>
 format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.red}
-label = %percentage:2%%
+ramp-coreload-spacing = 0
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
 ramp-coreload-2 = ▃
@@ -131,7 +131,7 @@ ramp-coreload-7-foreground = #ff5555
 type = internal/memory
 interval = 2
 format = <bar-used> <label>
-label = RAM %gb_used%|%gb_free%
+label = RAM %gb_used% %percentage_used%%
 
 bar-used-indicator =
 bar-used-width = 10
@@ -168,14 +168,11 @@ format-disconnected =
 
 [module/time]
 type = custom/script
-exec = echo $(TZ=UTC date +"UTC %H:%M:%S") $(TZ='Asia/Tokyo' date +"JST %H:%M:%S")  $(date +"PST %H:%M:%S %Y-%m-%d")
+exec = echo $(TZ=UTC date +"UTC%H:%M") $(TZ='Asia/Tokyo' date +"JST%H:%M")  $(date +"PST%Y-%m-%d %H:%M:%S")
 interval = 1
 
-[settings]
-screenchange-reload = true
-
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 3
+margin-bottom = 3
 
 ; vim:ft=dosini
