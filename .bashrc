@@ -454,8 +454,9 @@ function __send_real () {
 #notify the user if any command has taken more than 120 seconds to complete (false positives if you leave your terminal hanging, press enter to refresh the timer)
 PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&__send_real;__lastchecked=$(history 1)'
 
-__hostname_hash=$(sha256sum < /etc/hostname)
-__hostname="$(printf '\033[48;2;%d;%d;%dm\033[38;2;%d;%d;%dm%s\033[0m' 0x${__hostname_hash:26:2} 0x${__hostname_hash:28:2} 0x${__hostname_hash:30:2} $(( 255 - 0x${__hostname_hash:26:2} )) $(( 255 - 0x${__hostname_hash:28:2} )) $(( 255 - 0x${__hostname_hash:30:2} )) $(</etc/hostname))"
+#__hostname_hash=$(sha256sum < /etc/hostname)
+#__hostname="$(printf '\033[48;2;%d;%d;%dm\033[38;2;%d;%d;%dm%s\033[0m' 0x${__hostname_hash:26:2} 0x${__hostname_hash:28:2} 0x${__hostname_hash:30:2} $(( 255 - 0x${__hostname_hash:26:2} )) $(( 255 - 0x${__hostname_hash:28:2} )) $(( 255 - 0x${__hostname_hash:30:2} )) $(</etc/hostname))"
+__hostname="$(lumen -a -t $(</etc/hostname))"
 PS1="\e[m\]\e[37m\]\$(${__last_cmd})\[\e[34m\]\D{%T}\[\e[35m\]\$(${__git_ps1})\[\e[36m\]\u\[\e[m\]@${__hostname}\]:\$(${__same_fs})\W\n\[\e[37m\]\[\e[m\]> "
 
 
