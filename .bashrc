@@ -39,6 +39,7 @@ alias mpvf='mpv "$(fzf)"'
 #kill bg tasks ignoring sigterm
 alias kbg='kill -9 "$(jobs -p)"'
 
+
 if [[ $EUID -eq 0 ]]; then
     export PATH="$PATH:~/.local/bin:~/.cargo/bin"
 else
@@ -437,6 +438,12 @@ function mvmanual () {
         NP="${BP}/$NN"
         [ "$FP" != "$NP" ] && mv -T -- "$FP" "$NP"
     done
+}
+
+function markws() {
+    newname="$(basename $(pwd))"
+    num="$(i3-msg -t get_workspaces|jq '.[]|select(.focused==true).num')"
+    i3-msg "rename workspace to \"${num}: $newname\"" 1>/dev/null 2>/dev/null
 }
 
 #moved this to the bottom because it breaks syntax highlighting bad

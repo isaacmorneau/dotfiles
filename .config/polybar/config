@@ -77,7 +77,7 @@ label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.green}
 
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.green}
 label-focused-padding = 1
@@ -96,7 +96,7 @@ label-empty-padding = 1
 label-unfocused = %index%
 label-unfocused-padding = 1
 
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
