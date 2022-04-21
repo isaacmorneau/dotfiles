@@ -495,6 +495,8 @@ nnoremap <C-n> :NERDTreeFocus<CR>
 
 "[fzf]
 nnoremap <C-m> :FZF<CR>
+"0.7 changed how the code is registered
+nnoremap <CR> :FZF<CR>
 "binding it to leader enter so that its similar to my normal flow
 nnoremap <silent> <leader><CR> :call Fzf_preview()<CR>
 nnoremap <silent> <leader>, :call Fzf_all()<CR>
