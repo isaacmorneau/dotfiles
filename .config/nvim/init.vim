@@ -398,6 +398,7 @@ Plug 'junegunn/vim-peekaboo' "allows registers and macros to be viewed as used
 
 Plug 'kana/vim-textobj-user' "library for defining usermode text object
 Plug 'Julian/vim-textobj-variable-segment' "select stuff within variable chunks like bar from fooBarBaz
+Plug 'psf/black'
 
 "horribly slow dont use neoinclude its several orders of magnitude higher
 "Plug 'Shougo/neoinclude.vim' "also check completion in includes
