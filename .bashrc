@@ -441,7 +441,7 @@ function mvmanual () {
 }
 
 function markws() {
-    newname="$(basename $(pwd))"
+    newname="${1:-$(basename $(pwd))}"
     num="$(i3-msg -t get_workspaces|jq '.[]|select(.focused==true).num')"
     i3-msg "rename workspace to \"${num}: $newname\"" 1>/dev/null 2>/dev/null
 }
