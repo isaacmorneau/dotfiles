@@ -8,8 +8,11 @@
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 alias grep='grep --color=auto'
+#usually i want to grep things ignored by git \rg if you dont
+alias rg='rg --no-ignore'
 alias ls='exa --group-directories-first'
 alias ll='exa -l --group-directories-first'
+alias ld='exa -dl */'
 alias tree='tree -C'
 #ive done this too many times
 alias ':q'='exit'
@@ -444,6 +447,11 @@ function markws() {
     newname="${1:-$(basename $(pwd))}"
     num="$(i3-msg -t get_workspaces|jq '.[]|select(.focused==true).num')"
     i3-msg "rename workspace to \"${num}: $newname\"" 1>/dev/null 2>/dev/null
+}
+
+#it's a pain to pull the cn out of openvpn configs. this does the whole thing
+function ovpncn() {
+    openssl x509 -in <(sed -rn '/<cert>/,/<\/cert/{/<\/?cert>/d;p}' < $1) -text | grep -o 'Issuer.*'
 }
 
 #moved this to the bottom because it breaks syntax highlighting bad
