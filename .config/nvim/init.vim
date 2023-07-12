@@ -43,8 +43,9 @@ set undolevels=1000
 set undoreload=10000
 "reload when i change it with say git
 set autoread
-"cleanup old buffers with :CloseHiddenBuffers
-set hidden
+"cleanup old buffers with :Bdelete hidden
+"i never use this
+"set hidden
 "give it a little bigger of a bump when i go off the edge
 set scrolloff=3
 set sidescrolloff=5
@@ -90,6 +91,8 @@ set shiftwidth=4
 set lazyredraw
 "so you can select things when there arent characters there
 set virtualedit=block
+"i prefer to keep my last in use file on the left
+set splitright
 
 "tell me whats going on
 "only enable when stuff breaks and you dont know why
@@ -408,10 +411,11 @@ Plug 'psf/black'
 "Plug 'Xuyuanp/nerdtree-git-plugin' "filebrowser git status
 "
 "this needs to go after other syntax plugins so it can override their rules
-Plug 'dodie/vim-disapprove-deep-indentation'
+"Plug 'dodie/vim-disapprove-deep-indentation' - got annoying
 "this is to highlight the fileicons in nerdtree
 "if nerdtree is slow vist the github page as it has info on how to fix it
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeFocus' }
+"using a fork due to fixng an error with highlight groups
+Plug 'johnstef99/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeFocus' }
 "putting this farther down so the nested call happens more smoothly on loading
 Plug 'isaacmorneau/vim-simple-sessions' "easily manage sessions
 "this should always be the last plugin
@@ -641,8 +645,8 @@ let g:neoformat_enabled_cpp = ['clangformat']
 nmap <C-f> :Neoformat<CR>
 
 "[LookOfDisaproval]
-let g:LookOfDisapprovalTabThreshold=5
-let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
+"let g:LookOfDisapprovalTabThreshold=5
+"let g:LookOfDisapprovalSpaceThreshold=(&tabstop*4)
 
 "i dont know what adds this bullshit but its annoying as hell
 let g:omni_sql_no_default_maps = 1
