@@ -37,7 +37,6 @@ alias connected_mon='xrandr --query | grep " connected" | awk "{print \$1}"'
 
 alias bn='LD_PRELOAD=libcurl.so.3 ~/binaryninja/binaryninja'
 
-alias mpvf='mpv "$(fzf)"'
 
 #kill bg tasks ignoring sigterm
 alias kbg='kill -9 "$(jobs -p)"'
@@ -448,7 +447,21 @@ function markws() {
     num="$(i3-msg -t get_workspaces|jq '.[]|select(.focused==true).num')"
     i3-msg "rename workspace to \"${num}: $newname\"" 1>/dev/null 2>/dev/null
 }
+#alias mpvf='mpv "$(fzf)"'
+function mpvf () {
+    file="$(fzf)"
+    if [ "$file" != "" ]; then
+        echo "opening $file"
+        mpv "$file"
+    fi
+}
 
+function cdf () {
+    dir="$(exa -D | fzf)"
+    if [ "$dir" != "" ]; then
+        cd "$dir"
+    fi
+}
 #it's a pain to pull the cn out of openvpn configs. this does the whole thing
 function ovpncn() {
     openssl x509 -in <(sed -rn '/<cert>/,/<\/cert/{/<\/?cert>/d;p}' < $1) -text | grep -o 'Issuer.*'
