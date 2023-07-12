@@ -14,7 +14,7 @@ green = #32d83b
 blue = #35a3fc
 red = #ff4c4c
 
-[bar/main]
+[bar/primary]
 monitor = ${env:MONITOR}
 width = 100%
 height = 20
@@ -41,17 +41,49 @@ font-1 = Hack Nerd Font:size=10
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cap memory cpu wlan eth bat time
+modules-right = cap memory cpu eth fulltime
 
 tray-position = right
 tray-padding = 0
 tray-background = ${root.background}
+tray-detached = false
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+[bar/secondary]
+monitor = ${env:MONITOR}
+width = 100%
+height = 20
+radius = 4.0
+fixed-center = false
+
+background = #802c340f
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+border-size = 0
+border-color = #0000000
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = ProFontWindows Nerd Font Mono:size=12
+font-1 = Hack Nerd Font:size=10
+
+modules-left = i3
+modules-center = xwindow
+modules-right = cap memory cpu shorttime
+
+tray-position = none
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 [module/bat]
 type = custom/script
@@ -166,9 +198,14 @@ label-connected = %local_ip%
 
 format-disconnected =
 
-[module/time]
+[module/fulltime]
 type = custom/script
-exec = echo $(TZ=UTC date +"UTC%H:%M") $(TZ='Asia/Tokyo' date +"JST%H:%M")  $(date +"PST%Y-%m-%d %H:%M:%S")
+exec = echo $(TZ=UTC date +"UTC%H") $(TZ='Asia/Tokyo' date +"JST%H") $(date +"EST%Y-%m-%d %H:%M:%S")
+interval = 1
+
+[module/shorttime]
+type = custom/script
+exec = echo $(date +"%Y-%m-%d %H:%M:%S")
 interval = 1
 
 [global/wm]

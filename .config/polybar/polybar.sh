@@ -9,8 +9,7 @@ export ETH=$(ip link | awk '{print $2}' | grep -Eo '^en[a-z0-9]*')
 export WIRE=$(ip link | awk '{print $2}' | grep -Eo '^wl[a-z0-9]*')
 
 # Launch polybar
-for i in $(polybar -m | awk -F: '{print $1}');
+polybar --list-monitors | while read -r m
 do
-    export MONITOR=$i
-    polybar main -c ~/.config/polybar/config &
+    MONITOR=$(cut -d":" -f1 <<< "$m") polybar $(grep -o 'primary' <<< "$m" || echo 'secondary') --reload -c ~/.config/polybar/config &
 done
