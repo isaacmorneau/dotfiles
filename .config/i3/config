@@ -31,6 +31,7 @@ client.placeholder	    $foreground	$background	$foreground	$background	$backgrou
 
 #run a command
 bindsym $mod+d exec --no-startup-id rofi -run-command "bash -c '{cmd}'" -show run -font "ProFont 9"
+#bindsym --release $mod+Escape exec i3lock -e -S 1 -k --date-str="%Y-%m-%d" --no-modkey-text -i ~/animewp/nightsniping.png -u
 bindsym --release $mod+Escape exec slock
 
 #get rid of the borders on the sides of the screen
@@ -142,8 +143,9 @@ bindsym $mod+slash exec --no-startup-id flash_window -t 200
 #wal is too much, its all too much
 
 #superceeded by manual xorg.conf
-#exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
-exec --no-startup-id ~/.config/polybar/polybar.sh
+#and now im on radeon again so im back to this
+exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
+#exec --no-startup-id ~/.config/polybar/polybar.sh
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png && sleep 2 && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id picom -b
@@ -153,6 +155,12 @@ exec_always --no-startup-id flashfocus -t 200
 # exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 #the sleep is more for screenlayout to finish as polybar will freak out if the screens
 #aren't up
+
+#start me off with these workspaces to start
+workspace 44 output HDMI-1
+workspace 11 output DP-2
+workspace 22 output DP-3
+workspace 33 output DP-1
 
 #the only way i could think of doing all these workspaces
 #i am so sorry, just... dont look...

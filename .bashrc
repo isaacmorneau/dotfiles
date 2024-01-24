@@ -99,6 +99,7 @@ function cpi () {
 #get the last scratch file or specify a range via line
 function lastscratch () {
     for F in $(find "$HOME/.vimscratch/" -type f | sort -r | line ${@:-1}); do
+        echo "scratch: $F"
         cat "$F"
     done
 }
@@ -449,7 +450,11 @@ function markws() {
 }
 #alias mpvf='mpv "$(fzf)"'
 function mpvf () {
-    file="$(fzf)"
+    if [ "$1" != "" ]; then
+        file="$(fzf -1 -q $1)"
+    else
+        file="$(fzf)"
+    fi
     if [ "$file" != "" ]; then
         echo "opening $file"
         mpv "$file"
@@ -457,7 +462,7 @@ function mpvf () {
 }
 
 function cdf () {
-    dir="$(exa -D | fzf)"
+    dir=$(exa --no-quotes --color=never -D | fzf)
     if [ "$dir" != "" ]; then
         cd "$dir"
     fi
