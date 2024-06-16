@@ -37,6 +37,7 @@ alias connected_mon='xrandr --query | grep " connected" | awk "{print \$1}"'
 
 alias bn='LD_PRELOAD=libcurl.so.3 ~/binaryninja/binaryninja'
 
+alias tdup='$(cd $(pwd); alacritty)&'
 
 #kill bg tasks ignoring sigterm
 alias kbg='kill -9 "$(jobs -p)"'
