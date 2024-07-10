@@ -483,10 +483,10 @@ __same_fs="[ \"$(df --output=source /)\" == \"\$(df --output=source .)\" ]&&prin
 #this way we can add things to an ignore list that we dont want notifications about
 function __send_real () {
     cmd="$(HISTTIMEFORMAT="" history 1|tr -s ' '|cut -d' ' -f2-)"
-    grep -q "$(cut -d' ' -f1 <<< "$cmd")" ~/.bash_ignore || notify-send -t 5000 "Command Finished" "$cmd"
+    grep -q "$(cut -d' ' -f1 <<< "$cmd")" ~/.bash_ignore || notify-send-rs -t 5000 "Command Finished" "$cmd"
 }
 #notify the user if any command has taken more than 120 seconds to complete (false positives if you leave your terminal hanging, press enter to refresh the timer)
-PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&__send_real;__lastchecked=$(history 1)'
+#PROMPT_COMMAND=$'__lastran="${__now:-$(date +%s)}";__now=$(date +%s);[ $(expr ${__now} - ${__lastran}) -gt 120 ]&&[ "${__lastchecked}" != "$(history 1)" ]&&__send_real;__lastchecked=$(history 1)'
 
 #__hostname_hash=$(sha256sum < /etc/hostname)
 #__hostname="$(printf '\033[48;2;%d;%d;%dm\033[38;2;%d;%d;%dm%s\033[0m' 0x${__hostname_hash:26:2} 0x${__hostname_hash:28:2} 0x${__hostname_hash:30:2} $(( 255 - 0x${__hostname_hash:26:2} )) $(( 255 - 0x${__hostname_hash:28:2} )) $(( 255 - 0x${__hostname_hash:30:2} )) $(</etc/hostname))"

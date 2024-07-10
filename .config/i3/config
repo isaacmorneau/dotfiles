@@ -43,14 +43,14 @@ for_window [class="^.*"] border pixel 1
 #i3 gaps additonal config
 # can re enable for having small gaps between windows
 #gaps inner 5
-#gaps outer 0
+gaps outer 5px
 #smart_gaps on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "alacritty || ~/.cargo/bin/alacritty || termite"
+bindsym $mod+Return exec "alacritty"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -143,7 +143,10 @@ bindsym $mod+slash exec --no-startup-id flash_window -t 200
 #wal is too much, its all too much
 
 #superceeded by manual xorg.conf
+<<<<<<< Updated upstream
 #and now im on radeon again so im back to this
+=======
+>>>>>>> Stashed changes
 exec --no-startup-id ".screenlayout/main.sh; ~/.config/polybar/polybar.sh"
 #exec --no-startup-id ~/.config/polybar/polybar.sh
 exec --no-startup-id xmodmap ~/.Xmodmap
@@ -156,11 +159,15 @@ exec_always --no-startup-id flashfocus -t 200
 #the sleep is more for screenlayout to finish as polybar will freak out if the screens
 #aren't up
 
+<<<<<<< Updated upstream
 #start me off with these workspaces to start
 workspace 44 output HDMI-1
 workspace 11 output DP-2
 workspace 22 output DP-3
 workspace 33 output DP-1
+=======
+#get the monitor names with arandr or xrandr --listmonitors
+>>>>>>> Stashed changes
 
 #the only way i could think of doing all these workspaces
 #i am so sorry, just... dont look...

@@ -412,6 +412,7 @@ Plug 'psf/black'
 "
 "this needs to go after other syntax plugins so it can override their rules
 "Plug 'dodie/vim-disapprove-deep-indentation' - got annoying
+Plug 'echasnovski/mini.indentscope'
 "this is to highlight the fileicons in nerdtree
 "if nerdtree is slow vist the github page as it has info on how to fix it
 "using a fork due to fixng an error with highlight groups
