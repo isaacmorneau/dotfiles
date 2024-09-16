@@ -16,6 +16,8 @@ alias ld='exa -dl */'
 alias tree='tree -C'
 #ive done this too many times
 alias ':q'='exit'
+#disable import being a valid command as it keeps calling imagemagik
+alias 'import'=''
 
 alias sume='sudo -E'
 alias fucking='sudo'
