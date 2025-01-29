@@ -230,6 +230,13 @@ augroup initialization
     autocmd insertleave * nested call gitgutter#process_buffer(bufnr(''), 0)
     autocmd insertenter * nested call gitgutter#process_buffer(bufnr(''), 0)
 
+    "spell for typ and md files
+    autocmd! FileType *.typ setlocal spell spelllang=en_us
+    autocmd! BufRead,BufNewFile *.typ setlocal spell spelllang=en_us
+
+    autocmd! FileType *.md setlocal spell spelllang=en_us
+    autocmd! BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+
     "hide status line for fzf
     autocmd! FileType fzf
     autocmd  FileType fzf set laststatus=0 noshowmode noruler
@@ -386,6 +393,7 @@ Plug 'sbdchd/neoformat' "allows the formatting of code sanely
 Plug 'scrooloose/nerdcommenter' "basically decent block comments
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFocus' } "file browser
 Plug 'sheerun/vim-polyglot' "a super language pack for a ton of stuff
+Plug 'kaarmu/typst.vim' " basic typst support
 Plug 'tpope/vim-surround' "change things surounding like ()->[]
 Plug 'vim-airline/vim-airline' "a statusbar
 Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
