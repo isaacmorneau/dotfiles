@@ -102,7 +102,7 @@ if exists('$SHELL')
 else
     set shell=/bin/bash
 endif
-"\ is annoying move it to comma
+            "\ is annoying move it to comma
 let g:mapleader = ','
 "for full code pastes may as well use pastemode
 set pastetoggle=<leader>v
@@ -194,19 +194,19 @@ nnoremap S :keeppatterns substitute/\s*\%#\s*/\r/e <bar> normal! ==<CR>
 vmap <silent> * y:let @/=substitute(escape(@",'.$*[^\/~'),'\n','\\n','g')<CR>n
 vmap <silent> # y:let @/=substitute(escape(@",'.$*[^\/~'),'\n','\\n','g')<CR>N
 vnoremap <silent> * :<C-U>
-              \let old_reg=getreg('"')<bar>
-              \let old_regmode=getregtype('"')<cr>
-              \gvy/<C-R><C-R>=substitute(substitute(
-              \escape(@", '\\/.*$^~[]' ), "\n$", "", ""),
-              \"\n", '\\_[[:return:]]', "g")<cr><cr>
-              \:call setreg('"', old_reg, old_regmode)<cr>
+            \let old_reg=getreg('"')<bar>
+            \let old_regmode=getregtype('"')<cr>
+            \gvy/<C-R><C-R>=substitute(substitute(
+            \escape(@", '\\/.*$^~[]' ), "\n$", "", ""),
+            \"\n", '\\_[[:return:]]', "g")<cr><cr>
+            \:call setreg('"', old_reg, old_regmode)<cr>
 vnoremap <silent> # :<C-U>
-              \let old_reg=getreg('"')<bar>
-              \let old_regmode=getregtype('"')<cr>
-              \gvy?<C-R><C-R>=substitute(substitute(
-              \escape(@", '\\/.*$^~[]' ), "\n$", "", ""),
-              \"\n", '\\_[[:return:]]', "g")<cr><cr>
-              \:call setreg('"', old_reg, old_regmode)<cr>
+            \let old_reg=getreg('"')<bar>
+            \let old_regmode=getregtype('"')<cr>
+            \gvy?<C-R><C-R>=substitute(substitute(
+            \escape(@", '\\/.*$^~[]' ), "\n$", "", ""),
+            \"\n", '\\_[[:return:]]', "g")<cr><cr>
+            \:call setreg('"', old_reg, old_regmode)<cr>
 
 
 " jk | Escaping!
@@ -233,7 +233,7 @@ augroup initialization
     "hide status line for fzf
     autocmd! FileType fzf
     autocmd  FileType fzf set laststatus=0 noshowmode noruler
-      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
     "close NERDTREE if its the last thing open
     autocmd bufenter * nested if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -291,47 +291,47 @@ call InitializeDirectories()
 
 "https://vim.fandom.com/wiki/Move_current_window_between_tabs
 function MoveToPrevTab()
-  "there is only one window
-  if tabpagenr('$') == 1 && winnr('$') == 1
-    return
-  endif
-  "preparing new window
-  let l:tab_nr = tabpagenr('$')
-  let l:cur_buf = bufnr('%')
-  if tabpagenr() != 1
-    close!
-    if l:tab_nr == tabpagenr('$')
-      tabprev
+    "there is only one window
+    if tabpagenr('$') == 1 && winnr('$') == 1
+        return
     endif
-    sp
-  else
-    close!
-    exe "0tabnew"
-  endif
-  "opening current buffer in new window
-  exe "b".l:cur_buf
+    "preparing new window
+    let l:tab_nr = tabpagenr('$')
+    let l:cur_buf = bufnr('%')
+    if tabpagenr() != 1
+        close!
+        if l:tab_nr == tabpagenr('$')
+            tabprev
+        endif
+        sp
+    else
+        close!
+        exe "0tabnew"
+    endif
+    "opening current buffer in new window
+    exe "b".l:cur_buf
 endfunc
 
 function MoveToNextTab()
-  "there is only one window
-  if tabpagenr('$') == 1 && winnr('$') == 1
-    return
-  endif
-  "preparing new window
-  let l:tab_nr = tabpagenr('$')
-  let l:cur_buf = bufnr('%')
-  if tabpagenr() < tab_nr
-    close!
-    if l:tab_nr == tabpagenr('$')
-      tabnext
+    "there is only one window
+    if tabpagenr('$') == 1 && winnr('$') == 1
+        return
     endif
-    sp
-  else
-    close!
-    tabnew
-  endif
-  "opening current buffer in new window
-  exe "b".l:cur_buf
+    "preparing new window
+    let l:tab_nr = tabpagenr('$')
+    let l:cur_buf = bufnr('%')
+    if tabpagenr() < tab_nr
+        close!
+        if l:tab_nr == tabpagenr('$')
+            tabnext
+        endif
+        sp
+    else
+        close!
+        tabnew
+    endif
+    "opening current buffer in new window
+    exe "b".l:cur_buf
 endfunc
 nnoremap <A-.> :call MoveToNextTab()<CR>
 nnoremap <A-,> :call MoveToPrevTab()<CR>
@@ -392,6 +392,8 @@ Plug 'vim-airline/vim-airline-themes' "themes for the statusbar
 Plug 'Asheq/close-buffers.vim' " to cleanup loads of unused buffers
 "Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --clang-completer'} "oh god here we go, compiled completion
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'kaarmu/typst.vim'
+
 
 "seriously junegunn is incredible. i love his stuff
 Plug 'junegunn/fzf' "fuzzy jumping arround
@@ -506,9 +508,9 @@ nnoremap <silent> <leader><CR> :call Fzf_preview()<CR>
 nnoremap <silent> <leader>, :call Fzf_all()<CR>
 nnoremap <silent> <leader>/ :BLines<CR>
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
@@ -523,31 +525,31 @@ endif
 "fzf with a fancy preview
 function! Fzf_preview()
     call fzf#run(fzf#wrap(
-        \ {'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
+                \ {'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
 endfunction
 "fzf but everything
 function! Fzf_all()
     call fzf#run(fzf#wrap(
-        \ {'source': "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null",
-        \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
+                \ {'source': "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null",
+                \ 'options': '--preview "bat --pager never --theme OneHalfDark --style numbers,changes --color=always -r :'.float2nr(floor(&lines*0.4)-1).' {}"'}))
 endfunction
 
 
 "match current color scheme
 let g:fzf_colors =
-  \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
 
 "[Easy Align]
