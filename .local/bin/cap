@@ -1,2 +1,1 @@
-#if maim fails fallback to import
-{ maim -Buslc 0.33,1,0.77,0.4||import png:-; } |xclip -selection clipboard -t image/png && notify-send -t 1000 'screenshot taken'
+maim -Busc 0.33,1,0.77,1 | xclip -selection clipboard -t image/png
